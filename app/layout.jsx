@@ -4,9 +4,10 @@ import { Header } from '../components/header';
 
 export const metadata = {
     title: {
-        template: '%s | Netlify',
-        default: 'Netlify Starter'
-    }
+        template: '%s | Coach Portaal',
+        default: 'Coach Portaal'
+    },
+    description: 'De ultieme digitale assistent voor atletiekcoaches. Bespaar tijd met administratie en focus op je atleten.'
 };
 
 export default function RootLayout({ children }) {
