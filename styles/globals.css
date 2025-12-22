@@ -3,15 +3,15 @@
 @import 'tailwindcss';
 
 @theme {
-    --background-image-noise: linear-gradient(
-            to bottom,
+    --background-image-noise: linear-gradient(to bottom,
             color-mix(in oklab, var(--color-neutral-950) 0%, transparent),
-            color-mix(in oklab, var(--color-neutral-950) 100%, transparent)
-        ),
+            color-mix(in oklab, var(--color-neutral-950) 100%, transparent)),
         url('/images/noise.png');
     --color-primary: #2563eb;
     --color-primary-hover: #1d4ed8;
+    --color-primary-content: #ffffff;
     --color-secondary: #4f46e5;
+    --color-secondary-content: #ffffff;
     --color-accent: #2bdcd2;
     --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
         'Noto Color Emoji';
@@ -34,7 +34,7 @@
         @apply underline transition hover:opacity-80;
     }
 
-    :not(pre) > code {
+    :not(pre)>code {
         @apply px-1 py-0.5 font-mono rounded bg-neutral-900 text-yellow-200;
         font-size: 0.9em;
     }
@@ -42,7 +42,7 @@
 
 @layer components {
     .markdown {
-        > * {
+        >* {
             @apply my-4;
         }
 
@@ -95,12 +95,14 @@
             outline: 2px solid var(--color-gray-400);
             outline-offset: 1px;
         }
+
         &:focus-visible {
             .diff-resizer {
                 min-width: 80cqi;
                 max-width: 80cqi;
             }
         }
+
         &:has(.diff-item-2:focus-visible) {
             .diff-resizer {
                 min-width: 20cqi;
@@ -137,6 +139,7 @@
             box-shadow: inset 0 0 0 1px color-mix(in oklab, var(--color-gray-900) 5%, transparent),
                 0 1px 3px 0 color-mix(in oklab, var(--color-gray-900) 20%, transparent);
         }
+
         @supports (-webkit-overflow-scrolling: touch) and (overflow: -webkit-paged-x) {
             &:after {
                 content: none;
@@ -146,7 +149,7 @@
 
     .diff-item-1,
     .diff-item-2 {
-        > * {
+        >* {
             height: 100%;
             width: 100cqi;
             position: absolute;
