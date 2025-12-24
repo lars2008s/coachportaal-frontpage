@@ -208,13 +208,13 @@ export default function Page() {
         {
             icon: <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>,
             title: "Nooit meer inspiratie tekort",
-            description: "Toegang tot honderden atletiekspellen en oefeningen, gefilterd op leeftijd en onderdeel. Elke training wordt een succes.",
+            description: "Toegang tot honderden atletiek spellen en oefeningen, gefilterd op leeftijd en onderdeel. Van warming-up spelletjes tot geavanceerde atletiek spelvormen.",
             color: "lime",
             animation: <BlocksAnimation />,
             details: [
-                { title: "Spellenbibliotheek", description: "Honderden bewezen oefeningen voor warming-up, techniek, kracht en spelvormen." },
-                { title: "Filter op leeftijd & niveau", description: "Vind direct geschikte oefeningen voor pupillen, kadetten of junioren." },
-                { title: "Eigen oefeningen toevoegen", description: "Bouw je eigen verzameling op met oefeningen die werken voor jouw groep." },
+                { title: "Atletiek spellen bibliotheek", description: "Honderden bewezen oefeningen voor warming-up, techniek, kracht en spelvormen." },
+                { title: "Filter op leeftijd & niveau", description: "Vind direct geschikte atletiek oefeningen voor pupillen, kadetten of junioren." },
+                { title: "Eigen spellen toevoegen", description: "Bouw je eigen verzameling op met atletiek spelvormen die werken voor jouw groep." },
             ]
         },
         {
@@ -315,12 +315,12 @@ export default function Page() {
                             {/* Headline */}
                             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-gray-900 leading-[1.1] mb-6">
                                 De slimste software voor{' '}
-                                <span className="text-gradient">jouw atletiekclub</span>
+                                <span className="text-gradient">atletiek spellen & trainingen</span>
                             </h1>
 
                             {/* Subheadline */}
                             <p className="text-lg sm:text-xl text-gray-500 leading-relaxed mb-4 max-w-2xl mx-auto font-medium">
-                                Bespaar uren per week op administratie en focus op wat écht telt: geweldige trainingen geven en je club laten groeien.
+                                Bespaar uren per week op administratie en focus op wat écht telt: geweldige atletiek spellen en trainingen geven. Toegang tot honderden oefeningen en spelvormen.
                             </p>
                         </motion.div>
                     </div>
@@ -344,11 +344,11 @@ export default function Page() {
                             <RoleCard
                                 icon={<svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>}
                                 title="Ik ben Trainer"
-                                description="Ik geef trainingen en zoek naar tools om slimmere trainingen te maken met minder voorbereiding."
+                                description="Ik geef trainingen en zoek naar atletiek spellen en oefeningen om slimmere trainingen te maken met minder voorbereiding."
                                 benefits={[
                                     "Trainingsbibliotheek op je telefoon",
-                                    "AI die trainingen voor je maakt",
-                                    "Honderden oefeningen en spellen"
+                                    "AI die atletiek spellen suggesteert",
+                                    "Honderden oefeningen & spelvormen"
                                 ]}
                                 isActive={selectedRole === 'trainer'}
                                 onClick={() => setSelectedRole('trainer')}
@@ -372,6 +372,95 @@ export default function Page() {
                 </div>
             </section>
 
+            {/* Atletiek Spellen SEO Section */}
+            <section className="py-20 bg-white" aria-labelledby="atletiek-spellen-heading">
+                <div className="max-w-6xl mx-auto px-4 sm:px-6">
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        className="text-center mb-16"
+                    >
+                        <span className="text-xs font-bold text-lime-600 uppercase tracking-widest mb-4 block">
+                            Atletiek Spellen Bibliotheek
+                        </span>
+                        <h2 id="atletiek-spellen-heading" className="text-4xl sm:text-5xl font-black text-gray-900 tracking-tight mb-6">
+                            Honderden atletiek spellen voor elke training
+                        </h2>
+                        <p className="text-lg text-gray-500 max-w-3xl mx-auto leading-relaxed">
+                            Never meer inspiratie tekort. Onze uitgebreide collectie atletiek spellen bevat oefeningen voor alle leeftijdsgroepen, van pupillen tot junioren. Vind het perfecte spel voor warming-up, techniektraining, krachtwerking of afsluiting.
+                        </p>
+                    </motion.div>
+
+                    {/* Game Categories Grid */}
+                    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+                        {[
+                            {
+                                name: "Warming-up Spellen",
+                                description: "Leuke oefeningen om op te warmen met spelvormen en renspelletjes.",
+                                icon: "🔥",
+                                examples: "Tag-spellen, relay races, coordination games"
+                            },
+                            {
+                                name: "Techniek Spellen",
+                                description: "Spelvormen voor loop-, sprong- en werptechniek in spelvorm.",
+                                icon: "🎯",
+                                examples: "Horden races, verspringen spellen, balwerpen"
+                            },
+                            {
+                                name: "Kracht & Conditiespellen",
+                                description: "Pittige oefeningen voor krachtontwikkeling en uithoudingsvermogen.",
+                                icon: "💪",
+                                examples: "Circuit training, estafette met oefeningen, parkour"
+                            },
+                            {
+                                name: "Team Spellen",
+                                description: "Samenwerkings- en competitie spellen voor groepsgeest.",
+                                icon: "🏆",
+                                examples: "Estafettes, team challenges, puntenwedstrijden"
+                            }
+                        ].map((category, i) => (
+                            <motion.div
+                                key={i}
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: i * 0.1 }}
+                                className="p-6 rounded-2xl bg-gradient-to-br from-slate-50 to-blue-50 border border-gray-100 hover:shadow-lg transition-shadow"
+                            >
+                                <div className="text-4xl mb-4">{category.icon}</div>
+                                <h3 className="text-lg font-bold text-gray-900 mb-2">{category.name}</h3>
+                                <p className="text-sm text-gray-600 mb-3">{category.description}</p>
+                                <p className="text-xs text-blue-600 font-medium">{category.examples}</p>
+                            </motion.div>
+                        ))}
+                    </div>
+
+                    {/* Age Groups */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        className="bg-gradient-to-r from-blue-600 to-indigo-600 rounded-3xl p-8 md:p-12 text-white"
+                    >
+                        <div className="grid md:grid-cols-3 gap-8 text-center">
+                            <div>
+                                <div className="text-3xl font-black mb-2">Pupillen (6-12 jaar)</div>
+                                <p className="text-white/80 text-sm">Spelvormen en atletiek spellen gericht op bewegen, plezier en basis motoriek. Korte, afwisselende oefeningen.</p>
+                            </div>
+                            <div>
+                                <div className="text-3xl font-black mb-2">Kadetten (13-15 jaar)</div>
+                                <p className="text-white/80 text-sm">Techniekverfijning met spelvormen. Meer structuur in trainingen met competitieve elementen en uitdaging.</p>
+                            </div>
+                            <div>
+                                <div className="text-3xl font-black mb-2">Junioren & Senioren (16+)</div>
+                                <p className="text-white/80 text-sm">Geavanceerde trainingsspellen met focus op prestatie, specifieke onderdelen en wedstrijdvoorbereiding.</p>
+                            </div>
+                        </div>
+                    </motion.div>
+                </div>
+            </section>
+
             {/* Deep Dive Benefits Section */}
             <section className="py-24">
                 <div className="max-w-6xl mx-auto px-4 sm:px-6">
@@ -386,13 +475,13 @@ export default function Page() {
                         </span>
                         <h2 className="text-4xl sm:text-5xl font-black text-gray-900 tracking-tight mb-4">
                             {selectedRole === 'trainer'
-                                ? 'Focus op de training, wij doen de rest'
+                                ? 'Focus op atletiek spellen, wij doen de rest'
                                 : 'Minder administratie, meer tijd voor de club'
                             }
                         </h2>
                         <p className="text-lg text-gray-500 max-w-2xl mx-auto">
                             {selectedRole === 'trainer'
-                                ? 'Ontdek hoe Coach Portaal je helpt om betere trainingen te geven met minder voorbereiding.'
+                                ? 'Ontdek hoe Coach Portaal je helpt om betere trainingen te geven met honderden atletiek spellen en oefeningen, klaar voor gebruik.'
                                 : 'Ontdek hoe Coach Portaal je helpt om je club professioneler en efficiënter te beheren.'
                             }
                         </p>
