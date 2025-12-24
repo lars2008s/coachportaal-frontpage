@@ -29,12 +29,25 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+    const organizationSchema = {
+        '@context': 'https://schema.org',
+        '@type': 'Organization',
+        name: 'Coach Portaal',
+        url: 'https://coachportaal.be',
+        description: 'De ultieme digitale assistent voor atletiekcoaches en clubs. Beheer trainingen, leden, clubrecords en zomerkampen.',
+        sameAs: [],
+    };
+
     return (
         <html lang="nl" className="scroll-smooth">
             <head>
                 <link rel="icon" href="/favicon.svg" sizes="any" />
                 <link rel="preconnect" href="https://fonts.googleapis.com" />
                 <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+                />
             </head>
             <body className="antialiased text-gray-900 bg-slate-50" suppressHydrationWarning>
                 <div className="flex flex-col min-h-screen">

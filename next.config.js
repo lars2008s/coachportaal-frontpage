@@ -1,14 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactCompiler: true,
-  
+
   redirects() {
     return [
-      {
-        source: '/docs',
-        destination: 'https://docs.netlify.com/frameworks/next-js/overview/',
-        permanent: false,
-      },
       {
         source: '/old-blog/:slug',
         destination: '/classics',
@@ -26,7 +21,8 @@ const nextConfig = {
       },
     ];
   },
-  
+
+
   rewrites() {
     return [
       {
