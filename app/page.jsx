@@ -324,9 +324,31 @@ export default function Page() {
                             </p>
 
                             {/* Keywords mention */}
-                            <p className="text-base text-gray-400 mb-6">
+                            <p className="text-base text-gray-400 mb-8">
                                 Of je nu op zoek bent naar atletiek spellen, atletiek oefeningen, of een complete trainingsschema maker - Coach Portaal heeft alles wat je nodig hebt.
                             </p>
+
+                            {/* Playful snow training reference */}
+                            <motion.div
+                                initial={{ opacity: 0, scale: 0.9 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                transition={{ delay: 0.8 }}
+                                className="inline-flex items-center gap-4 px-6 py-4 rounded-2xl bg-blue-50 border-2 border-blue-100 shadow-sm mb-12 hover:shadow-md transition-shadow group relative overflow-hidden"
+                            >
+                                <div className="absolute top-0 right-0 p-1 opacity-10 group-hover:opacity-20 transition-opacity">
+                                    <svg className="w-12 h-12" fill="currentColor" viewBox="0 0 24 24"><path d="M19,12L15,8V11H9V8L5,12L9,16V13H15V16L19,12Z" /></svg>
+                                </div>
+                                <span className="text-3xl animate-pulse">❄️</span>
+                                <div className="text-left">
+                                    <p className="text-sm font-black text-gray-900 leading-none mb-1">Piste wit? Training gaat door!</p>
+                                    <Link href="/blogs/piste-wit-sneeuw-training-atletiek" className="text-xs font-bold text-blue-600 hover:text-blue-700 transition-colors flex items-center gap-1 no-underline">
+                                        Check 5 uitdagende sneeuwspelen
+                                        <svg className="ml-0.5 w-3 h-3 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                                        </svg>
+                                    </Link>
+                                </div>
+                            </motion.div>
                         </motion.div>
                     </div>
 

@@ -1,6 +1,56 @@
 // Centralized blog data for CoachPortaal
 export const blogPosts = [
     {
+        slug: "piste-wit-sneeuw-training-atletiek",
+        title: "Piste wit? Training gaat door! 5 Uitdagende Sneeuwspelen voor Atleten",
+        excerpt: "Wanneer de atletiekpiste bedolven ligt onder een dik pak sneeuw, laten veel trainers de training voorbijgaan. Jammer! Want sneeuw is de ideale bondgenoot voor krachttraining.",
+        date: "7 Jan 2026",
+        readTime: "6 min",
+        category: "Trainingstips",
+        color: "blue",
+        featured: true,
+        image: "/images/blog/snow-training.jpg",
+        content: `
+            <p class="text-xl text-gray-600 mb-8 font-medium leading-relaxed">Wanneer de atletiekpiste bedolven ligt onder een dik pak sneeuw, laten veel trainers de training wijselijk aan zich voorbijgaan. Jammer! Want diepe sneeuw is de ideale bondgenoot voor een onvergetelijke krachttraining in vermomming.</p>
+
+            <p class="mb-6 text-gray-600 leading-relaxed">In de sneeuw train je ongemerkt op explosiviteit, enkelstabiliteit en pure trekkracht, terwijl de zachte ondergrond de gewrichten spaart. Bovendien versterkt het de groepsgeest als geen ander. Hier zijn 5 volledig uitgewerkte spelvormen om van je wintertraining een succes te maken.</p>
+
+            <h2 class="text-3xl font-black text-gray-900 mb-6 tracking-tight">1. De Ultieme Sneeuwballen-Biatlon</h2>
+            <p class="mb-4 text-gray-600 leading-relaxed">Dit is zonder twijfel de favoriet van elke atleet. Het combineert het uithoudingsvermogen van het lopen met de precisie en rust van het schieten (of in dit geval: werpen).</p>
+            <p class="mb-4 text-gray-600 leading-relaxed"><strong>De Opstelling:</strong> Maak een loopparcours van ongeveer 300 meter rond het veld. Richt aan de zijkant een "schietstand" in. Zet per ploeg drie doelen (bijv. lege drinkbussen of kegels) op een bankje of een afsluiting.</p>
+            <p class="mb-6 text-gray-600 leading-relaxed"><strong>Het Spel:</strong> 1. Elke atleet maakt vooraf een voorraad van 10 stevige sneeuwballen. 2. Na het startschot lopen de atleten hun eerste ronde door de diepe sneeuw. 3. Bij aankomst aan de schietstand proberen ze met maximaal drie sneeuwballen hun drie doelen omver te werpen. 4. De Straf: Voor elke kegel die na drie worpen nog rechtstaat, moet de atleet één "strafrondje" lopen in een kleine cirkel van 20 meter. 5. Wie na drie volledige rondes (en de bijbehorende straffen) als eerste over de meet komt, wint.</p>
+
+            <h2 class="text-3xl font-black text-gray-900 mb-6 tracking-tight">2. De "Husky" Slee-Estafette</h2>
+            <p class="mb-4 text-gray-600 leading-relaxed">Dit is een brute krachtoefening voor de quadriceps en de core, verkleed als een razendsnelle race.</p>
+            <p class="mb-4 text-gray-600 leading-relaxed"><strong>De Opstelling:</strong> Je hebt per team één stevig sleetje nodig met een trektouw. Zet een kegel als keerpunt op 30 meter van de startlijn.</p>
+            <p class="mb-6 text-gray-600 leading-relaxed"><strong>Het Spel:</strong> 1. Verdeel de groep in duo’s. Eén atleet gaat op de slee zitten (de passagier), de andere neemt het touw over de schouder (het trekpaard). 2. Op het fluitsignaal spurt het trekpaard naar de kegel en terug. De passagier moet zijn gewicht goed gebruiken om de slee in de bochten niet te laten kantelen. 3. De Wissel: Aan de startlijn wisselen ze bliksemsnel van rol. De loper gaat zitten, de zitter gaat trekken. 4. Welk duo legt als eerste drie volledige rondes af?</p>
+
+            <h2 class="text-3xl font-black text-gray-900 mb-6 tracking-tight">3. Sneeuwbal-Kogelstoten op Techniek</h2>
+            <p class="mb-4 text-gray-600 leading-relaxed">We gebruiken de sneeuw om de werptechniek te verfijnen. Omdat een sneeuwbal licht is, ligt de focus hier volledig op de juiste beweging en de afworp.</p>
+            <p class="mb-4 text-gray-600 leading-relaxed"><strong>De Opstelling:</strong> Stamp een officiële werpring plat in de sneeuw. De "landingssector" laten we onaangeroerd in de diepe sneeuw liggen.</p>
+            <p class="mb-6 text-gray-600 leading-relaxed"><strong>Het Spel:</strong> 1. De atleten maken compacte sneeuwballen van gelijke grootte (eventueel verzwaard met een beetje water). 2. Elke atleet krijgt drie pogingen om de bal zo ver mogelijk te "stoten". De trainer let streng op de techniek: de bal moet vanuit de nek vertrekken, de elleboog moet hoog blijven en de kracht komt uit de benen (het aanglijden). 3. De Meting: In de verse sneeuw zie je precies waar de bal geland is. Markeer de verste afstand per atleet met een takje of een gekleurde kegel.</p>
+
+            <h2 class="text-3xl font-black text-gray-900 mb-6 tracking-tight">4. Sneeuwtransport: "Bouw de Muur"</h2>
+            <p class="mb-4 text-gray-600 leading-relaxed">Dit spel draait om intervalkracht en tactiek. Hoe verplaats je zo snel mogelijk een grote massa sneeuw zonder hulpmiddelen?</p>
+            <p class="mb-4 text-gray-600 leading-relaxed"><strong>De Opstelling:</strong> Markeer voor elk team een "groeve" (waar de sneeuw ligt) en een "werf" (waar gebouwd wordt), 30 meter uit elkaar.</p>
+            <p class="mb-6 text-gray-600 leading-relaxed"><strong>Het Spel:</strong> 1. De atleten moeten om de beurt van de werf naar de groeve spurten, een zo groot mogelijke hap sneeuw vastpakken (in de armen of tegen de borst) en terugrennen. 2. De aangebrachte sneeuw wordt direct gebruikt om een muur te metselen. 3. Na exact 10 minuten stopt de tijd. De trainer jureert op twee punten: welke muur is het hoogste, en welke muur is het stevigst?</p>
+
+            <h2 class="text-3xl font-black text-gray-900 mb-6 tracking-tight">5. Het Grote Sneeuwwiel (Tactisch Tikkertje)</h2>
+            <p class="mb-4 text-gray-600 leading-relaxed">Dit is een spel van wendbaarheid en explosiviteit, waarbij je de diepe sneeuw gebruikt als een natuurlijk hindernisparcours.</p>
+            <p class="mb-4 text-gray-600 leading-relaxed"><strong>De Opstelling:</strong> De hele groep helpt mee om een groot "wiel" in de sneeuw te stampen: een enorme cirkel met spaken die in het midden samenkomen.</p>
+            <p class="mb-6 text-gray-600 leading-relaxed"><strong>Het Spel:</strong> 1. Er is één tikker (de vos) en de rest zijn de lopers (de hazen). 2. De Cruciale Regel: Iedereen mag alleen over de platgestampte paadjes rennen. Who een stap in de diepe sneeuw zet, is onmiddellijk af. 3. Dit dwingt de atleten om heel scherp te draaien, plots te stoppen en tactisch te kiezen welke "spaak" van het wiel ze nemen om de tikker te ontwijken.</p>
+
+            <div class="bg-blue-50 border-l-4 border-blue-400 p-6 rounded-r-xl mb-8 mt-12">
+                <h4 class="font-bold text-blue-800 mb-2">Tips voor een geslaagde sneeuwtraining:</h4>
+                <ul class="list-disc list-inside text-blue-700 space-y-2">
+                    <li><strong>Veiligheid eerst:</strong> Controleer altijd of er onder de sneeuw geen ijsplekken liggen. Grasvelden zijn meestal veiliger dan de piste zelf.</li>
+                    <li><strong>Houd ze warm:</strong> Zorg dat de pauzes kort zijn. Zodra de atleten stilstaan, koelen ze af.</li>
+                    <li><strong>De beloning:</strong> Niets smaakt beter dan een warme kop chocomelk of soep in de kantine na een uurtje beulen in de kou!</li>
+                </ul>
+            </div>
+        `
+    },
+    {
         slug: "administratie-omzetten-in-coachtijd",
         title: "Houd op met papierwerk - Win 10+ uur per week terug",
         excerpt: "Ontdek hoe coaches administratieve taken automatiseren en meer tijd kunnen besteden aan wat echt telt: atleten ontwikkelen.",
