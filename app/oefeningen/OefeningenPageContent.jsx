@@ -98,9 +98,11 @@ const exerciseCategories = [
 // Age groups for filtering
 const ageGroups = [
     { id: 'all', name: 'Alle Leeftijden', description: 'Bekijk alle atletiek oefeningen' },
-    { id: 'pupillen', name: 'Pupillen (6-12 jaar)', description: 'Spelvormen en basis motoriek' },
-    { id: 'cadetten', name: 'Cadetten (13-15 jaar)', description: 'Techniekverfijning' },
-    { id: 'junioren', name: 'Junioren (16+ jaar)', description: 'Prestiegericht' },
+    { id: 'kangoeroes', name: 'Kangoeroes (6-7 jaar)', description: 'Fantasierijk bewegen' },
+    { id: 'benjamins', name: 'Benjamins (8 jaar)', description: 'Plezier & veelzijdigheid' },
+    { id: 'pupillen', name: 'Pupillen (9-11 jaar)', description: 'Basisvaardigheden' },
+    { id: 'miniemen', name: 'Miniemen (12-13 jaar)', description: 'Techniekverfijning' },
+    { id: 'cadetten', name: 'Cadetten (14-15 jaar)', description: 'Specialisatie' },
 ];
 
 // Featured exercises
@@ -108,17 +110,17 @@ const featuredExercises = [
     {
         title: 'Complete Sprinttraining',
         category: 'Sprint',
-        ageGroup: 'Pupillen',
+        ageGroup: 'Benjamins & Pupillen',
         duration: '60 min',
-        description: 'Een complete atletiek training gericht op sprinttechniek voor pupillen. Inclusief warming-up spelletjes, techniekdrills en afsluitende estafette.',
+        description: 'Een complete atletiek training gericht op sprinttechniek voor jonge atleten. Inclusief warming-up spelletjes, techniekdrills en afsluitende estafette.',
         exercises: ['Tikkertje warming-up', 'Armtechniek drills', 'High knees oefeningen', 'Estafette afsluiting']
     },
     {
         title: 'Techniektraining Verspringen',
         category: 'Springen',
-        ageGroup: 'Cadetten',
+        ageGroup: 'Miniemen & Cadetten',
         duration: '75 min',
-        description: 'Gedegen verspringen training met focus op de vier fasen: aanloop, afzet, vlucht en landing. Geschikt voor cadetten die hun techniek willen verbeteren.',
+        description: 'Gedegen verspringen training met focus op de vier fasen: aanloop, afzet, vlucht en landing. Geschikt voor oudere jeugdatleten die hun techniek willen verbeteren.',
         exercises: ['Mobiliteit warming-up', 'Aanloop techniek', 'Afzet oefeningen', 'Sprongen met landingszone']
     },
     {
@@ -171,8 +173,8 @@ function CategoryCard({ category, isActive, onClick }) {
             whileHover={{ scale: 1.02, y: -2 }}
             whileTap={{ scale: 0.98 }}
             className={`relative p-6 rounded-2xl border-2 text-left transition-all duration-300 ${isActive
-                    ? `bg-gradient-to-br ${colors.gradient} border-transparent text-white shadow-xl`
-                    : 'bg-white border-gray-100 hover:border-blue-200 hover:shadow-lg'
+                ? `bg-gradient-to-br ${colors.gradient} border-transparent text-white shadow-xl`
+                : 'bg-white border-gray-100 hover:border-blue-200 hover:shadow-lg'
                 }`}
         >
             <div className={`w-14 h-14 rounded-xl flex items-center justify-center mb-4 ${isActive ? 'bg-white/20' : colors.bg
@@ -249,7 +251,7 @@ export default function OefeningenPageContent() {
 
                         {/* Description with keywords */}
                         <p className="text-lg sm:text-xl text-gray-500 leading-relaxed mb-6 max-w-3xl mx-auto font-medium">
-                            Ontdek honderden atletiek oefeningen en trainingsschema's voor warming-up, sprint, springen, werpen en atletiek spelvormen. Geschikt voor alle leeftijdsgroepen: pupillen, cadetten en junioren.
+                            Ontdek honderden atletiek oefeningen en trainingsschema's voor warming-up, sprint, springen, werpen en atletiek spelvormen. Geschikt voor alle leeftijdsgroepen: kangoeroes, benjamins, pupillen, miniemen en cadetten.
                         </p>
 
                         {/* Keywords subtext */}
@@ -293,8 +295,8 @@ export default function OefeningenPageContent() {
                                     key={group.id}
                                     onClick={() => setSelectedAgeGroup(group.id)}
                                     className={`px-4 py-2 rounded-full text-sm font-bold transition-all ${selectedAgeGroup === group.id
-                                            ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg'
-                                            : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                                        ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg'
+                                        : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
                                         }`}
                                 >
                                     {group.name}
@@ -452,8 +454,8 @@ export default function OefeningenPageContent() {
                             >
                                 <div className="flex items-center gap-2 mb-4">
                                     <span className={`px-3 py-1 rounded-full text-[10px] font-bold uppercase ${training.category === 'Sprint' ? 'bg-blue-100 text-blue-700' :
-                                            training.category === 'Springen' ? 'bg-green-100 text-green-700' :
-                                                'bg-orange-100 text-orange-700'
+                                        training.category === 'Springen' ? 'bg-green-100 text-green-700' :
+                                            'bg-orange-100 text-orange-700'
                                         }`}>
                                         {training.category}
                                     </span>
@@ -640,7 +642,7 @@ export default function OefeningenPageContent() {
                             Trainingsschema's per leeftijdsgroep
                         </h3>
                         <p className="text-gray-600 mb-6 leading-relaxed">
-                            Effectieve trainingsschema's zijn afgestemd op de ontwikkelingsfase van de atleet. Voor pupillen focussen we op basis motoriek, plezier en veelzijdigheid met korte, afwisselende oefeningen. Cadetten werken aan techniekverfijning met meer structuur. Junioren trainen prestatiegericht met specifieke trainingsschema's voor hun onderdeel.
+                            Effectieve trainingsschema's zijn afgestemd op de ontwikkelingsfase van de atleet. Voor kangoeroes, benjamins en pupillen focussen we op basis motoriek, plezier en veelzijdigheid. Miniemen en cadetten werken aan techniekverfijning en specialisatie met meer gestructureerde atletiek trainingen.
                         </p>
 
                         <div className="bg-blue-50 rounded-xl p-6 border border-blue-100 mt-8">

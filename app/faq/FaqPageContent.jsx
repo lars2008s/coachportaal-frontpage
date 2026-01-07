@@ -11,7 +11,7 @@ const faqData = [
         id: 1,
         category: 'Atletiek Trainingen',
         question: 'Hoeveel keer per week moet je atletiek training doen?',
-        answer: 'Voor pupillen (6-12 jaar) wordt 2-3 keer per week training aanbevolen, met sessies van 45-60 minuten. Cadetten en junioren kunnen 3-4 keer trainen met langere sessies. Rust en herstel zijn minstens zo belangrijk als de training zelf, vooral voor groeiende atleten.',
+        answer: 'Voor kangoeroes, benjamins en pupillen (6-11 jaar) wordt 2-3 keer per week training aanbevolen, met sessies van 45-60 minuten. Miniemen en cadetten kunnen 3-4 keer trainen met langere sessies. Rust en herstel zijn minstens zo belangrijk als de training zelf, vooral voor groeiende atleten.',
         keywords: ['training frequentie', 'atletiek schema', 'aantal trainingen']
     },
     {
@@ -78,7 +78,7 @@ const faqData = [
         id: 10,
         category: 'Jeugdatletiek',
         question: 'Vanaf welke leeftijd kan je starten met atletiek?',
-        answer: 'Jeugdatletiek kan starten vanaf 6 jaar (pupillen). Tot 12 jaar ligt de focus op algemene motorische ontwikkeling: rennen, springen, werpen en gooien in spelvorm. Vanaf 12 jaar (cadetten) kan er meer gespecialiseerd worden naar specifieke atletiekonderdelen.',
+        answer: 'Jeugdatletiek kan starten vanaf 6 jaar (kangoeroes). Tot 11 jaar ligt de focus op algemene motorische ontwikkeling: rennen, springen, werpen en gooien in spelvorm. Vanaf 12 jaar (miniemen) kan er meer gespecialiseerd worden naar specifieke atletiekonderdelen.',
         keywords: ['starten met atletiek', 'leeftijd atletiek', 'jeugdatletiek']
     },
     {
@@ -92,7 +92,7 @@ const faqData = [
         id: 12,
         category: 'Jeugdatletiek',
         question: 'Wat is de beste leeftijd om te specialiseren in atletiek?',
-        answer: 'Specialisatie in atletiek start het best rond 14-16 jaar (junioren). Daarvoor ligt de focus op veelzijdigheid en algemene motoriek. Te vroeg specialiseren kan leiden tot eenzijdige belasting, verhoogde kans op blessures en minder plezier in de sport.',
+        answer: 'Specialisatie in atletiek start het best rond 14-15 jaar (cadetten). Daarvoor ligt de focus op veelzijdigheid en algemene motoriek. Te vroeg specialiseren kan leiden tot eenzijdige belasting, verhoogde kans op blessures en minder plezier in de sport.',
         keywords: ['specialisatie', 'jeugdatletiek', 'atletiek onderdelen']
     },
     {
@@ -225,8 +225,8 @@ function CategoryBadge({ category, isActive, onClick }) {
         <button
             onClick={onClick}
             className={`px-4 py-2 rounded-full text-sm font-bold whitespace-nowrap transition-all ${isActive
-                    ? `ring-2 ring-offset-2 ring-offset-slate-50 ring-blue-600 ${categoryColors[category] || categoryColors['Alle']}`
-                    : categoryColors[category] || categoryColors['Alle']
+                ? `ring-2 ring-offset-2 ring-offset-slate-50 ring-blue-600 ${categoryColors[category] || categoryColors['Alle']}`
+                : categoryColors[category] || categoryColors['Alle']
                 }`}
         >
             {category}

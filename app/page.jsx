@@ -213,7 +213,7 @@ export default function Page() {
             animation: <BlocksAnimation />,
             details: [
                 { title: "Uitgebreide atletiek spellen bibliotheek", description: "Honderden bewezen atletiek oefeningen voor warming-up, techniek, kracht en spelvormen." },
-                { title: "Filter op leeftijd & niveau", description: "Vind direct geschikte atletiek oefeningen voor pupillen, cadetten of junioren." },
+                { title: "Filter op leeftijd & niveau", description: "Vind direct geschikte atletiek oefeningen voor kangoeroes, benjamins, pupillen, miniemen of cadetten." },
                 { title: "Eigen atletiek spellen toevoegen", description: "Bouw je eigen verzameling op met atletiek spellen die werken voor jouw jeugdatletiek groep." },
             ]
         },
@@ -393,7 +393,7 @@ export default function Page() {
                             Professionele atletiek trainingen voor elke niveau
                         </h2>
                         <p className="text-lg text-gray-500 max-w-3xl mx-auto leading-relaxed mb-8">
-                            Maak effectieve atletiek trainingen met onze trainingsschema maker. Of je nu werkt met pupillen, cadetten of junioren - vind de perfecte atletiek oefeningen voor elke groep.
+                            Maak effectieve atletiek trainingen met onze trainingsschema maker. Of je nu werkt met kangoeroes, pupillen of cadetten - vind de perfecte atletiek oefeningen voor elke groep.
                         </p>
                     </motion.div>
 
@@ -554,18 +554,26 @@ export default function Page() {
                         className="bg-gradient-to-r from-blue-600 to-indigo-600 rounded-3xl p-8 md:p-12 text-white"
                     >
                         <h3 className="text-2xl sm:text-3xl font-black mb-8 text-center">Atletiek spellen per leeftijdsgroep</h3>
-                        <div className="grid md:grid-cols-3 gap-8 text-center">
+                        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 text-center">
                             <div>
-                                <div className="text-3xl font-black mb-2">Pupillen (6-12 jaar)</div>
-                                <p className="text-white/80 text-sm">Spelvormen en atletiek spellen gericht op bewegen, plezier en basis motoriek. Korte, afwisselende atletiek oefeningen voor jeugdatletiek.</p>
+                                <div className="text-2xl font-black mb-2 leading-tight">Kangoeroes (6-7 jaar)</div>
+                                <p className="text-white/80 text-xs">De allerkleinsten ontdekken atletiek via fantasierijke spelletjes en basisbewegingen.</p>
                             </div>
                             <div>
-                                <div className="text-3xl font-black mb-2">Cadetten (13-15 jaar)</div>
-                                <p className="text-white/80 text-sm">Techniekverfijning met atletiek spellen. Meer structuur in trainingen met competitieve elementen en uitdaging voor jeugdatletiek.</p>
+                                <div className="text-2xl font-black mb-2 leading-tight">Benjamins (~8 jaar)</div>
+                                <p className="text-white/80 text-xs">Plezier en veelzijdigheid staan centraal met focus op de eerste atletiekvaardigheden.</p>
                             </div>
                             <div>
-                                <div className="text-3xl font-black mb-2">Junioren & Senioren (16+)</div>
-                                <p className="text-white/80 text-sm">Geavanceerde trainingsspellen met focus op prestatie, specifieke atletiek oefeningen en wedstrijdvoorbereiding.</p>
+                                <div className="text-2xl font-black mb-2 leading-tight">Pupillen (9-11 jaar)</div>
+                                <p className="text-white/80 text-xs">Loopsnelheid, springkracht en werptechniek worden spelenderwijs verder ontwikkeld.</p>
+                            </div>
+                            <div>
+                                <div className="text-2xl font-black mb-2 leading-tight">Miniemen (12-13 jaar)</div>
+                                <p className="text-white/80 text-xs">Techniekverfijning en de overgang naar meer specifieke atletiekonderdelen.</p>
+                            </div>
+                            <div>
+                                <div className="text-2xl font-black mb-2 leading-tight">Cadetten (14-15 jaar)</div>
+                                <p className="text-white/80 text-xs">Doelgerichte training met focus op prestatieverbetering en technische specialisatie.</p>
                             </div>
                         </div>
                     </motion.div>

@@ -160,7 +160,7 @@ export default function RootLayout({ children }) {
                 name: 'Welke atletiek oefeningen zijn geschikt voor pupillen?',
                 acceptedAnswer: {
                     '@type': 'Answer',
-                    text: 'Voor pupillen (6-12 jaar) zijn vooral spelvormen en basisoefeningen geschikt die gericht zijn op plezier en motoriek. Denk aan tag-spellen, estafettes, simpele hordenoefeningen en balwerpspellen. Coach Portaal heeft een uitgebreide bibliotheek met jeugdatletiek training specifiek voor pupillen.'
+                    text: 'Voor kangoeroes, benjamins en pupillen (6-11 jaar) zijn vooral spelvormen en basisoefeningen geschikt die gericht zijn op plezier en motoriek. Denk aan tag-spellen, estafettes, simpele hordenoefeningen en balwerpspellen. Coach Portaal heeft een uitgebreide bibliotheek met jeugdatletiek training specifiek voor deze groepen.'
                 }
             },
             {
@@ -168,7 +168,7 @@ export default function RootLayout({ children }) {
                 name: 'Hoe vind ik geschikte sprint oefeningen voor mijn training?',
                 acceptedAnswer: {
                     '@type': 'Answer',
-                    text: 'Coach Portaal biedt een filterbare bibliotheek met honderden atletiek oefeningen, waaronder specifieke sprint oefeningen. Je kunt filteren op leeftijdsgroep (pupillen, cadetten, junioren), trainingsdoel (warming-up, techniek, kracht) en atletiekonderdeel. Zoek direct de juiste sprint oefeningen voor jouw training.'
+                    text: 'Coach Portaal biedt een filterbare bibliotheek met honderden atletiek oefeningen, waaronder specifieke sprint oefeningen. Je kunt filteren op leeftijdsgroep (kangoeroes, benjamins, pupillen, miniemen, cadetten), trainingsdoel (warming-up, techniek, kracht) en atletiekonderdeel. Zoek direct de juiste sprint oefeningen voor jouw training.'
                 }
             },
             {
