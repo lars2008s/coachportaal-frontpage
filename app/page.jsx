@@ -40,8 +40,8 @@ function RoleCard({ icon, title, description, benefits, isActive, onClick, color
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
             className={`relative w-full p-8 rounded-3xl border-2 text-left transition-all duration-300 ${isActive
-                    ? `${c.activeBg} border-transparent text-white shadow-2xl`
-                    : `bg-white ${c.border} hover:shadow-xl`
+                ? `${c.activeBg} border-transparent text-white shadow-2xl`
+                : `bg-white ${c.border} hover:shadow-xl`
                 }`}
         >
             {/* Icon */}
@@ -213,7 +213,7 @@ export default function Page() {
             animation: <BlocksAnimation />,
             details: [
                 { title: "Uitgebreide atletiek spellen bibliotheek", description: "Honderden bewezen atletiek oefeningen voor warming-up, techniek, kracht en spelvormen." },
-                { title: "Filter op leeftijd & niveau", description: "Vind direct geschikte atletiek oefeningen voor pupillen, kadetten of junioren." },
+                { title: "Filter op leeftijd & niveau", description: "Vind direct geschikte atletiek oefeningen voor pupillen, cadetten of junioren." },
                 { title: "Eigen atletiek spellen toevoegen", description: "Bouw je eigen verzameling op met atletiek spellen die werken voor jouw jeugdatletiek groep." },
             ]
         },
@@ -393,7 +393,7 @@ export default function Page() {
                             Professionele atletiek trainingen voor elke niveau
                         </h2>
                         <p className="text-lg text-gray-500 max-w-3xl mx-auto leading-relaxed mb-8">
-                            Maak effectieve atletiek trainingen met onze trainingsschema maker. Of je nu werkt met pupillen, kadetten of junioren - vind de perfecte atletiek oefeningen voor elke groep.
+                            Maak effectieve atletiek trainingen met onze trainingsschema maker. Of je nu werkt met pupillen, cadetten of junioren - vind de perfecte atletiek oefeningen voor elke groep.
                         </p>
                     </motion.div>
 
@@ -560,7 +560,7 @@ export default function Page() {
                                 <p className="text-white/80 text-sm">Spelvormen en atletiek spellen gericht op bewegen, plezier en basis motoriek. Korte, afwisselende atletiek oefeningen voor jeugdatletiek.</p>
                             </div>
                             <div>
-                                <div className="text-3xl font-black mb-2">Kadetten (13-15 jaar)</div>
+                                <div className="text-3xl font-black mb-2">Cadetten (13-15 jaar)</div>
                                 <p className="text-white/80 text-sm">Techniekverfijning met atletiek spellen. Meer structuur in trainingen met competitieve elementen en uitdaging voor jeugdatletiek.</p>
                             </div>
                             <div>

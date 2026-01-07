@@ -49,6 +49,11 @@ export const metadata = {
             'nl-BE': 'https://coachportaal.be',
             'nl-NL': 'https://coachportaal.be/nl',
         }
+    },
+    icons: {
+        icon: '/icon.png',
+        shortcut: '/icon.png',
+        apple: '/apple-icon.png',
     }
 };
 
@@ -163,7 +168,7 @@ export default function RootLayout({ children }) {
                 name: 'Hoe vind ik geschikte sprint oefeningen voor mijn training?',
                 acceptedAnswer: {
                     '@type': 'Answer',
-                    text: 'Coach Portaal biedt een filterbare bibliotheek met honderden atletiek oefeningen, waaronder specifieke sprint oefeningen. Je kunt filteren op leeftijdsgroep (pupillen, kadetten, junioren), trainingsdoel (warming-up, techniek, kracht) en atletiekonderdeel. Zoek direct de juiste sprint oefeningen voor jouw training.'
+                    text: 'Coach Portaal biedt een filterbare bibliotheek met honderden atletiek oefeningen, waaronder specifieke sprint oefeningen. Je kunt filteren op leeftijdsgroep (pupillen, cadetten, junioren), trainingsdoel (warming-up, techniek, kracht) en atletiekonderdeel. Zoek direct de juiste sprint oefeningen voor jouw training.'
                 }
             },
             {
@@ -204,7 +209,6 @@ export default function RootLayout({ children }) {
     return (
         <html lang="nl" className="scroll-smooth">
             <head>
-                <link rel="icon" href="/favicon.svg" sizes="any" />
                 <link rel="preconnect" href="https://fonts.googleapis.com" />
                 <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
                 <script

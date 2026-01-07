@@ -11,7 +11,7 @@ const faqData = [
         id: 1,
         category: 'Atletiek Trainingen',
         question: 'Hoeveel keer per week moet je atletiek training doen?',
-        answer: 'Voor pupillen (6-12 jaar) wordt 2-3 keer per week training aanbevolen, met sessies van 45-60 minuten. Kadetten en junioren kunnen 3-4 keer trainen met langere sessies. Rust en herstel zijn minstens zo belangrijk als de training zelf, vooral voor groeiende atleten.',
+        answer: 'Voor pupillen (6-12 jaar) wordt 2-3 keer per week training aanbevolen, met sessies van 45-60 minuten. Cadetten en junioren kunnen 3-4 keer trainen met langere sessies. Rust en herstel zijn minstens zo belangrijk als de training zelf, vooral voor groeiende atleten.',
         keywords: ['training frequentie', 'atletiek schema', 'aantal trainingen']
     },
     {
@@ -78,7 +78,7 @@ const faqData = [
         id: 10,
         category: 'Jeugdatletiek',
         question: 'Vanaf welke leeftijd kan je starten met atletiek?',
-        answer: 'Jeugdatletiek kan starten vanaf 6 jaar (pupillen). Tot 12 jaar ligt de focus op algemene motorische ontwikkeling: rennen, springen, werpen en gooien in spelvorm. Vanaf 12 jaar (kadetten) kan er meer gespecialiseerd worden naar specifieke atletiekonderdelen.',
+        answer: 'Jeugdatletiek kan starten vanaf 6 jaar (pupillen). Tot 12 jaar ligt de focus op algemene motorische ontwikkeling: rennen, springen, werpen en gooien in spelvorm. Vanaf 12 jaar (cadetten) kan er meer gespecialiseerd worden naar specifieke atletiekonderdelen.',
         keywords: ['starten met atletiek', 'leeftijd atletiek', 'jeugdatletiek']
     },
     {
@@ -224,11 +224,10 @@ function CategoryBadge({ category, isActive, onClick }) {
     return (
         <button
             onClick={onClick}
-            className={`px-4 py-2 rounded-full text-sm font-bold whitespace-nowrap transition-all ${
-                isActive
+            className={`px-4 py-2 rounded-full text-sm font-bold whitespace-nowrap transition-all ${isActive
                     ? `ring-2 ring-offset-2 ring-offset-slate-50 ring-blue-600 ${categoryColors[category] || categoryColors['Alle']}`
                     : categoryColors[category] || categoryColors['Alle']
-            }`}
+                }`}
         >
             {category}
         </button>
@@ -266,18 +265,20 @@ export default function FaqPageContent() {
             {/* Schema.org JSON-LD */}
             <script
                 type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: JSON.stringify({
-                    '@context': 'https://schema.org',
-                    '@type': 'FAQPage',
-                    mainEntity: faqData.map(faq => ({
-                        '@type': 'Question',
-                        name: faq.question,
-                        acceptedAnswer: {
-                            '@type': 'Answer',
-                            text: faq.answer
-                        }
-                    }))
-                }) }}
+                dangerouslySetInnerHTML={{
+                    __html: JSON.stringify({
+                        '@context': 'https://schema.org',
+                        '@type': 'FAQPage',
+                        mainEntity: faqData.map(faq => ({
+                            '@type': 'Question',
+                            name: faq.question,
+                            acceptedAnswer: {
+                                '@type': 'Answer',
+                                text: faq.answer
+                            }
+                        }))
+                    })
+                }}
             />
 
             <div className="min-h-screen">
