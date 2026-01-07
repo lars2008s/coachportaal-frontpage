@@ -1,6 +1,7 @@
 import '../styles/globals.css';
 import { Footer } from '../components/footer';
 import { Header } from '../components/header';
+import Script from 'next/script';
 
 export const metadata = {
     title: {
@@ -209,6 +210,18 @@ export default function RootLayout({ children }) {
     return (
         <html lang="nl" className="scroll-smooth">
             <head>
+                <Script
+                    src="https://www.googletagmanager.com/gtag/js?id=G-M143XKST2T"
+                    strategy="afterInteractive"
+                />
+                <Script id="google-tag" strategy="afterInteractive">
+                    {`
+                        window.dataLayer = window.dataLayer || [];
+                        function gtag(){dataLayer.push(arguments);}
+                        gtag('js', new Date());
+                        gtag('config', 'G-M143XKST2T');
+                    `}
+                </Script>
                 <link rel="preconnect" href="https://fonts.googleapis.com" />
                 <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
                 <script
