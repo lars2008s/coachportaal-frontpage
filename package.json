@@ -13,6 +13,7 @@
     "@netlify/blobs": "^10.5.0",
     "blobshape": "^1.0.0",
     "bright": "^1.0.0",
+    "convex": "^1.31.3",
     "framer-motion": "^12.23.26",
     "lucide-react": "^0.562.0",
     "markdown-to-jsx": "^7.7.16",

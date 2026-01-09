@@ -51,6 +51,12 @@ export default function sitemap() {
             changeFrequency: 'monthly',
             priority: 0.8,
         },
+        {
+            url: `${baseUrl}/bibliotheek`,
+            lastModified: new Date(),
+            changeFrequency: 'weekly',
+            priority: 0.9,
+        },
         ...blogUrls,
         ...docUrls,
     ];

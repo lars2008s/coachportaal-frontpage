@@ -8,6 +8,7 @@ const navItems = [
     { linkText: 'Home', href: '/' },
     { linkText: 'Blogs', href: '/blogs' },
     { linkText: 'Docs', href: '/docs' },
+    { linkText: 'Bibliotheek', href: '/bibliotheek' },
     { linkText: 'Info', href: '/info' }
 ];
 
@@ -29,8 +30,8 @@ export function Header() {
                 initial={{ y: -100 }}
                 animate={{ y: 0 }}
                 className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
-                        ? 'bg-white/80 backdrop-blur-xl shadow-lg shadow-gray-900/5 border-b border-gray-100'
-                        : 'bg-transparent'
+                    ? 'bg-white/80 backdrop-blur-xl shadow-lg shadow-gray-900/5 border-b border-gray-100'
+                    : 'bg-transparent'
                     }`}
             >
                 <div className="max-w-6xl mx-auto px-4 sm:px-6">
