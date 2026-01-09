@@ -1,7 +1,9 @@
 import { blogPosts } from '../data/blogs';
 import { getAllDocs } from '../data/docs';
+import { fetchQuery } from "convex/nextjs";
+import { api } from "../convex/_generated/api";
 
-export default function sitemap() {
+export default async function sitemap() {
     const baseUrl = 'https://coachportaal.be';
 
     // Generate blog post URLs dynamically
@@ -19,6 +21,22 @@ export default function sitemap() {
         changeFrequency: 'monthly',
         priority: 0.7,
     }));
+
+    // Generate training URLs dynamically from Convex
+    let trainingUrls = [];
+    try {
+        const trainings = await fetchQuery(api.trainings.getPublicTrainingsForWebsite, {
+            limit: 500 // Get all public trainings
+        });
+        trainingUrls = trainings.map((training) => ({
+            url: `${baseUrl}/bibliotheek/${training._id}`,
+            lastModified: new Date(training._creationTime || Date.now()),
+            changeFrequency: 'weekly',
+            priority: 0.7,
+        }));
+    } catch (error) {
+        console.error('Failed to fetch trainings for sitemap:', error);
+    }
 
     return [
         {
@@ -59,5 +77,6 @@ export default function sitemap() {
         },
         ...blogUrls,
         ...docUrls,
+        ...trainingUrls,
     ];
 }
