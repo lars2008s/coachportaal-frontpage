@@ -188,6 +188,50 @@ export default function BibliotheekPageContent({ trainings }) {
                 </div>
             </section>
 
+            {/* CoachPortaal Promo Banner */}
+            <section className="bg-gradient-to-r from-indigo-600 via-purple-600 to-indigo-600 text-white py-8">
+                <div className="container mx-auto px-4">
+                    <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+                        <div className="flex-1 text-center md:text-left">
+                            <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-xs font-bold mb-3">
+                                <Sparkles className="w-3 h-3" />
+                                Coach Portaal
+                            </div>
+                            <h2 className="text-2xl md:text-3xl font-bold mb-2">
+                                Maak zelf trainingen met AI
+                            </h2>
+                            <p className="text-white/80 text-sm md:text-base max-w-xl">
+                                Gratis account aanmaken en direct aan de slag met onze AI-trainingsschema maker, ledenbeheer en meer.
+                            </p>
+                        </div>
+                        <div className="flex flex-col sm:flex-row items-center gap-3">
+                            <div className="flex items-center gap-4 text-sm text-white/70">
+                                <span className="flex items-center gap-1">
+                                    <svg className="w-4 h-4 text-lime-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
+                                    </svg>
+                                    Gratis
+                                </span>
+                                <span className="flex items-center gap-1">
+                                    <svg className="w-4 h-4 text-lime-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
+                                    </svg>
+                                    Geen creditcard
+                                </span>
+                            </div>
+                            <Link
+                                href="https://dashboard.coachportaal.be/sign-up"
+                                className="group inline-flex items-center justify-center px-6 py-3 bg-white text-indigo-700 font-bold rounded-xl hover:bg-gray-100 transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5 no-underline"
+                            >
+                                <Users className="w-5 h-5 mr-2" />
+                                Gratis Aanmelden
+                                <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                            </Link>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             {/* Filters Section */}
             {trainings.length > 0 && (
                 <section className="sticky top-0 z-20 bg-white/80 backdrop-blur-lg border-b border-gray-200">
