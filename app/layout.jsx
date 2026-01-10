@@ -30,7 +30,7 @@ export const metadata = {
     openGraph: {
         title: 'Coach Portaal | Honderden Atletiek Spellen & Training Software',
         description: 'Bespaar tijd met de administratie van je atletiek trainingen en focus op wat echt telt: je atleten passie voor sport bijbrengen. Toegang tot honderden atletiek spellen, oefeningen en trainingsschema maker.',
-        url: 'https://coachportaal.be',
+        url: 'https://atletiektrainer.be',
         siteName: 'Coach Portaal',
         locale: 'nl_BE',
         type: 'website',
@@ -45,10 +45,10 @@ export const metadata = {
         follow: true,
     },
     alternates: {
-        canonical: 'https://coachportaal.be',
+        canonical: 'https://atletiektrainer.be',
         languages: {
-            'nl-BE': 'https://coachportaal.be',
-            'nl-NL': 'https://coachportaal.be/nl',
+            'nl-BE': 'https://atletiektrainer.be',
+            'nl-NL': 'https://atletiektrainer.be/nl',
         }
     },
     icons: {
@@ -66,8 +66,8 @@ export default function RootLayout({ children }) {
         '@context': 'https://schema.org',
         '@type': 'Organization',
         name: 'Coach Portaal',
-        url: 'https://coachportaal.be',
-        logo: 'https://coachportaal.be/logo.png',
+        url: 'https://atletiektrainer.be',
+        logo: 'https://atletiektrainer.be/logo.png',
         description: 'De ultieme digitale assistent voor atletiekcoaches en clubs. Beheer trainingen, leden, clubrecords en atletiek spellen.',
         sameAs: [],
         contactPoint: {
@@ -125,11 +125,11 @@ export default function RootLayout({ children }) {
         '@context': 'https://schema.org',
         '@type': 'WebSite',
         name: 'Coach Portaal',
-        url: 'https://coachportaal.be',
+        url: 'https://atletiektrainer.be',
         description: 'De slimste software voor atletiek spellen en trainingen. Trainingsschema maker voor jeugdatletiek training en atletiekvereniging beheer.',
         potentialAction: {
             '@type': 'SearchAction',
-            target: 'https://coachportaal.be/zoeken?q={search_term_string}',
+            target: 'https://atletiektrainer.be/zoeken?q={search_term_string}',
             'query-input': 'required name=search_term_string'
         }
     };
@@ -142,7 +142,7 @@ export default function RootLayout({ children }) {
                 '@type': 'ListItem',
                 position: 1,
                 name: 'Home',
-                item: 'https://coachportaal.be'
+                item: 'https://atletiektrainer.be'
             }
         ]
     };

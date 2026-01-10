@@ -4,7 +4,7 @@ import { fetchQuery } from "convex/nextjs";
 import { api } from "../convex/_generated/api";
 
 export default async function sitemap() {
-    const baseUrl = 'https://coachportaal.be';
+    const baseUrl = 'https://atletiektrainer.be';
 
     // Generate blog post URLs dynamically
     const blogUrls = blogPosts.map((post) => ({

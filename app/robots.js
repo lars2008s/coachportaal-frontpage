@@ -11,7 +11,7 @@ export default function robots() {
                 disallow: '/',
             },
         ],
-        sitemap: 'https://coachportaal.be/sitemap.xml',
-        host: 'https://coachportaal.be',
+        sitemap: 'https://atletiektrainer.be/sitemap.xml',
+        host: 'https://atletiektrainer.be',
     };
 }
