@@ -54,10 +54,8 @@ const jsonLd = {
 };
 
 export default async function BibliotheekPage() {
-    // Fetch trainings from Convex
-    const trainings = await fetchQuery(api.trainings.getPublicTrainingsForWebsite, {
-        limit: 50
-    });
+    // Fetch ALL trainings from Convex (no limit for SEO indexing)
+    const trainings = await fetchQuery(api.trainings.getPublicTrainingsForWebsite, {});
 
     return (
         <>

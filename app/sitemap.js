@@ -25,9 +25,7 @@ export default async function sitemap() {
     // Generate training URLs dynamically from Convex
     let trainingUrls = [];
     try {
-        const trainings = await fetchQuery(api.trainings.getPublicTrainingsForWebsite, {
-            limit: 500 // Get all public trainings
-        });
+        const trainings = await fetchQuery(api.trainings.getPublicTrainingsForWebsite, {});
         trainingUrls = trainings.map((training) => ({
             url: `${baseUrl}/bibliotheek/${training._id}`,
             lastModified: new Date(training._creationTime || Date.now()),
