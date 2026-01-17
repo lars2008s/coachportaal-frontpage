@@ -12,7 +12,7 @@ export default function TermsPage() {
             title: "1. Definities",
             content: `In deze algemene voorwaarden wordt verstaan onder:
 
-• Platform: Het Coach Portaal Platform, toegankelijk via coachportaal.be en dashboard.coachportaal.be
+• Platform: Het Coach Portaal Platform, toegankelijk via atletiektrainer.be en dashboard.coachportaal.be
 • Diensten: Alle door Coach Portaal aangeboden softwarediensten, inclusief trainingstools, ledenbeheer en AI-assistentie
 • Gebruiker: Elke natuurlijke of rechtspersoon die gebruik maakt van het Platform
 • Account: De persoonlijke toegang tot het Platform na registratie
@@ -175,7 +175,7 @@ Deze beperking doet geen afbreuk aan uw rechten als consument onder dwingend rec
             content: `Voor vragen over deze voorwaarden kunt u contact opnemen via:
 
 • E-mail: support@coachportaal.be
-• Website: www.coachportaal.be
+• Website: https://atletiektrainer.be
 
 Wij streven ernaar binnen 5 werkdagen te reageren op uw vragen.`
         }

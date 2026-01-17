@@ -25,7 +25,7 @@ export async function generateMetadata({ params }) {
         openGraph: {
             title: `${doc.title} | Documentatie | Coach Portaal`,
             description: doc.description,
-            url: `https://coachportaal.be/docs/${slug}`,
+            url: `https://atletiektrainer.be/docs/${slug}`,
             siteName: 'Coach Portaal',
             locale: 'nl_BE',
             type: 'article',

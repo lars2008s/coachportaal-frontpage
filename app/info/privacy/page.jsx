@@ -20,7 +20,7 @@ Deze privacyverklaring beschrijft hoe wij uw persoonsgegevens verzamelen, gebrui
             content: `Coach Portaal is de verwerkingsverantwoordelijke voor de verwerking van uw persoonsgegevens. U kunt ons bereiken via:
 
 • E-mail: support@coachportaal.be
-• Website: www.coachportaal.be`
+• Website: https://atletiektrainer.be`
         },
         {
             id: "gegevens",

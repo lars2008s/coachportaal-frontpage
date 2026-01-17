@@ -9,7 +9,7 @@ export const metadata = {
     openGraph: {
         title: 'Documentatie | Coach Portaal',
         description: 'Complete handleidingen en documentatie voor Coach Portaal.',
-        url: 'https://coachportaal.be/docs',
+        url: 'https://atletiektrainer.be/docs',
         siteName: 'Coach Portaal',
         locale: 'nl_BE',
         type: 'website',

@@ -28,7 +28,7 @@ export async function generateMetadata({ params }) {
             title: post.title,
             description: post.excerpt,
             type: 'article',
-            url: `https://coachportaal.be/blogs/${post.slug}`,
+            url: `https://atletiektrainer.be/blogs/${post.slug}`,
             siteName: 'Coach Portaal',
             locale: 'nl_BE',
         },
@@ -38,7 +38,7 @@ export async function generateMetadata({ params }) {
             description: post.excerpt,
         },
         alternates: {
-            canonical: `https://coachportaal.be/blogs/${post.slug}`,
+            canonical: `https://atletiektrainer.be/blogs/${post.slug}`,
         },
     };
 }
@@ -69,12 +69,12 @@ export default async function BlogPostPage({ params }) {
         publisher: {
             '@type': 'Organization',
             name: 'Coach Portaal',
-            url: 'https://coachportaal.be',
+            url: 'https://atletiektrainer.be',
         },
         datePublished: post.date,
         mainEntityOfPage: {
             '@type': 'WebPage',
-            '@id': `https://coachportaal.be/blogs/${post.slug}`,
+            '@id': `https://atletiektrainer.be/blogs/${post.slug}`,
         },
     };
 

@@ -20,7 +20,7 @@ export const metadata = {
     openGraph: {
         title: 'Atletiek Oefeningen & Trainingsschema\'s | Coach Portaal',
         description: 'Honderden atletiek oefeningen en trainingsschema\'s voor warming-up, sprint, springen, werpen en spelvormen. Geschikt voor alle leeftijdsgroepen.',
-        url: 'https://coachportaal.be/oefeningen',
+        url: 'https://atletiektrainer.be/oefeningen',
         siteName: 'Coach Portaal',
         locale: 'nl_BE',
         type: 'website',
@@ -28,10 +28,10 @@ export const metadata = {
     twitter: {
         card: 'summary_large_image',
         title: 'Atletiek Oefeningen & Trainingsschema\'s | Coach Portaal',
-        description: 'Honderden atletiek oefeningen en trainingsschema\'s voor warming-up, sprint, springen, werpen en spelvormen.',
+        description: 'Honderden atletiek oefeningen en trainingsschema\'s voor warming-up, sprint, springen, werpen and spelvormen.',
     },
     alternates: {
-        canonical: 'https://coachportaal.be/oefeningen',
+        canonical: 'https://atletiektrainer.be/oefeningen',
     },
 };
 

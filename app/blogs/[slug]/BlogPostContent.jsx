@@ -12,7 +12,7 @@ const colorClasses = {
 };
 
 function ShareButtons({ title, slug }) {
-    const url = `https://coachportaal.be/blogs/${slug}`;
+    const url = `https://atletiektrainer.be/blogs/${slug}`;
 
     return (
         <div className="flex items-center gap-3">

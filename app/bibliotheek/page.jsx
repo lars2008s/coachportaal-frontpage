@@ -19,7 +19,7 @@ export const metadata = {
     openGraph: {
         title: 'Gratis Atletiek Trainingen & Oefeningen | Coach Portaal Bibliotheek',
         description: 'Publieke bibliotheek met professionele atletiektrainingen. Gratis beschikbaar voor alle coaches.',
-        url: 'https://coachportaal.be/bibliotheek',
+        url: 'https://atletiektrainer.be/bibliotheek',
         siteName: 'Coach Portaal',
         locale: 'nl_BE',
         type: 'website',
@@ -30,7 +30,7 @@ export const metadata = {
         description: 'Ontdek honderden gratis atletiektrainingen en oefeningen.',
     },
     alternates: {
-        canonical: 'https://coachportaal.be/bibliotheek',
+        canonical: 'https://atletiektrainer.be/bibliotheek',
     },
 };
 
@@ -40,7 +40,7 @@ const jsonLd = {
     '@type': 'CollectionPage',
     name: 'Publieke Trainingsbibliotheek',
     description: 'Gratis toegang tot professionele atletiektrainingen en oefeningen voor alle leeftijdsgroepen.',
-    url: 'https://coachportaal.be/bibliotheek',
+    url: 'https://atletiektrainer.be/bibliotheek',
     mainEntity: {
         '@type': 'ItemList',
         name: 'Atletiek Trainingen',
@@ -49,7 +49,7 @@ const jsonLd = {
     publisher: {
         '@type': 'Organization',
         name: 'Coach Portaal',
-        url: 'https://coachportaal.be',
+        url: 'https://atletiektrainer.be',
     },
 };
 

@@ -33,7 +33,7 @@ export async function generateMetadata({ params }) {
             title: `${training.title} - Coach Portaal`,
             description: training.description?.slice(0, 160),
             type: 'article',
-            url: `https://coachportaal.be/bibliotheek/${training._id}`,
+            url: `https://atletiektrainer.be/bibliotheek/${training._id}`,
             siteName: 'Coach Portaal',
             locale: 'nl_BE',
         },
@@ -43,7 +43,7 @@ export async function generateMetadata({ params }) {
             description: training.description?.slice(0, 160),
         },
         alternates: {
-            canonical: `https://coachportaal.be/bibliotheek/${training._id}`,
+            canonical: `https://atletiektrainer.be/bibliotheek/${training._id}`,
         },
     };
 }
@@ -96,7 +96,7 @@ export default async function TrainingDetailPage({ params }) {
         publisher: {
             '@type': 'Organization',
             name: 'Coach Portaal',
-            url: 'https://coachportaal.be',
+            url: 'https://atletiektrainer.be',
         },
     };
 

@@ -7,7 +7,7 @@ export const metadata = {
     openGraph: {
         title: 'Blog | Coach Portaal',
         description: 'Tips, tutorials en updates om je coaching naar een hoger niveau te tillen.',
-        url: 'https://coachportaal.be/blogs',
+        url: 'https://atletiektrainer.be/blogs',
         siteName: 'Coach Portaal',
         locale: 'nl_BE',
         type: 'website',
@@ -18,7 +18,7 @@ export const metadata = {
         description: 'Tips, tutorials en updates om je coaching naar een hoger niveau te tillen.',
     },
     alternates: {
-        canonical: 'https://coachportaal.be/blogs',
+        canonical: 'https://atletiektrainer.be/blogs',
     },
 };
 

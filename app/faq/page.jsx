@@ -20,7 +20,7 @@ export const metadata = {
     openGraph: {
         title: 'FAQ | Atletiek Trainingen & Oefeningen',
         description: 'Vind antwoorden op al je vragen over atletiek trainingen, oefeningen en spellen voor pupillen en jeugdatletiek.',
-        url: 'https://coachportaal.be/faq',
+        url: 'https://atletiektrainer.be/faq',
         siteName: 'Coach Portaal',
         locale: 'nl_BE',
         type: 'website',
@@ -31,7 +31,7 @@ export const metadata = {
         description: 'Vind antwoorden op al je vragen over atletiek trainingen, oefeningen en spellen.',
     },
     alternates: {
-        canonical: 'https://coachportaal.be/faq',
+        canonical: 'https://atletiektrainer.be/faq',
     },
 };
 

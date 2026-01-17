@@ -73,7 +73,7 @@ export default function RootLayout({ children }) {
         contactPoint: {
             '@type': 'ContactPoint',
             contactType: 'customer service',
-            email: 'info@coachportaal.be',
+            email: 'info@atletiektrainer.be',
             availableLanguage: ['Dutch', 'English']
         },
         address: {
