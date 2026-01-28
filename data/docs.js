@@ -1,7 +1,27 @@
 // Documentation content for Coach Portaal
-// Organized by category with comprehensive guides
+// Streamlined with prominent images
 
 export const docsCategories = [
+    {
+        id: 'dashboard-pages',
+        title: 'Dashboard Pagina\'s',
+        description: 'Documentatie van alle pagina\'s in het Coach Portaal dashboard.',
+        icon: '📄',
+        docs: [
+            { slug: 'homepagina', title: 'Home Dashboard' },
+            { slug: 'navigatie', title: 'Navigatie Sidebar' },
+            { slug: 'trainingen', title: 'Trainingen Overzicht' },
+            { slug: 'ontdek-blokken', title: 'Ontdek Blokken' },
+            { slug: 'bibliotheek', title: 'Bibliotheek' },
+            { slug: 'kalender', title: 'Kalender' },
+            { slug: 'ai-coach', title: 'AI Coach' },
+            { slug: 'statistieken', title: 'Statistiekenkaarten' },
+            { slug: 'quick-actions', title: 'Quick Actions' },
+            { slug: 'agenda', title: 'Agenda Sectie' },
+            { slug: 'tips', title: 'Tips Carousel' },
+            { slug: 'sos-trainer', title: 'SOS Trainer' }
+        ]
+    },
     {
         id: 'getting-started',
         title: 'Aan de slag',
@@ -72,107 +92,427 @@ export const docsCategories = [
 
 // Full documentation content
 export const docsContent = {
+    // ============ DASHBOARD PAGES ============
+    'homepagina': {
+        title: 'Home Dashboard',
+        description: 'Het centrale startpunt van Coach Portaal.',
+        readTime: '2 min',
+        sections: [
+            {
+                title: 'Dashboard',
+                image: '/docs/home/home_dashboard.png',
+                content: `![Home Dashboard](/docs/home/home_dashboard.png)
+
+Centrale hub met statistieken, agenda en snelle toegang tot alle functies.`
+            },
+            {
+                title: 'Secties',
+                content: `Welkomstboodschap → Statistiekenkaarten → Quick Actions → Agenda → Tips → Records → SOS Trainer`
+            }
+        ],
+        nextDoc: 'navigatie',
+        prevDoc: null
+    },
+
+    'navigatie': {
+        title: 'Navigatie Sidebar',
+        description: 'Het hoofdmenu van Coach Portaal.',
+        readTime: '2 min',
+        sections: [
+            {
+                title: 'Sidebar',
+                image: '/docs/home/navigation_sidebar.png',
+                content: `![Navigatie Sidebar](/docs/home/navigation_sidebar.png)
+
+Gestructureerde toegang tot alle functies.`
+            },
+            {
+                title: 'Menu',
+                content: `| Algemeen | Training | Beheer |
+|----------|----------|--------|
+| 🏠 Home | 📅 Trainingen | 📅 Kalender |
+| | ⭐ Ontdek Blokken | |
+| | 📚 Bibliotheek | |`
+            },
+            {
+                title: 'Profiel',
+                content: `Onderaan: avatar, naam, e-mail en ⚙️ Instellingen`
+            }
+        ],
+        nextDoc: 'trainingen',
+        prevDoc: 'homepagina'
+    },
+
+    'trainingen': {
+        title: 'Trainingen Overzicht',
+        description: 'Beheer je trainingsschema\'s.',
+        readTime: '3 min',
+        sections: [
+            {
+                title: 'Overzicht',
+                image: '/docs/trainingen/trainingen_overview.png',
+                content: `![Trainingen Overzicht](/docs/trainingen/trainingen_overview.png)
+
+Hier kun je al je trainingsschema's beheren en organiseren. Bekijk beschikbare trainingsblokken, stel filters in op basis van leeftijdsgroep en discipline, en maak snel nieuwe trainingen aan.`
+            },
+            {
+                title: 'Tabbladen & Filters',
+                image: '/docs/trainingen/trainingen_tabs_filters.png',
+                content: `![Tabs en Filters](/docs/trainingen/trainingen_tabs_filters.png)
+
+**Tabbladen:** Trainingsschema's | Favorieten | Trainingsblokken
+
+**Actieknoppen:** 🆘 SOS Training | + Nieuw Schema
+
+**Filters:** Bron | Leeftijd | Discipline`
+            },
+            {
+                title: 'Training Cards',
+                image: '/docs/trainingen/training_card_example.png',
+                content: `![Training Card Voorbeeld](/docs/trainingen/training_card_example.png)
+
+⭐ Favoriet | Titel | Beschrijving | Tags | Schema opbouw | Zichtbaarheid`
+            }
+        ],
+        nextDoc: 'ontdek-blokken',
+        prevDoc: 'navigatie'
+    },
+
+    'ontdek-blokken': {
+        title: 'Ontdek Blokken',
+        description: 'AI-powered discovery voor trainingsblokken.',
+        readTime: '2 min',
+        sections: [
+            {
+                title: 'Overzicht',
+                image: '/docs/ontdek-blokken/ontdek_blokken_overview.png',
+                content: `![Ontdek Blokken](/docs/ontdek-blokken/ontdek_blokken_overview.png)
+
+AI-aangedreven swipe-interface om nieuwe trainingsblokken te ontdekken.`
+            },
+            {
+                title: 'Trainer IQ',
+                content: `🧠 **Mijn Trainer IQ** - Leert van je swipe-gedrag en stelt relevante blokken voor.`
+            },
+            {
+                title: 'Swipe Interface',
+                image: '/docs/ontdek-blokken/swipe_interface.png',
+                content: `![Swipe Interface](/docs/ontdek-blokken/swipe_interface.png)
+
+| Links | Rechts | Omhoog |
+|-------|--------|--------|
+| NEXT | TOP! | OPSLAAN |`
+            }
+        ],
+        nextDoc: 'bibliotheek',
+        prevDoc: 'trainingen'
+    },
+
+    'bibliotheek': {
+        title: 'Bibliotheek',
+        description: 'Ontdek schema\'s van andere trainers.',
+        readTime: '2 min',
+        sections: [
+            {
+                title: 'Overzicht',
+                image: '/docs/bibliotheek/bibliotheek.png',
+                content: `![Bibliotheek Overzicht](/docs/bibliotheek/bibliotheek.png)
+
+Ontdek en hergebruik trainingsschema's en oefenblokken. Profiteer van honderden voorgemaakte trainingsschema's en oefeningen die door andere trainers zijn gemaakt.`
+            },
+            {
+                title: 'Functies',
+                content: `📊 658+ Trainingsschema's | 🏃 3901+ Oefeningen | 🔍 Geavanceerde zoeking | ⭐ Favorieten beheren`
+            },
+            {
+                title: 'Gebruik',
+                content: `- Zoek op categorie, discipline of leeftijdsgroep
+- Voeg oefeningen direct toe aan je trainingen
+- Sla favorieten op voor snelle toegang`
+            }
+        ],
+        nextDoc: 'kalender',
+        prevDoc: 'ontdek-blokken'
+    },
+
+    'kalender': {
+        title: 'Kalender',
+        description: 'Beheer en plan trainingssessies.',
+        readTime: '2 min',
+        sections: [
+            {
+                title: 'Overzicht',
+                image: '/docs/kalender/kalender_overview.png',
+                content: `![Kalender Overzicht](/docs/kalender/kalender_overview.png)
+
+Zie al je trainingen en activiteiten in een visueel overzicht. Plan trainingen, wedstrijden en evenementen gemakkelijk in je kalender.`
+            },
+            {
+                title: 'Weergave',
+                content: `**Weergave:** Maand | Week
+
+**Navigatie:** Vorige | Huidige periode | Volgende
+
+**Actie:** Klik op dag of "Afspraak Toevoegen"`
+            }
+        ],
+        nextDoc: 'ai-coach',
+        prevDoc: 'bibliotheek'
+    },
+
+    'ai-coach': {
+        title: 'AI Coach',
+        description: 'Genereer trainingsschema\'s met AI.',
+        readTime: '2 min',
+        sections: [
+            {
+                title: 'Overzicht',
+                image: '/docs/ai-coach/ai_coach_overview.png',
+                content: `![AI Coach](/docs/ai-coach/ai_coach_overview.png)
+
+Intelligente assistent voor het genereren van trainingsschema's.`
+            },
+            {
+                title: 'Gebruik',
+                content: `1. Beschrijf je training (type, doelgroep, focus)
+2. Of upload een foto van een training
+3. De AI genereert een compleet schema`
+            },
+            {
+                title: 'Tips',
+                content: `Wees specifiek: doelgroep, tijdsduur, trainingsdoel, locatie, beschikbaar materiaal`
+            }
+        ],
+        nextDoc: 'statistieken',
+        prevDoc: 'kalender'
+    },
+
+    'statistieken': {
+        title: 'Statistiekenkaarten',
+        description: 'Quick stats over je club en trainingen.',
+        readTime: '2 min',
+        sections: [
+            {
+                title: 'Overzicht',
+                image: '/docs/home/statistieken_kaarten.png',
+                content: `![Statistieken Kaarten](/docs/home/statistieken_kaarten.png)
+
+De belangrijkste kerncijfers van je atletiekvereniging.`
+            },
+            {
+                title: 'Vier Kaarten',
+                content: `| 👥 Leden | 📖 Trainingen | 🏆 Records | 📅 Activiteiten |
+|---------|-------------|------------|--------------|
+| Totaal geregistreerde leden | Beschikbare trainingen | Actieve clubrecords | Geplande activiteiten |`
+            }
+        ],
+        nextDoc: 'quick-actions',
+        prevDoc: 'ai-coach'
+    },
+
+    'quick-actions': {
+        title: 'Quick Actions',
+        description: 'Snel toegang tot veelgebruikte functionaliteiten.',
+        readTime: '2 min',
+        sections: [
+            {
+                title: 'Overzicht',
+                image: '/docs/home/quick_actions.png',
+                content: `![Quick Actions](/docs/home/quick_actions.png)
+
+Directe toegang tot de meest gebruikte functionaliteiten.`
+            },
+            {
+                title: 'Acties',
+                content: `| ➕ Nieuwe Training | 👤 Lid Toevoegen | 📊 Resultaten | 📅 Activiteit Plannen |
+|-------------------|-----------------|---------------|---------------------|
+| Direct nieuw schema | Sporter registreren | Uitslagen invoeren | Evenement/kamp plannen |`
+            }
+        ],
+        nextDoc: 'agenda',
+        prevDoc: 'statistieken'
+    },
+
+    'agenda': {
+        title: 'Agenda Sectie',
+        description: 'Overzicht van je geplande trainingsmomenten.',
+        readTime: '2 min',
+        sections: [
+            {
+                title: 'Overzicht',
+                image: '/docs/home/agenda_sectie.png',
+                content: `![Agenda Sectie](/docs/home/agenda_sectie.png)
+
+Beheer en inzicht in wekelijkse trainingsmomenten.`
+            },
+            {
+                title: 'Instellen',
+                content: `Ga naar Instellingen > Voorkeuren om je wekelijkse trainingsmomenten in te stellen.`
+            }
+        ],
+        nextDoc: 'tips',
+        prevDoc: 'quick-actions'
+    },
+
+    'tips': {
+        title: 'Tips Carousel',
+        description: 'Handige tips om het meeste uit het platform te halen.',
+        readTime: '2 min',
+        sections: [
+            {
+                title: 'Overzicht',
+                image: '/docs/home/tips_sectie.png',
+                content: `![Tips Sectie](/docs/home/tips_sectie.png)
+
+Interactieve carrousel met tips en functionaliteiten.`
+            },
+            {
+                title: 'Navigatie',
+                content: `◀ Vorige | ▶ Volgende | Paginatie dots`
+            }
+        ],
+        nextDoc: 'sos-trainer',
+        prevDoc: 'agenda'
+    },
+
+    'sos-trainer': {
+        title: 'SOS Trainer',
+        description: 'Snel een trainingsschema genereren in noodsituaties.',
+        readTime: '2 min',
+        sections: [
+            {
+                title: 'Overzicht',
+                image: '/docs/home/sos_trainer_sectie.png',
+                content: `![SOS Trainer](/docs/home/sos_trainer_sectie.png)
+
+Snel een trainingsschema genereren zonder voorbereiding.`
+            },
+            {
+                title: 'Wanneer gebruiken?',
+                content: `- Onverwacht geen tijd om te prepareren
+- Onderweg naar de training
+- Snel een alternatief nodig
+- Inspiratie nodig`
+            }
+        ],
+        nextDoc: 'wedstrijden',
+        prevDoc: 'tips'
+    },
+
+    'wedstrijden': {
+        title: 'Wedstrijden & Clubrecords',
+        description: 'Beheer wedstrijden en track clubrecords.',
+        readTime: '3 min',
+        sections: [
+            {
+                title: 'Wedstrijdenoverzicht',
+                image: '/docs/wedstrijden/wedstrijden_overview.png',
+                content: `![Wedstrijden Overzicht](/docs/wedstrijden/wedstrijden_overview.png)
+
+Zie al je geplande en afgelopen wedstrijden. Beheer deelnemers, voer resultaten in en volg prestaties.`
+            },
+            {
+                title: 'Clubrecords',
+                image: '/docs/wedstrijden/clubrecords.png',
+                content: `![Clubrecords](/docs/wedstrijden/clubrecords.png)
+
+Automatische bijhouding van je clubrecords. Ziet meteen wanneer een atlete een nieuw record behaalt.`
+            },
+            {
+                title: 'Functies',
+                content: `✅ Wedstrijden plannen | 📊 Resultaten invoeren | 🏅 Records volgen | 🎓 Certificaten genereren`
+            }
+        ],
+        nextDoc: 'activiteiten',
+        prevDoc: 'sos-trainer'
+    },
+
+    'activiteiten': {
+        title: 'Activiteiten & Evenementen',
+        description: 'Plan kampen, workshops en speciale evenementen.',
+        readTime: '2 min',
+        sections: [
+            {
+                title: 'Overzicht',
+                image: '/docs/activiteiten/activiteiten.png',
+                content: `![Activiteiten Overzicht](/docs/activiteiten/activiteiten.png)
+
+Organiseer trainingskampen, workshops, wedstrijden en andere speciale evenementen voor je atleten.`
+            },
+            {
+                title: 'Soorten Activiteiten',
+                content: `🏕️ Trainingskampen | 📚 Workshops | 🏃 Speciale trainingen | 🎓 Clinics | 🎉 Team events`
+            },
+            {
+                title: 'Beheer',
+                content: `- Plan meerdaagse kampen met dagschema
+- Beheer deelnemers en betalingen
+- Communiceer met deelnemers
+- Documenteer met foto's en video`
+            }
+        ],
+        nextDoc: 'communicatie',
+        prevDoc: 'wedstrijden'
+    },
+
+    'communicatie': {
+        title: 'Communicatie & Instellingen',
+        description: 'Team communicatie en platform instellingen.',
+        readTime: '2 min',
+        sections: [
+            {
+                title: 'Overzicht',
+                image: '/docs/communicatie/communicatie.png',
+                content: `![Communicatie](/docs/communicatie/communicatie.png)
+
+Communiceer met je coaching team en stel je platform in.`
+            },
+            {
+                title: 'Communicatie Tools',
+                content: `📧 E-mailberichten | 💬 In-app berichten | 📱 SMS notifications | 🔔 Instellingen`
+            },
+            {
+                title: 'Platform Instellingen',
+                content: `- Organisatieprofiel configureren
+- Team members uitnodigen
+- Gebruiksrechten beheren
+- Voorkeursinstellingen instellen`
+            }
+        ],
+        nextDoc: 'quick-start',
+        prevDoc: 'activiteiten'
+    },
+
     // ============ GETTING STARTED ============
     'quick-start': {
         title: 'Snelstartgids',
-        description: 'Zet Coach Portaal in 15 minuten op en ga meteen aan de slag.',
-        readTime: '15 min',
+        description: 'Zet Coach Portaal in 15 minuten op.',
+        readTime: '5 min',
         sections: [
             {
-                title: 'Welkom bij Coach Portaal',
-                content: `Coach Portaal is het alles-in-één platform voor atletiekcoaches en -trainers. In deze gids leer je de basis om snel productief te worden.`
-            },
-            {
-                title: 'Wat ga je bereiken?',
-                type: 'checklist',
-                items: [
-                    'Je coach-account aanmaken',
-                    'Je organisatie instellen',
-                    'Je eerste leden importeren',
-                    'Je eerste training maken'
-                ]
-            },
-            {
-                title: 'Stap 1: Account Aanmaken',
-                content: `Ga naar **dashboard.coachportaal.be** en klik op "Gratis Starten". Vul je e-mailadres in en verifieer je account via de bevestigingsmail.
-
-**Tip:** Gebruik een zakelijk e-mailadres dat gekoppeld is aan je club voor eenvoudiger teambeheer.`
-            },
-            {
-                title: 'Stap 2: Organisatie Instellen',
-                content: `Na het inloggen word je gevraagd om je organisatie te configureren:
-
-1. **Clubnaam** – De officiële naam van je atletiekclub
-2. **Logo uploaden** – Zichtbaar in exports en op diploma's
-3. **Leeftijdscategorieën** – Standaard Belgische VAL-categorieën of aangepast
-
-Je kunt later altijd wijzigingen aanbrengen via Instellingen.`
-            },
-            {
-                title: 'Stap 3: Leden Importeren',
-                content: `Het snelste is om je ledenlijst te importeren via Excel:
-
-1. Ga naar **Leden** in de sidebar
-2. Klik op **Importeren** rechtsboven
-3. Upload je Excel-bestand met kolommen: Naam, Geboortedatum, Geslacht, E-mail
-4. Het systeem herkent automatisch de juiste leeftijdscategorieën
-
-Je kunt ook handmatig leden toevoegen via de "Nieuw lid" knop.`
-            },
-            {
-                title: 'Stap 4: Je Eerste Training',
-                content: `Nu je leden hebt, kun je een training plannen:
-
-1. Ga naar **Trainingen** → **Nieuwe Training**
-2. Kies een datum en doelgroep
-3. Gebruik de drag-and-drop builder om oefeningen toe te voegen
-4. Laat de **AI Copilot** suggesties doen voor een gebalanceerde sessie
-
-Gefeliciteerd! Je bent klaar om te starten met Coach Portaal.`
+                title: 'Stappen',
+                content: `1. **Account aanmaken** - Ga naar dashboard.coachportaal.be
+2. **Organisatie instellen** - Clubnaam, logo, leeftijdscategorieën
+3. **Leden importeren** - Excel-upload met naam, geboortedatum, geslacht
+4. **Eerste training** - Trainingen → Nieuwe Training`
             }
         ],
         nextDoc: 'dashboard',
-        prevDoc: null
+        prevDoc: 'communicatie'
     },
 
     'dashboard': {
         title: 'Dashboard Navigatie',
-        description: 'Leer je weg te vinden in het centrale commandocentrum.',
-        readTime: '8 min',
+        description: 'Leer je weg te vinden in het dashboard.',
+        readTime: '3 min',
         sections: [
             {
-                title: 'Overzicht',
-                content: `Het Dashboard is je startpagina wanneer je inlogt. Het geeft een helikopterweergave van je organisatie en biedt snelle toegang tot alle functies.`
-            },
-            {
-                title: 'Sidebar Navigatie',
-                content: `Aan de linkerkant vind je de hoofdnavigatie met alle kernmodules:
-
-| Icoon | Module | Beschrijving |
-|-------|--------|--------------|
-| 👥 | Leden | Ledenadministratie en groepsbeheer |
-| 🏃 | Trainingen | Training bouwen en plannen |
-| 📅 | Agenda | Kalenderweergave van alle activiteiten |
-| 🏆 | Wedstrijden | Wedstrijdbeheer en resultaten |
-| 🤖 | AI Assistent | Slimme hulp voor trainingsplanning |
-| ⚙️ | Instellingen | Organisatie- en accountinstellingen |`
+                title: 'Sidebar',
+                content: `| 👥 Leden | 🏃 Trainingen | 📅 Agenda | 🏆 Wedstrijden | 🤖 AI Assistent | ⚙️ Instellingen |`
             },
             {
                 title: 'Snelle Acties',
-                content: `Rechtsboven in het dashboard vind je snelkoppelingen:
-
-- **+ Nieuwe Training** – Maak direct een nieuwe training
-- **+ Nieuw Lid** – Voeg snel een atleet toe
-- **🔔 Meldingen** – Bekijk recente activiteit en updates
-- **👤 Profiel** – Accountinstellingen en uitloggen`
-            },
-            {
-                title: 'Activiteitsoverzicht',
-                content: `Het centrale gedeelte toont:
-
-- 📊 **Statistieken** – Aantal leden, trainingen deze week, aankomende wedstrijden
-- 📋 **Vandaag** – Geplande trainingen en taken voor vandaag
-- 🔔 **Recente Updates** – Laatste wijzigingen door teamleden`
+                content: `+ Nieuwe Training | + Nieuw Lid | Meldingen | Profiel`
             }
         ],
         nextDoc: 'first-training',
@@ -181,61 +521,16 @@ Gefeliciteerd! Je bent klaar om te starten met Coach Portaal.`
 
     'first-training': {
         title: 'Je Eerste Training',
-        description: 'Stap-voor-stap door het maken van een complete trainingssessie.',
-        readTime: '12 min',
+        description: 'Stap-voor-stap een training maken.',
+        readTime: '5 min',
         sections: [
             {
-                title: 'Introductie',
-                content: `In deze gids bouwen we samen een complete trainingssessie. Je leert de Training Builder te gebruiken en krijgt tips voor effectieve trainingsopbouw.`
-            },
-            {
                 title: 'Training Aanmaken',
-                content: `1. Ga naar **Trainingen** in de sidebar
-2. Klik op **Nieuwe Training**
-3. Vul de basisgegevens in:
-   - **Titel** – bijv. "Snelheid & Coördinatie"
-   - **Datum & Tijd** – wanneer de training plaatsvindt
-   - **Doelgroep** – selecteer één of meerdere groepen
-   - **Locatie** – optioneel, bijv. "Atletiekpiste A"`
-            },
-            {
-                title: 'Oefeningen Toevoegen',
-                content: `De Training Builder werkt met blokken die je kunt slepen:
-
-**Warmup (15 min)**
-- Inlopen 800m
-- Dynamische stretching
-- ABC-loopscholing
-
-**Hoofddeel (30 min)**
-- Sprints 4x30m
-- Coördinatieladder
-- Horden lage hoogte
-
-**Cooling-down (10 min)**
-- Uitlopen 400m
-- Statisch stretchen
-
-Sleep oefeningen uit de bibliotheek of typ zelf een beschrijving.`
-            },
-            {
-                title: 'AI Copilot Gebruiken',
-                content: `Weet je niet welke oefeningen te kiezen? Laat de AI helpen:
-
-1. Klik op **🤖 AI Suggestie** rechtsboven in de builder
-2. Beschrijf je doel: "Ik wil snelheid trainen voor benjamins"
-3. De AI genereert een complete sessie die je kunt bewerken
-
-Je kunt ook individuele oefeningen laten aanvullen of variaties opvragen.`
-            },
-            {
-                title: 'Opslaan & Delen',
-                content: `Als je training compleet is:
-
-- **Opslaan als concept** – om later verder te werken
-- **Publiceren** – maakt de training zichtbaar voor atleten (indien gekoppeld)
-- **Exporteren** – download als PDF voor printen
-- **Dupliceren** – hergebruik voor een andere datum`
+                content: `1. Trainingen → Nieuwe Training
+2. Vul titel, datum, doelgroep in
+3. Voeg oefeningen toe via drag-and-drop
+4. Gebruik AI Copilot voor suggesties
+5. Opslaan of publiceren`
             }
         ],
         nextDoc: 'members-overview',
@@ -245,43 +540,22 @@ Je kunt ook individuele oefeningen laten aanvullen of variaties opvragen.`
     // ============ MEMBERS ============
     'members-overview': {
         title: 'Ledenlijst',
-        description: 'Overzicht van het ledenbeheer en basisfuncties.',
-        readTime: '6 min',
+        description: 'Overzicht van het ledenbeheer.',
+        readTime: '3 min',
         sections: [
             {
                 title: 'Ledenmodule',
-                content: `De Ledenmodule is het hart van je administratie. Hier beheer je alle atleten, hun gegevens en leeftijdscategorieën.`
-            },
-            {
-                title: 'Overzichtstabel',
-                content: `De ledentabel toont in één oogopslag:
+                content: `Beheer alle atleten, hun gegevens en leeftijdscategorieën.
 
-- **Naam** – Volledige naam van de atleet
-- **Geboortedatum** – Automatische categorieberekening
-- **Categorie** – Bijv. Pupillen, Benjamins, etc.
-- **Groep** – Trainingsgroep indien ingedeeld
-- **Wedstrijden** – Aantal competities dit seizoen
-- **Status** – Actief, Inactief of Geschorst`
+**Tabel:** Naam | Geboortedatum | Categorie | Groep | Wedstrijden | Status`
             },
             {
                 title: 'Zoeken & Filteren',
-                content: `Snel het juiste lid vinden:
-
-- 🔍 **Zoekbalk** – Zoek op naam of e-mail
-- 📊 **Filter op categorie** – Toon alleen benjamins, pupillen, etc.
-- 📁 **Filter op groep** – Alleen leden van een specifieke trainingsgroep
-- ✅ **Filter op status** – Actieve leden, inactieve leden`
+                content: `🔍 Zoekbalk | 📊 Categorie-filter | 📁 Groep-filter | ✅ Status-filter`
             },
             {
                 title: 'Lid Toevoegen',
-                content: `Klik op **+ Nieuw Lid** en vul in:
-
-1. **Voornaam & Achternaam** *(verplicht)*
-2. **Geboortedatum** *(verplicht)* – bepaalt automatisch de categorie
-3. **Geslacht** *(verplicht)* – voor correcte categorieën
-4. **E-mailadres** – voor communicatie
-5. **Telefoonnummer** – contactgegevens
-6. **Groep** – wijs direct een trainingsgroep toe`
+                content: `+ Nieuw Lid → Voornaam, achternaam, geboortedatum (verplicht), geslacht, e-mail, telefoon, groep`
             }
         ],
         nextDoc: 'members-import',
@@ -290,47 +564,26 @@ Je kunt ook individuele oefeningen laten aanvullen of variaties opvragen.`
 
     'members-import': {
         title: 'Leden Importeren',
-        description: 'Importeer je volledige ledenlijst via Excel of CSV.',
-        readTime: '10 min',
+        description: 'Importeer je volledige ledenlijst via Excel.',
+        readTime: '3 min',
         sections: [
             {
-                title: 'Waarom Importeren?',
-                content: `Als je veel leden hebt, is handmatig invoeren tijdrovend. Met de importfunctie kun je in één keer je volledige ledenlijst uploaden.`
-            },
-            {
-                title: 'Ondersteunde Formaten',
-                content: `Coach Portaal ondersteunt:
-
-- **Excel (.xlsx, .xls)** – Aanbevolen
-- **CSV (.csv)** – Met komma of puntkomma als scheidingsteken
-- **Google Sheets** – Exporteer eerst als Excel`
-            },
-            {
                 title: 'Bestandsstructuur',
-                content: `Je bestand moet de volgende kolommen bevatten:
-
-| Kolomnaam | Verplicht | Voorbeeld |
-|-----------|-----------|-----------|
-| Voornaam | ✅ Ja | Jan |
-| Achternaam | ✅ Ja | Jansen |
-| Geboortedatum | ✅ Ja | 15/03/2012 |
-| Geslacht | ✅ Ja | M of V |
-| E-mail | ❌ Nee | jan@email.be |
-| Telefoon | ❌ Nee | 0471234567 |
-| Groep | ❌ Nee | Benjamins A |
-
-**Let op:** De eerste rij moet kolomkoppen bevatten.`
+                content: `| Kolom | Verplicht | Voorbeeld |
+|-------|----------|-----------|
+| Voornaam | ✅ | Jan |
+| Achternaam | ✅ | Jansen |
+| Geboortedatum | ✅ | 15/03/2012 |
+| Geslacht | ✅ | M/V |
+| E-mail | ❌ | jan@email.be |`
             },
             {
                 title: 'Importproces',
-                content: `1. Ga naar **Leden** → **Importeren**
-2. Sleep je bestand of klik om te uploaden
-3. **Kolomtoewijzing** – Koppel je kolommen aan de juiste velden
-4. **Voorbeeld** – Controleer de eerste 5 rijen
-5. **Validatie** – Het systeem meldt fouten zoals ontbrekende data
-6. **Importeren** – Bevestig om alle leden toe te voegen
-
-**Tip:** Je kunt bestaande leden updaten door hetzelfde e-mailadres te gebruiken.`
+                content: `1. Leden → Importeren
+2. Bestand uploaden (.xlsx)
+3. Kolommen koppelen
+4. Voorbeeld controleren
+5. Importeren`
             }
         ],
         nextDoc: 'members-groups',
@@ -339,52 +592,20 @@ Je kunt ook individuele oefeningen laten aanvullen of variaties opvragen.`
 
     'members-groups': {
         title: 'Groepen & Categorieën',
-        description: 'Organiseer atleten in trainingsgroepen en leeftijdscategorieën.',
-        readTime: '8 min',
+        description: 'Organiseer atleten in trainingsgroepen.',
+        readTime: '3 min',
         sections: [
             {
                 title: 'Leeftijdscategorieën',
-                content: `Coach Portaal berekent automatisch de correcte leeftijdscategorie op basis van geboortedatum. De standaard Belgische VAL-categorieën zijn:
-
-| Categorie | Geboortejaren | Leeftijd |
-|-----------|---------------|----------|
-| Benjamins | 2016-2017 | 7-8 jaar |
-| Pupillen | 2014-2015 | 9-10 jaar |
-| Miniemen | 2012-2013 | 11-12 jaar |
-| Cadetten | 2010-2011 | 13-14 jaar |
-| Scholieren | 2008-2009 | 15-16 jaar |
-| Junioren | 2006-2007 | 17-18 jaar |
-| Seniors | 1987-2005 | 19-35 jaar |
-| Masters | voor 1987 | 35+ jaar |`
+                content: `| Benjamins | Pupillen | Miniemen | Cadetten | Scholieren | Junioren | Seniors | Masters |
+|-----------|----------|----------|----------|-----------|---------|---------|---------|
+| 7-8 jaar | 9-10 jaar | 11-12 jaar | 13-14 jaar | 15-16 jaar | 17-18 jaar | 19-35 jaar | 35+ jaar |`
             },
             {
                 title: 'Trainingsgroepen',
-                content: `Naast categorieën kun je eigen trainingsgroepen maken:
+                content: `Leden → Groepen → + Nieuwe Groep
 
-1. Ga naar **Leden** → **Groepen**
-2. Klik op **+ Nieuwe Groep**
-3. Geef een naam, bijv. "Sprint Dames"
-4. Kies een kleur voor herkenning
-5. Wijs leden toe aan de groep
-
-Groepen zijn ideaal voor:
-- Atleten met dezelfde trainer
-- Wedstrijdteams
-- Talentgroepen`
-            },
-            {
-                title: 'Leden Indelen',
-                content: `Er zijn twee manieren om leden in groepen te plaatsen:
-
-**Individueel:**
-1. Open het ledenprofiel
-2. Klik op "Groep wijzigen"
-3. Selecteer de juiste groep
-
-**Bulk:**
-1. Selecteer meerdere leden met de checkboxes
-2. Klik op "Bulk acties" → "Groep toewijzen"
-3. Kies de doelgroep`
+Maak groepen per trainer, wedstrijdteam of talentgroep.`
             }
         ],
         nextDoc: 'training-builder',
@@ -394,65 +615,24 @@ Groepen zijn ideaal voor:
     // ============ TRAINING ============
     'training-builder': {
         title: 'Training Builder',
-        description: 'De krachtige editor voor het samenstellen van trainingen.',
-        readTime: '15 min',
+        description: 'De krachtige editor voor trainingen.',
+        readTime: '4 min',
         sections: [
             {
-                title: 'Introductie',
-                content: `De Training Builder is de kern van Coach Portaal. Hiermee stel je professionele trainingsschema's samen met een intuïtieve drag-and-drop interface.`
-            },
-            {
-                title: 'Interface Overzicht',
-                content: `De builder bestaat uit drie delen:
-
-**Linker paneel: Oefeningen Bibliotheek**
-- Zoek in honderden voorgeprogrammeerde oefeningen
-- Filter op type: warming-up, techniek, kracht, etc.
-- Maak eigen favorieten
-
-**Midden: Training Canvas**
-- Sleep oefeningen hierheen
-- Organiseer in blokken (warming-up, hoofddeel, etc.)
-- Pas duur en herhalingen aan
-
-**Rechter paneel: Details**
-- Bewerk geselecteerde oefening
-- Voeg notities toe voor atleten
-- Bekijk of voeg variaties toe`
+                title: 'Interface',
+                content: `**Links:** Oefeningen Bibliotheek
+**Midden:** Training Canvas
+**Rechts:** Details paneel`
             },
             {
                 title: 'Trainingsblokken',
-                content: `Elke training is opgebouwd uit blokken:
-
-🟢 **Warming-up** – Voorbereiden van het lichaam
-🔵 **Hoofddeel** – De kern van je training  
-🟠 **Techniek** – Focus op bewegingskwaliteit
-🔴 **Intensief** – Hoge belasting oefeningen
-🟣 **Cooling-down** – Herstel en stretching
-
-Klik op **+ Blok Toevoegen** om een nieuw blok in te voegen.`
+                content: `🟢 Warming-up | 🔵 Hoofddeel | 🟠 Techniek | 🔴 Intensief | 🟣 Cooling-down`
             },
             {
-                title: 'Oefeningen Bewerken',
-                content: `Klik op een oefening om details aan te passen:
+                title: 'Templates',
+                content: `⚙️ → Opslaan als Template
 
-- **Naam** – Pas de titel aan
-- **Duur** – Tijd in minuten of seconden
-- **Sets & Herhalingen** – bijv. 3x10
-- **Rustpauze** – Tijd tussen sets
-- **Notities** – Extra instructies voor atleten
-- **Video** – Link naar YouTube instructievideo`
-            },
-            {
-                title: 'Templates Opslaan',
-                content: `Bouw je regelmatig dezelfde structuur? Sla het op als template:
-
-1. Maak je training compleet
-2. Klik op **⚙️** → **Opslaan als Template**
-3. Geef een naam, bijv. "Standaard Snelheidstraining"
-4. Vind je templates in **Trainingen** → **Templates**
-
-Templates bevatten de structuur, niet de datum of doelgroep – ideaal voor hergebruik!`
+Herbruik structuur voor vergelijkbare trainingen.`
             }
         ],
         nextDoc: 'exercises',
@@ -461,46 +641,20 @@ Templates bevatten de structuur, niet de datum of doelgroep – ideaal voor herg
 
     'exercises': {
         title: 'Oefeningen Bibliotheek',
-        description: 'Ontdek de uitgebreide database met atletiekoefeningen.',
-        readTime: '8 min',
+        description: 'Ontdek de database met atletiekoefeningen.',
+        readTime: '3 min',
         sections: [
             {
-                title: 'De Bibliotheek',
-                content: `Coach Portaal bevat een uitgebreide bibliotheek met honderden atletiekoefeningen. Elke oefening bevat instructies, doel, en vaak een video.`
-            },
-            {
                 title: 'Categorieën',
-                content: `Oefeningen zijn ingedeeld in:
-
-🏃 **Looptechniek** – ABC-oefeningen, skipping, etc.
-💪 **Kracht** – Lichaamsgewicht en met materiaal
-🧘 **Mobiliteit** – Stretching en bewegelijkheid
-⚡ **Snelheid** – Sprints, reactie, acceleratie
-🎯 **Coördinatie** – Ladder, horden, bal
-🏋️ **Plyometrie** – Sprongkracht training
-🔄 **Warming-up** – Opwarmoefeningen
-❄️ **Cooling-down** – Herstel en stretching`
+                content: `🏃 Looptechniek | 💪 Kracht | 🧘 Mobiliteit | ⚡ Snelheid | 🎯 Coördinatie | 🏋️ Plyometrie | 🔄 Warming-up | ❄️ Cooling-down`
             },
             {
-                title: 'Zoeken & Filteren',
-                content: `Vind snel de juiste oefening:
-
-- 🔍 **Zoeken** – Typ om te zoeken op naam of beschrijving
-- 📊 **Filter op categorie** – Toon alleen één type
-- ⭐ **Favorieten** – Alleen je opgeslagen favorieten
-- 🏃 **Filter op discipline** – Sprint, afstand, werpen, etc.`
+                title: 'Zoeken',
+                content: `🔍 Zoeken | 📊 Categorie-filter | ⭐ Favorieten | 🏃 Discipline-filter`
             },
             {
                 title: 'Eigen Oefeningen',
-                content: `Je kunt ook eigen oefeningen toevoegen:
-
-1. Klik op **+ Nieuwe Oefening**
-2. Vul naam en beschrijving in
-3. Kies een categorie
-4. Voeg optioneel een instructievideo toe (YouTube/Vimeo)
-5. Sla op – de oefening verschijnt in je bibliotheek
-
-**Tip:** Maak variaties van bestaande oefeningen door ze te dupliceren en aan te passen.`
+                content: `+ Nieuwe Oefening → Naam, beschrijving, categorie, video (optioneel)`
             }
         ],
         nextDoc: 'ai-copilot',
@@ -509,49 +663,23 @@ Templates bevatten de structuur, niet de datum of doelgroep – ideaal voor herg
 
     'ai-copilot': {
         title: 'AI Copilot',
-        description: 'Laat kunstmatige intelligentie je helpen met trainingsplanning.',
-        readTime: '10 min',
+        description: 'Laat AI helpen met trainingsplanning.',
+        readTime: '3 min',
         sections: [
             {
-                title: 'Wat is AI Copilot?',
-                content: `De AI Copilot is je slimme assistent die trainingsadviezen geeft op basis van je doel, doelgroep en beschikbare tijd. Het is geen vervanging voor je expertise, maar een hulpmiddel om sneller tot goede trainingen te komen.`
-            },
-            {
                 title: 'Functies',
-                content: `De AI Copilot kan:
-
-✅ **Complete trainingen genereren** – Beschrijf je doel en krijg een voorstel
-✅ **Oefeningen suggereren** – Vraag om alternatieven of aanvullingen
-✅ **Progressie plannen** – Bouw een seizoensplan op
-✅ **Variaties bedenken** – Maak dezelfde oefening leuker
-✅ **Vragen beantwoorden** – Krijg uitleg over trainingsmethoden`
+                content: `✅ Complete trainingen genereren
+✅ Oefeningen suggereren
+✅ Progressie plannen
+✅ Variaties bedenken
+✅ Vragen beantwoorden`
             },
             {
-                title: 'Hoe Gebruiken?',
-                content: `**In de Training Builder:**
-1. Klik op **🤖 AI Suggestie**
-2. Beschrijf wat je wilt trainen
-3. Selecteer suggesties of genereer opnieuw
+                title: 'Gebruik',
+                content: `**In Training Builder:** 🤖 AI Suggestie
+**In Chat:** AI Assistent via sidebar
 
-**In de Chat:**
-1. Open de AI Assistent via de sidebar
-2. Stel je vraag in natuurlijke taal
-3. Ontvang direct antwoord of een trainingsvoorstel
-
-**Voorbeeld prompts:**
-- "Maak een 60-minuten training voor benjamins gericht op coördinatie"
-- "Geef me 5 variaties van de kniehefloop"
-- "Wat is een goede opbouw voor snelheidstraining bij miniemen?"`
-            },
-            {
-                title: 'Tips voor Betere Resultaten',
-                content: `Hoe specifieker je vraag, hoe beter het antwoord:
-
-🎯 **Noem de doelgroep** – Leeftijdscategorie en niveau
-⏱️ **Geef tijdsduur** – Hoeveel minuten heb je?
-🎓 **Beschrijf het doel** – Techniek, snelheid, kracht, plezier?
-📍 **Locatie** – Binnenshuis, piste, grasveld?
-🔧 **Beschikbaar materiaal** – Pionnen, horden, gewichten?`
+**Voorbeeld:** "Maak een 60-minuten training voor benjamins gericht op coördinatie"`
             }
         ],
         nextDoc: 'competitions',
@@ -561,46 +689,24 @@ Templates bevatten de structuur, niet de datum of doelgroep – ideaal voor herg
     // ============ COMPETITIONS ============
     'competitions': {
         title: 'Wedstrijdbeheer',
-        description: 'Beheer wedstrijden en houd resultaten bij.',
-        readTime: '10 min',
+        description: 'Beheer wedstrijden en resultaten.',
+        readTime: '3 min',
         sections: [
             {
-                title: 'Wedstrijdmodule',
-                content: `Met de Wedstrijdmodule kun je alle competities beheren: van clubwedstrijden tot officiële kampioenschappen. Houd prestaties bij en volg de progressie van je atleten.`
-            },
-            {
                 title: 'Wedstrijd Aanmaken',
-                content: `1. Ga naar **Wedstrijden** → **Nieuwe Wedstrijd**
-2. Vul de basisgegevens in:
-   - **Naam** – bijv. "PK Indoor Gent"
-   - **Datum** – wanneer vindt het plaats
-   - **Locatie** – waar is de wedstrijd
-   - **Type** – Indoor, Outdoor, Cross, etc.
-3. Klik op **Opslaan**`
+                content: `Wedstrijden → Nieuwe Wedstrijd
+
+Naam, datum, locatie, type → Opslaan`
             },
             {
-                title: 'Deelnemers Toevoegen',
-                content: `Voeg atleten toe die meedoen:
-
-1. Open de wedstrijd
-2. Klik op **+ Deelnemers Toevoegen**
-3. Selecteer leden uit de lijst
-4. Wijs disciplines toe per atleet
-5. Resultaten kun je later invullen of importeren`
+                title: 'Deelnemers',
+                content: `+ Deelnemers Toevoegen → Leden selecteren → Disciplines toewijzen`
             },
             {
-                title: 'Resultaten Bijhouden',
-                content: `Na de wedstrijd kun je resultaten invoeren:
+                title: 'Resultaten',
+                content: `Handmatig invoeren of importeren via Chrome-extensie.
 
-- **Handmatig** – Klik op een atleet en vul prestatie en plaats in
-- **Importeren** – Haal resultaten op via de Chrome-extensie
-
-Resultaten worden automatisch vergeleken met:
-- Persoonlijke records (PR)
-- Seizoensbest (SB)  
-- Clubrecords
-
-Bij een nieuw PR zie je een 🎉 icoon!`
+Automatische vergelijking: PR | SB | Clubrecords 🎉`
             }
         ],
         nextDoc: 'results-import',
@@ -609,52 +715,21 @@ Bij een nieuw PR zie je een 🎉 icoon!`
 
     'results-import': {
         title: 'Resultaten Importeren',
-        description: 'Haal wedstrijdresultaten automatisch op van atletiek.nu.',
-        readTime: '8 min',
+        description: 'Haal resultaten automatisch op van atletiek.nu.',
+        readTime: '3 min',
         sections: [
             {
                 title: 'Chrome Extensie',
-                content: `De Coach Portaal Chrome-extensie maakt het importeren van resultaten kinderspel. Bezoek een wedstrijdpagina op atletiek.nu en importeer met één klik.`
+                content: `1. Chrome Web Store → "Coach Portaal Import"
+2. Toevoegen aan Chrome
+3. Inloggen met Coach Portaal account`
             },
             {
-                title: 'Extensie Installeren',
-                content: `1. Open de Chrome Web Store
-2. Zoek naar "Coach Portaal Import"
-3. Klik op **Toevoegen aan Chrome**
-4. Log in met je Coach Portaal account
-5. Je bent klaar!`
-            },
-            {
-                title: 'Resultaten Importeren',
-                content: `1. Ga naar de wedstrijdpagina op **atletiek.nu**
-2. Klik op het Coach Portaal icoon in je browser
-3. De extensie herkent automatisch:
-   - De wedstrijd
-   - Jouw atleten (op basis van naam)
-   - Hun resultaten en plaatsen
-4. Klik op **Importeren**
-5. De resultaten verschijnen direct in Coach Portaal`
-            },
-            {
-                title: 'Handmatig Importeren',
-                content: `Geen Chrome? Je kunt ook handmatig JSON importeren:
-
-1. Ga naar de wedstrijd in Coach Portaal
-2. Klik op **Importeren** → **JSON Upload**
-3. Plak de JSON met resultaten
-4. Het systeem valideert en toont een preview
-5. Bevestig om te importeren
-
-**JSON formaat:**
-\`\`\`json
-{
-  "athlete": "Jan Jansen",
-  "discipline": "100m",
-  "result": "12.34",
-  "place": 3,
-  "wind": "+1.2"
-}
-\`\`\``
+                title: 'Importeren',
+                content: `1. Ga naar atletiek.nu wedstrijdpagina
+2. Klik Coach Portaal icoon
+3. Extensie herkent wedstrijd en atleten
+4. Klik Importeren`
             }
         ],
         nextDoc: 'club-records',
@@ -663,49 +738,22 @@ Bij een nieuw PR zie je een 🎉 icoon!`
 
     'club-records': {
         title: 'Clubrecords',
-        description: 'Automatische tracking van clubrecords per discipline.',
-        readTime: '6 min',
+        description: 'Automatische tracking van clubrecords.',
+        readTime: '2 min',
         sections: [
             {
-                title: 'Automatische Tracking',
-                content: `Coach Portaal houdt automatisch clubrecords bij. Wanneer een atleet een prestatie neerzet die beter is dan het huidige record, wordt dit automatisch geregistreerd.`
+                title: 'Automatisch',
+                content: `Records worden automatisch bijgewerkt bij nieuwe prestaties.`
             },
             {
-                title: 'Recordoverzicht',
-                content: `Bekijk alle clubrecords via **Wedstrijden** → **Clubrecords**
+                title: 'Overzicht',
+                content: `Wedstrijden → Clubrecords
 
-Het overzicht toont:
-- **Discipline** – bijv. 100m, Verspringen
-- **Categorie** – Benjamins M, Pupillen V, etc.
-- **Houder** – Naam van de recordhouder
-- **Prestatie** – Het behaalde resultaat
-- **Datum** – Wanneer het record gevestigd werd
-- **Wedstrijd** – Waar het gebeurde`
+Discipline | Categorie | Houder | Prestatie | Datum | Wedstrijd`
             },
             {
-                title: 'Records Beheren',
-                content: `Soms wil je handmatig ingrijpen:
-
-**Historisch record toevoegen:**
-1. Klik op **+ Record Toevoegen**
-2. Selecteer discipline en categorie
-3. Voer de prestatie en atleet in
-4. Voeg datum en bron toe
-
-**Record verwijderen:**
-- Bij foutieve invoer kun je een record verwijderen
-- Het systeem zoekt automatisch het volgende beste resultaat`
-            },
-            {
-                title: 'Recordcertificaten',
-                content: `Vier nieuwe records met een officieel certificaat:
-
-1. Ga naar het record
-2. Klik op **Certificaat Genereren**
-3. Pas de layout aan (kleuren, logo)
-4. Download als PDF of deel direct
-
-Ideaal om uit te printen en op te hangen in de kantine!`
+                title: 'Certificaten',
+                content: `Certificaat Genereren → Layout aanpassen → Download PDF`
             }
         ],
         nextDoc: 'organization',
@@ -715,44 +763,24 @@ Ideaal om uit te printen en op te hangen in de kantine!`
     // ============ ADMIN ============
     'organization': {
         title: 'Organisatie Instellen',
-        description: 'Configureer je club en pas instellingen aan.',
-        readTime: '8 min',
+        description: 'Configureer je club en instellingen.',
+        readTime: '3 min',
         sections: [
             {
-                title: 'Organisatie-instellingen',
-                content: `Na het aanmaken van je account kun je je organisatie volledig naar wens configureren. Ga naar **Instellingen** → **Organisatie**.`
-            },
-            {
                 title: 'Basisgegevens',
-                content: `Stel de kerngegevens van je club in:
+                content: `Instellingen → Organisatie
 
-- **Clubnaam** – Officiële naam
-- **Logo** – Upload je clublogo (PNG of SVG)
-- **Adres** – Locatie van de club
-- **Website** – Externe clubwebsite
-- **E-mail** – Algemeen contactadres
-- **BTW-nummer** – Voor facturatie (optioneel)`
+Clubnaam | Logo | Adres | Website | E-mail | BTW-nummer`
             },
             {
-                title: 'Seizoensinstelling',
-                content: `Coach Portaal werkt met seizoenen:
-
-- **Huidig seizoen** – bijv. 2024-2025
-- **Seizoensstart** – Standaard 1 september
-- **Seizoenseinde** – Standaard 31 augustus
-
-**Tip:** Begin elk seizoen met verse statistieken door een nieuw seizoen te starten. Historische data blijft altijd bewaard.`
+                title: 'Seizoen',
+                content: `Huidig seizoen (bijv. 2024-2025) | Start 1 september | Einde 31 augustus`
             },
             {
-                title: 'Leeftijdscategorieën',
-                content: `Pas de leeftijdscategorieën aan naar je federatie:
+                title: 'Categorieën',
+                content: `Instellingen → Categorieën
 
-1. Ga naar **Instellingen** → **Categorieën**
-2. Standaard zijn Belgische VAL-categorieën ingesteld
-3. Bewerk namen of geboortejaren indien nodig
-4. Voeg eventueel eigen categorieën toe
-
-**Let op:** Wijzigingen gelden voor nieuwe berekeningen. Bestaande leden worden automatisch geüpdatet.`
+Standaard VAL-categorieën, aanpasbaar naar federatie.`
             }
         ],
         nextDoc: 'users-roles',
@@ -761,44 +789,22 @@ Ideaal om uit te printen en op te hangen in de kantine!`
 
     'users-roles': {
         title: 'Gebruikers & Rollen',
-        description: 'Beheer teamleden en hun toegangsrechten.',
-        readTime: '10 min',
+        description: 'Beheer teamleden en toegangsrechten.',
+        readTime: '3 min',
         sections: [
             {
-                title: 'Teamleden',
-                content: `Coach Portaal is ontworpen voor samenwerking. Nodig andere trainers en bestuursleden uit om samen te werken in één omgeving.`
-            },
-            {
                 title: 'Rollen',
-                content: `Er zijn drie standaardrollen:
-
-| Rol | Rechten |
+                content: `| Rol | Rechten |
 |-----|---------|
-| **Admin** | Volledige toegang, kan alles beheren |
-| **Trainer** | Trainingen, leden en wedstrijden |
-| **Volunteer** | Alleen lezen, beperkte acties |
-
-**Admin** kan leden uitnodigen en rollen toewijzen.`
+| Admin | Volledige toegang |
+| Trainer | Trainingen, leden, wedstrijden |
+| Volunteer | Alleen lezen |`
             },
             {
-                title: 'Gebruiker Uitnodigen',
-                content: `1. Ga naar **Instellingen** → **Gebruikers**
-2. Klik op **+ Gebruiker Uitnodigen**
-3. Vul het e-mailadres in
-4. Kies een rol
-5. De persoon ontvangt een uitnodigingsmail
+                title: 'Uitnodigen',
+                content: `Instellingen → Gebruikers → + Uitnodigen
 
-De uitgenodigde maakt een account aan en heeft direct toegang tot de organisatie.`
-            },
-            {
-                title: 'Toegang Beheren',
-                content: `Je kunt op elk moment:
-
-- **Rol wijzigen** – Upgrade of downgrade rechten
-- **Toegang intrekken** – Verwijder een gebruiker
-- **Activiteit bekijken** – Zie wat iemand heeft gedaan (audit log)
-
-Verwijderde gebruikers verliezen direct toegang, maar hun eerdere bijdragen blijven bewaard.`
+E-mailadres → Rol kiezen → Uitnodigingsmail`
             }
         ],
         nextDoc: 'invite-codes',
@@ -808,42 +814,19 @@ Verwijderde gebruikers verliezen direct toegang, maar hun eerdere bijdragen blij
     'invite-codes': {
         title: 'Uitnodigingscodes',
         description: 'Maak eenvoudig grote groepen gebruikers lid.',
-        readTime: '5 min',
+        readTime: '2 min',
         sections: [
             {
-                title: 'Wat zijn Uitnodigingscodes?',
-                content: `Uitnodigingscodes maken het eenvoudig om meerdere mensen tegelijk toegang te geven. Deel één code met je hele trainersteam of bestuursleden.`
-            },
-            {
                 title: 'Code Aanmaken',
-                content: `1. Ga naar **Instellingen** → **Uitnodigingscodes**
-2. Klik op **+ Nieuwe Code**
-3. Configureer:
-   - **Naam** – bijv. "Trainers 2024"
-   - **Rol** – Welke rechten krijgen gebruikers
-   - **Limiet** – Max aantal keer te gebruiken (optioneel)
-   - **Vervaldatum** – Wanneer verloopt de code (optioneel)
-4. Kopieer de gegenereerde code`
+                content: `Instellingen → Uitnodigingscodes → + Nieuwe Code
+
+Naam | Rol | Limiet | Vervaldatum`
             },
             {
-                title: 'Code Delen',
-                content: `Deel de code via:
+                title: 'Delen',
+                content: `Deel code via WhatsApp, e-mail of mondeling.
 
-- **WhatsApp/Telegram** – Stuur direct in de groepschat
-- **E-mail** – Verstuur naar meerdere ontvangers
-- **Mondeling** – Tijdens een teammeeting
-
-De ontvanger gaat naar **dashboard.coachportaal.be**, maakt een account aan, en voert de code in bij "Organisatie Joinen".`
-            },
-            {
-                title: 'Codes Beheren',
-                content: `In het overzicht zie je:
-
-- 📊 **Aantal keer gebruikt**
-- 👥 **Wie heeft de code gebruikt**
-- ⏰ **Status** – Actief, Verlopen of Vol
-
-Je kunt codes **uitschakelen** of **verwijderen** wanneer nodig.`
+Ontvanger: dashboard.coachportaal.be → Registreren → Code invoeren`
             }
         ],
         nextDoc: 'troubleshooting',
@@ -854,70 +837,25 @@ Je kunt codes **uitschakelen** of **verwijderen** wanneer nodig.`
     'troubleshooting': {
         title: 'Probleemoplossing',
         description: 'Oplossingen voor veelvoorkomende problemen.',
-        readTime: '10 min',
+        readTime: '3 min',
         sections: [
             {
-                title: 'Veelvoorkomende Problemen',
-                content: `Hier vind je oplossingen voor de meest gemelde problemen. Staat je vraag er niet tussen? Neem contact op via support@coachportaal.be.`
-            },
-            {
                 title: 'Inlogproblemen',
-                content: `**Ik kan niet inloggen**
-
-1. Controleer of je het juiste e-mailadres gebruikt
-2. Klik op "Wachtwoord vergeten" voor een reset-link
-3. Check je spamfolder voor de verificatie-e-mail
-4. Probeer een andere browser of incognitomodus
-
-**Ik krijg "Account niet gevonden"**
-
-- Je hebt mogelijk nog geen account. Klik op "Registreren".
-- Je account kan zijn verwijderd. Neem contact op met de admin.`
+                content: `- Wachtwoord vergeten? Klik voor reset-link
+- Check spamfolder voor verificatie-e-mail
+- Probeer incognitomodus`
             },
             {
                 title: 'Import Problemen',
-                content: `**Mijn Excel wordt niet herkend**
-
-- Controleer of de eerste rij kolomkoppen bevat
-- Gebruik datumnotatie DD/MM/JJJJ
-- Vermijd lege rijen middenin het bestand
-- Sla op als .xlsx (niet als .xls)
-
-**Leden worden dubbel geïmporteerd**
-
-- Het systeem matcht op e-mailadres
-- Zorg dat bestaande leden hetzelfde e-mailadres hebben
-- Gebruik "Update bestaande leden" optie`
+                content: `- Eerste rij = kolomkoppen
+- Datumnotatie DD/MM/JJJJ
+- Sla op als .xlsx`
             },
             {
                 title: 'Prestatieproblemen',
-                content: `**De app is traag**
-
-1. Ververs de pagina (Ctrl+F5 / Cmd+Shift+R)
-2. Sluit andere zware tabs
-3. Controleer je internetverbinding
-4. Probeer een andere browser (Chrome aanbevolen)
-
-**Wijzigingen worden niet opgeslagen**
-
-- Check of je een stabiele verbinding hebt
-- Wacht even en probeer opnieuw
-- Kopieer je tekst voordat je de pagina verlaat`
-            },
-            {
-                title: 'Chrome Extensie',
-                content: `**De extensie importeert niet**
-
-1. Zorg dat je bent ingelogd in de extensie
-2. Ververs de atletiek.nu pagina
-3. Klik opnieuw op het extensie-icoon
-4. Check of de wedstrijd al bestaat in Coach Portaal
-
-**Atleten worden niet herkend**
-
-- De namen moeten exact overeenkomen
-- Controleer spelling en hoofdletters
-- Voeg eventueel handmatig toe na import`
+                content: `- Ververs pagina (Ctrl+F5)
+- Check internetverbinding
+- Probeer Chrome browser`
             }
         ],
         nextDoc: 'faq',
@@ -927,40 +865,26 @@ Je kunt codes **uitschakelen** of **verwijderen** wanneer nodig.`
     'faq': {
         title: 'Veelgestelde Vragen',
         description: 'Antwoorden op de meest gestelde vragen.',
-        readTime: '8 min',
+        readTime: '3 min',
         sections: [
             {
                 title: 'Algemeen',
                 content: `**Is Coach Portaal gratis?**
-Ja, er is een gratis versie met basisfunctionaliteit. Voor geavanceerde features zoals AI Copilot en onbeperkte leden is er een betaald abonnement.
+Ja, basisversie gratis. Betaald abonnement voor AI en onbeperkte leden.
 
-**Kan ik Coach Portaal offline gebruiken?**
-Nee, Coach Portaal vereist een internetverbinding. We werken aan offline ondersteuning voor de toekomst.
+**Offline gebruiken?**
+Nee, internetverbinding vereist.
 
-**Op welke apparaten werkt Coach Portaal?**
-Coach Portaal werkt in elke moderne browser op desktop, tablet en mobiel. Er is geen aparte app – bookmark de website voor snelle toegang.`
+**Apparaten?**
+Werkt in elke browser op desktop, tablet en mobiel.`
             },
             {
-                title: 'Privacy & Data',
-                content: `**Waar wordt mijn data opgeslagen?**
-Alle data wordt opgeslagen op beveiligde servers in de EU, conform AVG/GDPR-wetgeving.
+                title: 'Privacy',
+                content: `**Data opslag?**
+Beveiligde servers in EU, AVG/GDPR-compliant.
 
-**Kan ik mijn data exporteren?**
-Ja, je kunt op elk moment je volledige data exporteren via Instellingen → Export. Je ontvangt een ZIP met alle leden, trainingen en resultaten.
-
-**Wat gebeurt er als ik mijn account verwijder?**
-Je persoonlijke account en toegang worden verwijderd. Als je admin bent, moet je eerst de organisatie overdragen aan iemand anders.`
-            },
-            {
-                title: 'Functionaliteit',
-                content: `**Kan ik meerdere organisaties beheren?**
-Ja, je kunt lid zijn van meerdere organisaties. Wissel eenvoudig via het dropdown-menu linksboven.
-
-**Ondersteunt Coach Portaal andere sporten?**
-Coach Portaal is specifiek ontworpen voor atletiek. De leeftijdscategorieën, disciplines en trainingsmodules zijn hierop afgestemd.
-
-**Komen er nieuwe features?**
-Absoluut! We werken continu aan verbeteringen. Bekijk onze blog voor aankondigingen of stuur je suggesties naar feedback@coachportaal.be.`
+**Data exporteren?**
+Ja, via Instellingen → Export.`
             }
         ],
         nextDoc: 'contact',
@@ -969,43 +893,25 @@ Absoluut! We werken continu aan verbeteringen. Bekijk onze blog voor aankondigin
 
     'contact': {
         title: 'Contact',
-        description: 'Neem contact met ons op voor hulp of feedback.',
-        readTime: '3 min',
+        description: 'Neem contact op voor hulp of feedback.',
+        readTime: '2 min',
         sections: [
             {
                 title: 'Ondersteuning',
-                content: `Heb je hulp nodig? We staan voor je klaar!
+                content: `📧 **E-mail:** support@coachportaal.be
+⏰ **Reactietijd:** Binnen 24 uur (werkdagen)
 
-📧 **E-mail:** support@coachportaal.be
-⏰ **Reactietijd:** Binnen 24 uur op werkdagen
-
-Beschrijf je probleem zo gedetailleerd mogelijk:
-- Wat probeerde je te doen?
-- Welke foutmelding kreeg je?
-- Welke browser en apparaat gebruik je?`
+Beschrijf probleem: wat deed je? welke foutmelding? welke browser?`
             },
             {
-                title: 'Feedback & Suggesties',
-                content: `We horen graag wat je vindt van Coach Portaal!
+                title: 'Feedback',
+                content: `📧 **E-mail:** feedback@coachportaal.be
 
-📧 **E-mail:** feedback@coachportaal.be
-
-Of gebruik het feedbackformulier in de app:
-1. Klik op je profiel rechtsboven
-2. Selecteer "Feedback geven"
-3. Vul het formulier in
-
-Alle suggesties worden bekeken en de beste ideeën worden geïmplementeerd!`
+Of in app: Profiel → Feedback geven`
             },
             {
                 title: 'Socials',
-                content: `Volg ons voor updates en tips:
-
-🐦 **Twitter/X:** @coachportaal
-📘 **Facebook:** /coachportaal.be
-📸 **Instagram:** @coachportaal
-
-We delen regelmatig trainingstips, feature-updates en succesverhalen van gebruikers.`
+                content: `🐦 @coachportaal | 📘 /coachportaal.be | 📸 @coachportaal`
             }
         ],
         nextDoc: null,

@@ -1,5 +1,6 @@
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
 import { docsCategories, docsContent, getDocNavigation, getAllDocs } from 'data/docs';
 
 
@@ -172,10 +173,23 @@ export default async function DocDetailPage({ params }) {
                                 ))}
                             </ul>
                         ) : (
-                            <div
-                                className="prose prose-gray max-w-none text-gray-600 font-medium leading-relaxed"
-                                dangerouslySetInnerHTML={{ __html: renderContent(section.content) }}
-                            />
+                            <>
+                                {section.image && (
+                                    <div className="mb-6 rounded-xl overflow-hidden border border-gray-200 shadow-lg">
+                                        <Image
+                                            src={section.image}
+                                            alt={section.title}
+                                            width={600}
+                                            height={400}
+                                            className="w-full h-auto"
+                                        />
+                                    </div>
+                                )}
+                                <div
+                                    className="prose prose-gray max-w-none text-gray-600 font-medium leading-relaxed"
+                                    dangerouslySetInnerHTML={{ __html: renderContent(section.content) }}
+                                />
+                            </>
                         )}
                     </section>
                 ))}
