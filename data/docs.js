@@ -40,6 +40,7 @@ export const docsCategories = [
         icon: '👥',
         docs: [
             { slug: 'members-overview', title: 'Ledenlijst' },
+            { slug: 'members-management', title: 'Ledengegevens Beheer' },
             { slug: 'members-import', title: 'Leden Importeren' },
             { slug: 'members-groups', title: 'Groepen & Categorieën' }
         ]
@@ -72,7 +73,11 @@ export const docsCategories = [
         description: 'Organisatie en systeem configuratie.',
         icon: '⚙️',
         docs: [
+            { slug: 'settings-overview', title: 'Instellingen Overzicht' },
             { slug: 'organization', title: 'Organisatie Instellen' },
+            { slug: 'profile-settings', title: 'Profiel Instellingen' },
+            { slug: 'preferences-settings', title: 'Voorkeursinstellingen' },
+            { slug: 'billing-settings', title: 'Facturering' },
             { slug: 'users-roles', title: 'Gebruikers & Rollen' },
             { slug: 'invite-codes', title: 'Uitnodigingscodes' }
         ]
@@ -829,7 +834,7 @@ Naam | Rol | Limiet | Vervaldatum`
 Ontvanger: dashboard.coachportaal.be → Registreren → Code invoeren`
             }
         ],
-        nextDoc: 'troubleshooting',
+        nextDoc: 'settings-overview',
         prevDoc: 'users-roles'
     },
 
@@ -859,7 +864,7 @@ Ontvanger: dashboard.coachportaal.be → Registreren → Code invoeren`
             }
         ],
         nextDoc: 'faq',
-        prevDoc: 'invite-codes'
+        prevDoc: 'settings-overview'
     },
 
     'faq': {
@@ -914,8 +919,127 @@ Of in app: Profiel → Feedback geven`
                 content: `🐦 @coachportaal | 📘 /coachportaal.be | 📸 @coachportaal`
             }
         ],
-        nextDoc: null,
+        nextDoc: 'homepagina',
         prevDoc: 'faq'
+    },
+
+    // ============ MEMBERS (ADDITIONAL) ============
+    'members-management': {
+        title: 'Ledengegevens Beheer',
+        description: 'Beheer atletenprofiel details.',
+        readTime: '3 min',
+        sections: [
+            {
+                title: 'Profielpagina',
+                image: '/docs/leden/member-management.png',
+                content: `![Ledenmanagement](/docs/leden/member-management.png)
+
+Zie en bewerk alle details van een atlete.`
+            },
+            {
+                title: 'Informatie',
+                content: `👤 **Persoonlijk:** Naam, geboortedatum, geslacht, e-mail, telefoon
+📊 **Statistieken:** Trainingen bijgewoond, records, resultaten
+📝 **Opmerkingen:** Notes en geschiedenis`
+            },
+            {
+                title: 'Acties',
+                content: `✏️ Bewerken | 📞 Contacteren | 📊 Statistieken weergeven | ❌ Verwijderen`
+            }
+        ],
+        nextDoc: 'members-import',
+        prevDoc: 'members-overview'
+    },
+
+    // ============ SETTINGS ============
+    'settings-overview': {
+        title: 'Instellingen Overzicht',
+        description: 'Configureer je platform.',
+        readTime: '2 min',
+        sections: [
+            {
+                title: 'Overzicht',
+                image: '/docs/instellingen/settings-overview.png',
+                content: `![Instellingen](/docs/instellingen/settings-overview.png)
+
+Alle platform instellingen op één plaats.`
+            },
+            {
+                title: 'Secties',
+                content: `⚙️ Organisatie | 👤 Profiel | 📋 Voorkeursinstellingen | 💳 Facturering | 👥 Gebruikers`
+            }
+        ],
+        nextDoc: 'organization',
+        prevDoc: 'contact'
+    },
+
+    'profile-settings': {
+        title: 'Profiel Instellingen',
+        description: 'Beheer je persoonlijke gegevens.',
+        readTime: '2 min',
+        sections: [
+            {
+                title: 'Profiel',
+                image: '/docs/instellingen/profile-settings.png',
+                content: `![Profielinstellingen](/docs/instellingen/profile-settings.png)
+
+Pas je account gegevens aan.`
+            },
+            {
+                title: 'Beschikbare Velden',
+                content: `📧 E-mailadres | 🔐 Wachtwoord | 📸 Profielfoto | ℹ️ Bio | 🌐 Website`
+            }
+        ],
+        nextDoc: 'preferences-settings',
+        prevDoc: 'organization'
+    },
+
+    'preferences-settings': {
+        title: 'Voorkeursinstellingen',
+        description: 'Personaliseer je ervarings.',
+        readTime: '2 min',
+        sections: [
+            {
+                title: 'Voorkeursinstellingen',
+                image: '/docs/instellingen/preferences-settings.png',
+                content: `![Voorkeuren](/docs/instellingen/preferences-settings.png)
+
+Pas taal, thema en notificaties aan.`
+            },
+            {
+                title: 'Opties',
+                content: `🌍 **Taal:** Nederlands | English
+🎨 **Thema:** Licht | Donker | Automatisch
+🔔 **Notificaties:** E-mail | SMS | In-app
+📅 **Datumformat:** DD/MM/YYYY | MM/DD/YYYY`
+            }
+        ],
+        nextDoc: 'billing-settings',
+        prevDoc: 'profile-settings'
+    },
+
+    'billing-settings': {
+        title: 'Facturering',
+        description: 'Beheer abonnementen en betalingen.',
+        readTime: '2 min',
+        sections: [
+            {
+                title: 'Facturering',
+                image: '/docs/instellingen/billing-settings.png',
+                content: `![Facturering](/docs/instellingen/billing-settings.png)
+
+Beheer je abonnement en betalingsmethode.`
+            },
+            {
+                title: 'Opties',
+                content: `💳 **Huidge Plan:** Gratis | Pro | Enterprise
+📝 **Facturen:** Downloaderen en archiveren
+💰 **Betalingsgegevens:** Creditcard gegevens bijwerken
+🔄 **Abonnementsbeheer:** Upgrade, downgrade, annuleren`
+            }
+        ],
+        nextDoc: 'users-roles',
+        prevDoc: 'preferences-settings'
     }
 };
 
