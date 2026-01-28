@@ -83,6 +83,54 @@ export const docsCategories = [
         ]
     },
     {
+        id: 'ai-advanced',
+        title: 'AI & Automatisering',
+        description: 'Kunstmatige intelligentie en slimme features.',
+        icon: '🤖',
+        docs: [
+            { slug: 'ai-coach-advanced', title: 'AI Training Generator' },
+            { slug: 'chrome-extension', title: 'Chrome Extension' }
+        ]
+    },
+    {
+        id: 'events-camps',
+        title: 'Evenementen & Kampen',
+        description: 'Speciale events en meerdaagse kampen.',
+        icon: '🏕️',
+        docs: [
+            { slug: 'camps-complete', title: 'Trainingskampen Volledig' },
+            { slug: 'attendance-tracking', title: 'Aanwezigheid Tracking' }
+        ]
+    },
+    {
+        id: 'analytics',
+        title: 'Analytics & Data',
+        description: 'Diepgaande analyse en rapportage.',
+        icon: '📊',
+        docs: [
+            { slug: 'analytics-reports', title: 'Analytics & Rapporten' }
+        ]
+    },
+    {
+        id: 'collaboration',
+        title: 'Team & Samenwerking',
+        description: 'Team beheer en communicatie.',
+        icon: '👥',
+        docs: [
+            { slug: 'team-collaboration', title: 'Team Beheer' },
+            { slug: 'mobile-app', title: 'Mobiel App' }
+        ]
+    },
+    {
+        id: 'advanced',
+        title: 'Geavanceerde Tips',
+        description: 'Best practices en geavanceerde functies.',
+        icon: '🎯',
+        docs: [
+            { slug: 'best-practices', title: 'Best Practices' }
+        ]
+    },
+    {
         id: 'support',
         title: 'Ondersteuning',
         description: 'Hulp en probleemoplossing.',
@@ -1040,6 +1088,630 @@ Beheer je abonnement en betalingsmethode.`
         ],
         nextDoc: 'users-roles',
         prevDoc: 'preferences-settings'
+    },
+
+    // ============ AI COACH ADVANCED ============
+    'ai-coach-advanced': {
+        title: 'AI Coach - Geavanceerd',
+        description: 'Volledige AI training generator en assistant.',
+        readTime: '4 min',
+        sections: [
+            {
+                title: 'AI Training Generator',
+                image: '/docs/ai-coach/ai_coach_overview.png',
+                content: `Genereer volledige trainingsschema's met kunstmatige intelligentie. De AI leert van je trainingspatronen en past zich aan.`
+            },
+            {
+                title: 'Hoe Werkt Het',
+                content: `1. **Beschrijf je Training:** Type wat je wilt trainen
+2. **Selecteer Doelgroep:** Leeftijd, niveau, discipline
+3. **Kies Focus:** Snelheid, kracht, techniek, uithoudingsvermogen
+4. **AI Genereert:** Compleet schema in 30 seconden
+5. **Pas Aan:** Edit de voorgestelde oefeningen
+6. **Gebruik:** Direct beschikbaar voor je klassen`
+            },
+            {
+                title: 'Voorbeelden',
+                content: `**Voorbeeld 1:** "60-minuten sprinttraining voor U16 jongens gericht op acceleratie"
+→ AI genereert: Warming-up, acceleratie drills, max velocity werk, cool-down
+
+**Voorbeeld 2:** "30-minuten recovery sessie na zware wedstrijd"
+→ AI genereert: Lichte mobiliteit, stretching, mentale focus
+
+**Voorbeeld 3:** "Technique masterclass hurdles voor beginners"
+→ AI genereert: Stap-voor-stap hurdle technique met progressie`
+            },
+            {
+                title: 'AI Features',
+                content: `✅ Oneindige trainingsideeën genereren
+✅ Aangepast aan leeftijd en niveau
+✅ Variaties voor hetzelfde thema
+✅ Progressieve trainingsschema's
+✅ Blessurepreventie ingebouwd
+✅ Basis- tot gevorderd niveau`
+            },
+            {
+                title: 'Tips',
+                content: `- Wees specifiek in je beschrijving
+- Vermeld doelgroep en tijdsduur
+- Geef trainingsdoelen aan
+- Vraag om variaties van dezelfde training
+- Gebruik genereerde schema's als templates`
+            }
+        ],
+        nextDoc: 'camps-complete',
+        prevDoc: 'ai-copilot'
+    },
+
+    // ============ CAMPS & ACTIVITIES ============
+    'camps-complete': {
+        title: 'Trainingskampen - Volledig',
+        description: 'Plan en beheer meerdaagse trainingsevens.',
+        readTime: '5 min',
+        sections: [
+            {
+                title: 'Kamp Organisatie',
+                image: '/docs/activiteiten/camps-overview.png',
+                content: `Organiseer meerdaagse trainingskampen met volledig beheer van deelnemers, accommodatie, schema en communicatie.`
+            },
+            {
+                title: 'Stappen om een Kamp in te Stellen',
+                content: `1. **Basisgegevens**
+   - Naam, datum (start/eind), locatie
+   - Doelgroep, trainer(s)
+   - Beschrijving, doelstellingen
+
+2. **Deelnemers**
+   - Voeg leden toe of importeer groep
+   - Beheer inschrijvingen
+   - Track betalingen
+
+3. **Dag Schema**
+   - Maak dagschema's
+   - Voeg trainingen toe
+   - Plan maaltijden/pauzes
+   - Voeg activities toe
+
+4. **Communicatie**
+   - Stuur updates naar deelnemers
+   - Deel belangrijke info
+   - Verzamel feedback`
+            },
+            {
+                title: 'Kampschema',
+                content: `**Dag 1 - Maandag**
+- 09:00 Aankomst & incheck
+- 10:00 Openingsbijeenkomst
+- 11:00 Training: Technique foundation
+- 13:00 Lunch
+- 14:30 Training: Speed drills
+- 17:00 Pauze
+- 19:00 Diner
+- 20:30 Team activity
+
+**Dag 2 - Dinsdag**
+- 08:00 Breakfast
+- 09:00 Training: Power
+- 12:00 Lunch
+- 13:30 Video analyse
+- 15:00 Training: Competition simulation
+- 17:30 Recovery
+- 19:00 Diner
+- 20:00 Discussion & feedback`
+            },
+            {
+                title: 'Deelnemer Management',
+                content: `- Registratie en betalingen
+- Medische informatie
+- Noodcontacten
+- Voedselallergieën
+- Bijzondere behoeften
+- Aanwezigheid tracking
+- Feedback verzamelen`
+            },
+            {
+                title: 'Best Practices',
+                content: `✅ Stuur kalender 1 maand van tevoren
+✅ Bevestig inschrijvingen 2 weken ervoor
+✅ Update deelnemers dagelijks
+✅ Verzamel feedback aan het eind
+✅ Documenteer hoogtepunten met foto's
+✅ Genereer certificaten voor deelnemers`
+            }
+        ],
+        nextDoc: 'attendance-tracking',
+        prevDoc: 'ai-coach-advanced'
+    },
+
+    // ============ ATTENDANCE TRACKING ============
+    'attendance-tracking': {
+        title: 'Aanwezigheid & Deelname',
+        description: 'Volg trainingsdeelname en statistieken.',
+        readTime: '3 min',
+        sections: [
+            {
+                title: 'Aanwezigheid Tracking',
+                content: `Zie direct in het dashboard wie aanwezig is bij elke training. Track trends en identificeer atleten die regelmatig missen.`
+            },
+            {
+                title: 'Hoe Aanwezigheid in te Voeren',
+                content: `**Voor Training:**
+1. Ga naar Trainingen → Selecteer training
+2. Klik "Aanwezigheid invoeren"
+3. Vink leden aan/uit
+4. Voeg opmerkingen toe (blessure, ziek)
+5. Sla op
+
+**Mobiel:**
+1. Open training op telefoon
+2. Scroll naar "Check-in"
+3. Tik op foto van atlete
+4. Bevestig aanwezigheid
+5. Done!`
+            },
+            {
+                title: 'Statistieken',
+                content: `- Gemiddelde aanwezigheid per atlete
+- Trainingen gemist per maand
+- Trends over seizoen
+- Beste deelnemers (perfect record)
+- Atleten met slechte aanwezigheid
+- Reden voor afwezigheid`
+            },
+            {
+                title: 'Rapporten',
+                content: `📊 **Maandelijks Rapport:**
+- Totale trainingen gepland
+- Gemiddelde opkomst
+- Top deelnemers
+- Deelnemers met zorgen
+
+📈 **Trends:**
+- Seizoenaalpatronen
+- Impact op prestatie
+- Voortgang in loop van seizoen`
+            },
+            {
+                title: 'Instellingen',
+                content: `- Automatische herinnering 1 dag voor
+- Ouders notificatie bij afwezigheid
+- Drempel waarschuwen (bijv: 3x missen)
+- Notities voor afwezigheid
+- Absentie redenen (ziek, blessure, persoonlijk)`
+            }
+        ],
+        nextDoc: 'analytics-reports',
+        prevDoc: 'camps-complete'
+    },
+
+    // ============ ANALYTICS & REPORTS ============
+    'analytics-reports': {
+        title: 'Analytics & Rapporten',
+        description: 'Diepgaande data-analyse en rapportage.',
+        readTime: '4 min',
+        sections: [
+            {
+                title: 'Analytics Dashboard',
+                content: `Analyseer al je trainings- en competitiegegevens. Identificeer trends, track voortgang en maak data-gestuurde besluiten.`
+            },
+            {
+                title: 'Beschikbare Rapporten',
+                content: `🏃 **Training Analyse**
+- Trainingen per week/maand
+- Gemiddelde deelname
+- Training frequentie per atlete
+- Populairste training types
+- Peak training tijden
+
+🏆 **Competitie Resultaten**
+- PR-tracking
+- Persoonlijke besten
+- Seizoen trends
+- Vergelijking vorig seizoen
+- Top performers
+
+📊 **Team Statistieken**
+- Groepsvoortgang
+- Categorieën prestatie
+- Records per categorie
+- Meest succesvol trainingschema's`
+            },
+            {
+                title: 'Rapporten Genereren',
+                content: `1. Ga naar Dashboard → Reports
+2. Kies rapporttype
+3. Selecteer periode (week/maand/seizoen)
+4. Voeg filters toe (groep, categorie, atlete)
+5. Genereer
+6. Download als PDF of Excel`
+            },
+            {
+                title: 'Data Export',
+                content: `📥 **Exporteer naar:**
+- Excel (voor analyse)
+- PDF (voor presentaties)
+- Google Sheets (automatisch)
+- CSV (voor externe tools)
+
+💾 **Wat Exporteren:**
+- Trainingsgeschiedenis
+- Competitieresultaten
+- Aanwezigheidsdata
+- Persoonlijke records
+- Clubs records`
+            },
+            {
+                title: 'Inzichten & Alerts',
+                content: `🔔 **Automatische Alerts:**
+- Atlete met slechte aanwezigheid
+- Plotselinge prestatieverandering
+- Blessuringsrisico (overtraining)
+- Records en milestones bereikt
+- Team trend wijzigingen`
+            }
+        ],
+        nextDoc: 'chrome-extension',
+        prevDoc: 'attendance-tracking'
+    },
+
+    // ============ CHROME EXTENSION ============
+    'chrome-extension': {
+        title: 'Chrome Extension',
+        description: 'Atletiek.nu integratie en bulk operaties.',
+        readTime: '4 min',
+        sections: [
+            {
+                title: 'Chrome Extension Setup',
+                content: `De Coach Portaal Chrome Extension integreert je platform met Atletiek.nu voor directe wedstrijdresultaat import.`
+            },
+            {
+                title: 'Installatie',
+                content: `1. **Download:**
+   - Ga naar Chrome Web Store
+   - Zoek "Coach Portaal"
+   - Klik "Toevoegen aan Chrome"
+
+2. **Login:**
+   - Klik extensie icoon
+   - Login met je account
+   - Autoriseer toegang
+
+3. **Klaar:**
+   - Extension werkt automatisch
+   - Zie icoon in toolbar`
+            },
+            {
+                title: 'Atletiek.nu Import',
+                content: `**Resultaten Importeren:**
+1. Ga naar atletiek.nu wedstrijdpagina
+2. Klik Coach Portaal icoon
+3. Selecteer je organisatie
+4. Herken atleten automatisch
+5. Bewerk indien nodig
+6. Klik "Importeren"
+
+**Wat Import:**
+- Wedstrijdgegevens
+- Atletennamen & resultaten
+- Prestaties per onderdeel
+- Automatische PR detectie`
+            },
+            {
+                title: 'Bulk Operaties',
+                content: `📋 **Bulk Leden Import:**
+- Upload Excel lijst
+- Map kolommen
+- Controleer preview
+- Importeer alles tegelijk
+
+📊 **Bulk Resultaat Import:**
+- Import meerdere wedstrijden
+- Automatische matching
+- Batch PR updates
+- Record updates`
+            },
+            {
+                title: 'Geavanceerde Features',
+                content: `🔄 **Synchronisatie:**
+- Automatische sync met atletiek.nu
+- Dagelijkse updates
+- Real-time wedstrijduitslagen
+
+⚙️ **Instellingen:**
+- Auto-import activeren
+- Notificaties
+- Categorie mapping
+- Discipline aliassen`
+            },
+            {
+                title: 'Troubleshooting',
+                content: `❓ **Problemen:**
+- Extension verschijnt niet → Refresh pagina
+- Login werkt niet → Check cookies
+- Import mislukt → Controleer format
+- Atleten niet herkend → Update naamlijst`
+            }
+        ],
+        nextDoc: 'team-collaboration',
+        prevDoc: 'analytics-reports'
+    },
+
+    // ============ TEAM COLLABORATION ============
+    'team-collaboration': {
+        title: 'Team Beheer & Samenwerking',
+        description: 'Werkteam organisatie, rollen en toegang.',
+        readTime: '4 min',
+        sections: [
+            {
+                title: 'Team Management',
+                content: `Beheer je coaching team, wijs verantwoordelijkheden toe en werk samen in real-time.`
+            },
+            {
+                title: 'Rollen & Rechten',
+                content: `👨‍💼 **Admin**
+- Volledige toegang
+- Beheer gebruikers
+- Instellingen wijzigen
+- Facturering
+
+🏃 **Coach**
+- Trainingen maken/bewerken
+- Leden beheren
+- Wedstrijden invoeren
+- Rapporten zien
+
+👥 **Assistent**
+- Trainingen zien
+- Aanwezigheid invoeren
+- Basisgegevens
+- Geen wijzigingen
+
+📋 **Vrijwilliger**
+- Aanwezigheid invoeren
+- Alleen-lezen toegang
+- Geen gevoelige gegevens`
+            },
+            {
+                title: 'Team Uitnodigen',
+                content: `**Methode 1: Direct Uitnodigen**
+1. Instellingen → Gebruikers
+2. "+ Nieuw Team Member"
+3. Email invoeren
+4. Rol kiezen
+5. Uitnodigingsmail verstuurd
+
+**Methode 2: Uitnodigingscode**
+1. Instellingen → Uitnodigingscodes
+2. "+ Nieuwe Code"
+3. Rol en limiet instellen
+4. Deel code (WhatsApp/Email)
+5. Anderen gebruiken code om aan te sluiten`
+            },
+            {
+                title: 'Samenwerkingsfeatures',
+                content: `💬 **In-App Messaging**
+- Directe berichten tussen coaches
+- Groepschats
+- Notificaties
+
+📅 **Gedeelde Kalender**
+- Zien andermans trainingsschema
+- Coachbeschikbaarheid
+- Gezamenlijke planning
+
+📝 **Gedeelde Notities**
+- Trainings feedback
+- Atletennoten
+- Teamopmerkingen
+
+🔄 **Real-time Updates**
+- Zien wie trainingen bewerkt
+- Live changelog
+- Conflictdetectie`
+            },
+            {
+                title: 'Best Practices',
+                content: `✅ Verdeel verantwoordelijkheden duidelijk
+✅ Communiceer via in-app system
+✅ Voer data in op hetzelfde moment
+✅ Review samen trainingseffectiviteit
+✅ Deel feedback op trainingen
+✅ Documenteer trainersspecific aantekeningen`
+            }
+        ],
+        nextDoc: 'mobile-app',
+        prevDoc: 'chrome-extension'
+    },
+
+    // ============ MOBILE APP ============
+    'mobile-app': {
+        title: 'Mobiel App Gids',
+        description: 'Coach Portaal op je telefoon.',
+        readTime: '3 min',
+        sections: [
+            {
+                title: 'Mobiel App Features',
+                content: `Gebruik Coach Portaal volledig op je smartphone. Perfect voor trainingen op het veld.`
+            },
+            {
+                title: 'Wat Kan je Doen',
+                content: `📱 **Trainingsveld:**
+- Trainingen zien
+- Leden checken
+- Aanwezigheid invoeren
+- Real-time feedback
+
+📊 **Quick Stats:**
+- Vandaag statistieken
+- Recent resultaten
+- Aankomende wedstrijden
+
+💬 **Communicatie:**
+- Berichten naar team
+- Ouders notificaties
+- Team chat
+
+📅 **Calendar:**
+- Week overzicht
+- Trainingswaarschuwingen
+- Wedstrijd reminders`
+            },
+            {
+                title: 'Offline Mode',
+                content: `✅ **Werkt Offline:**
+- Aanwezigheid invoeren
+- Trainingen bekijken
+- Notes maken
+- Berichten schrijven
+
+🔄 **Sync Wanneer Online:**
+- Automatische upload
+- Conflictherkenning
+- Data samenvoegen`
+            },
+            {
+                title: 'Mobiel-Specifieke Features',
+                content: `📸 **Camera:**
+- Maak foto's van trainingen
+- Voeg toe aan raporten
+- Deel met team
+
+🗺️ **GPS:**
+- Trainingslocatie
+- Waarschuwing bij vertrek
+- Navigatie
+
+🔔 **Notificaties:**
+- Trainingsupdates
+- Wedstrijdremindes
+- Teambericht alerts`
+            },
+            {
+                title: 'Tips',
+                content: `💡 Zet notificaties aan voor belangrijke updates
+💡 Gebruik offline mode op het veld
+💡 Sync voor training begint
+💡 Beheer batterij met dark mode
+💡 Voer snel gegevens in met swipe`
+            }
+        ],
+        nextDoc: 'best-practices',
+        prevDoc: 'team-collaboration'
+    },
+
+    // ============ BEST PRACTICES ============
+    'best-practices': {
+        title: 'Best Practices & Tips',
+        description: 'Gouden regels voor maximaal succes.',
+        readTime: '5 min',
+        sections: [
+            {
+                title: 'Coaching Workflow',
+                content: `**Dagelijkse Routine:**
+
+📅 **Ochtend (voor training):**
+- Controleer trainingsplan
+- Check aanwezigheidsvoorspelling
+- Bekijk weersvoorspelling
+- Voorzie potentiële problemen
+
+🏃 **Training:**
+- Voer aanwezigheid in
+- Maak notities over voortgang
+- Neem foto's van hoogtepunten
+- Track individuele prestaties
+
+📊 **Na Training:**
+- Voeg feedback toe
+- Update statistieken
+- Communiceer met ouders
+- Plan volgende training`
+            },
+            {
+                title: 'Trainingsplanning',
+                content: `🎯 **Periodisatie:**
+- Volg seizoenale cyclus
+- Varieer trainingstypen
+- Voorkomen overtraining
+- Plannen recovery periodes
+
+📈 **Progressie:**
+- Start met basis
+- Verhoog intensiteit geleidelijk
+- Meet voortgang
+- Pas aan op basis van resultaten
+
+🔄 **Variatie:**
+- Zelfde doel, verschillende aanpak
+- Houd het interessant
+- Challenge atleten
+- Voorkomen verveling`
+            },
+            {
+                title: 'Data Beheer',
+                content: `✅ **Regelmatig Updaten:**
+- Voer gegevens in dezelfde dag in
+- Geen backlog creëren
+- Consistent inputten
+
+💾 **Backup:**
+- Export maandelijks
+- Archive oude seizoenen
+- Cloud backup inschakelen
+
+📊 **Analyseren:**
+- Maandelijks rapportage
+- Trends herkennen
+- Seizoen evaluatie`
+            },
+            {
+                title: 'Team Communicatie',
+                content: `📢 **Effectieve Communicatie:**
+- Gebruik in-app system
+- Wees duidelijk en kort
+- Stuur updates regelmatig
+- Vraag feedback
+
+👨‍👩‍👧‍👦 **Ouders:**
+- Maandelijkse rapport
+- Successen delen
+- Problemen aanspreken
+- Vragen beantwoorden
+
+🤝 **Team:**
+- Wekelijkse sync
+- Feedback session
+- Training effectiveness review
+- Collaboratie verbeteren`
+            },
+            {
+                title: 'Performance Optimization',
+                content: `🚀 **Snellere Data Entry:**
+- Gebruik mobile app
+- Templates voor training
+- Sneltoetsen leren
+- Bulk operaties gebruiken
+
+⏱️ **Tijdbeheer:**
+- Automatiseer waar mogelijk
+- Gebruik templates
+- Deel verantwoordelijkheden
+- Batch werk`
+            },
+            {
+                title: 'Advanced Tips',
+                content: `💡 **AI Training Generator:** Gebruik AI voor snelle ideeen
+💡 **Template Library:** Sla succesvolle trainingen op
+💡 **Bulk Import:** Import hele groepen tegelijk
+💡 **Automated Reports:** Schedule maandelijks rapport
+💡 **Extensions:** Integrate met atletiek.nu
+💡 **Mobile App:** Traag geen laptop naar trainingen
+💡 **Sharing:** Betrek ouders in voortgang
+💡 **Analytics:** Maak data-gestuurde besluiten`
+            }
+        ],
+        nextDoc: 'quick-start',
+        prevDoc: 'mobile-app'
     }
 };
 
