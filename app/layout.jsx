@@ -62,6 +62,9 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+    // Use path-based conditional rendering for homepage vs other pages
+    const isHomepage = typeof window !== 'undefined' ? window.location.pathname === '/' : true;
+
     const organizationSchema = {
         '@context': 'https://schema.org',
         '@type': 'Organization',

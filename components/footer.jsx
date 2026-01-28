@@ -8,13 +8,13 @@ const footerLinks = {
     product: [
         { name: 'Functies', href: '/#trainer' },
         { name: 'Prijzen', href: '/#pricing' },
-        { name: 'Chrome Extensie', href: '/docs/chrome-extension' },
-        { name: 'API', href: '/docs/api' },
+        { name: 'Chrome Extensie', href: '/docs' },
+        { name: 'API', href: '/docs' },
     ],
     resources: [
         { name: 'Documentatie', href: '/docs' },
         { name: 'Blog', href: '/blogs' },
-        { name: 'Handleidingen', href: '/docs/guides' },
+        { name: 'Handleidingen', href: '/docs' },
         { name: 'FAQ', href: '/info#faq' },
     ],
     company: [

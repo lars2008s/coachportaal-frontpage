@@ -72,7 +72,7 @@ export function Header() {
                                 Inloggen
                             </Link>
                             <Link
-                                href="https://dashboard.coachportaal.be/sign-up"
+                                href="https://dashboard.coachportaal.be"
                                 className="group relative px-5 py-2.5 text-sm font-bold text-white no-underline rounded-xl overflow-hidden"
                             >
                                 <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-indigo-600 transition-all group-hover:scale-105" />
@@ -167,7 +167,7 @@ export function Header() {
                                         Inloggen
                                     </Link>
                                     <Link
-                                        href="https://dashboard.coachportaal.be/sign-up"
+                                        href="https://dashboard.coachportaal.be"
                                         onClick={() => setIsMobileMenuOpen(false)}
                                         className="block w-full px-4 py-3 text-center text-base font-bold text-white bg-gradient-to-r from-blue-600 to-indigo-600 rounded-xl shadow-lg shadow-blue-600/25 no-underline"
                                     >

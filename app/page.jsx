@@ -1,87 +1,96 @@
 'use client';
 
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import Link from 'next/link';
 import { useState } from 'react';
-import {
-    AIAssistantAnimation,
-    MemberManagementAnimation,
-    CompetitionsAnimation,
-    DiplomaAnimation,
-    ExtensionAnimation,
-    LibraryAnimation,
-    BlocksAnimation
-} from '../components/landing/feature-animations';
-import { getRecentPosts } from '../data/blogs';
 
-// Role selector card
-function RoleCard({ icon, title, description, benefits, isActive, onClick, color }) {
-    const colorClasses = {
-        blue: {
-            bg: 'bg-blue-50',
-            border: 'border-blue-200',
-            activeBg: 'bg-gradient-to-br from-blue-600 to-indigo-600',
-            text: 'text-blue-600',
-            iconBg: 'bg-blue-100',
-        },
-        purple: {
-            bg: 'bg-purple-50',
-            border: 'border-purple-200',
-            activeBg: 'bg-gradient-to-br from-purple-600 to-indigo-600',
-            text: 'text-purple-600',
-            iconBg: 'bg-purple-100',
-        }
-    };
-    const c = colorClasses[color];
+// Floating athletic icons for background
+const floatingIcons = [
+    { icon: '🏃', delay: 0, duration: 8, size: 40 },
+    { icon: '🎯', delay: 1, duration: 10, size: 32 },
+    { icon: '💪', delay: 2, duration: 9, size: 36 },
+    { icon: '🏆', delay: 3, duration: 11, size: 28 },
+    { icon: '⚡', delay: 0.5, duration: 7, size: 30 },
+    { icon: '🥇', delay: 1.5, duration: 12, size: 24 },
+];
+
+function FloatingBackground() {
+    return (
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+            {floatingIcons.map((item, i) => (
+                <motion.div
+                    key={i}
+                    className="absolute opacity-10"
+                    initial={{ y: '100vh', x: `${Math.random() * 100}%` }}
+                    animate={{ y: '-100px', x: `${Math.random() * 100}%` }}
+                    transition={{
+                        duration: item.duration,
+                        delay: item.delay,
+                        repeat: Infinity,
+                        repeatType: 'loop',
+                        ease: 'linear'
+                    }}
+                    style={{ fontSize: item.size }}
+                >
+                    {item.icon}
+                </motion.div>
+            ))}
+        </div>
+    );
+}
+
+// Enhanced role selector
+function RoleSelectorCard({ role, selectedRole, onSelect }) {
+    const isSelected = selectedRole === role.id;
+    const colors = role.id === 'trainer'
+        ? { from: 'from-blue-500', to: 'to-indigo-600', bg: 'bg-blue-50', text: 'text-blue-600' }
+        : { from: 'from-purple-500', to: 'to-pink-600', bg: 'bg-purple-50', text: 'text-purple-600' };
 
     return (
         <motion.button
-            onClick={onClick}
-            whileHover={{ scale: 1.02 }}
+            onClick={() => onSelect(role.id)}
+            whileHover={{ scale: 1.02, y: -5 }}
             whileTap={{ scale: 0.98 }}
-            className={`relative w-full p-8 rounded-3xl border-2 text-left transition-all duration-300 ${isActive
-                ? `${c.activeBg} border-transparent text-white shadow-2xl`
-                : `bg-white ${c.border} hover:shadow-xl`
-                }`}
+            className={`relative w-full p-6 rounded-2xl text-left transition-all duration-500 overflow-hidden ${
+                isSelected
+                    ? `bg-gradient-to-br ${colors.from} ${colors.to} text-white shadow-2xl shadow-blue-900/30`
+                    : 'bg-white/90 backdrop-blur-sm border-2 border-gray-100 hover:border-gray-200 shadow-lg hover:shadow-xl'
+            }`}
         >
-            {/* Icon */}
-            <div className={`w-16 h-16 rounded-2xl flex items-center justify-center mb-6 ${isActive ? 'bg-white/20' : c.iconBg
+            <div className="relative z-10">
+                <div className={`w-16 h-16 rounded-xl flex items-center justify-center mb-4 transition-all ${
+                    isSelected ? 'bg-white/20' : `${colors.bg} ${colors.text}`
                 }`}>
-                <div className={isActive ? 'text-white' : c.text}>
-                    {icon}
+                    <span className="text-3xl">{role.emoji}</span>
                 </div>
+
+                <h3 className={`text-xl font-black mb-2 ${isSelected ? 'text-white' : 'text-gray-900'}`}>
+                    {role.title}
+                </h3>
+
+                <p className={`mb-4 text-sm leading-relaxed ${isSelected ? 'text-white/90' : 'text-gray-600'}`}>
+                    {role.description}
+                </p>
+
+                <ul className="space-y-2">
+                    {role.benefits.map((benefit, i) => (
+                        <li key={i} className="flex items-center gap-2">
+                            <svg className={`w-4 h-4 flex-shrink-0 ${isSelected ? 'text-lime-300' : 'text-lime-500'}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
+                            </svg>
+                            <span className={`text-sm ${isSelected ? 'text-white/90' : 'text-gray-700'}`}>
+                                {benefit}
+                            </span>
+                        </li>
+                    ))}
+                </ul>
             </div>
 
-            {/* Title */}
-            <h3 className={`text-2xl font-black mb-3 ${isActive ? 'text-white' : 'text-gray-900'}`}>
-                {title}
-            </h3>
-
-            {/* Description */}
-            <p className={`text-base mb-6 ${isActive ? 'text-white/80' : 'text-gray-500'}`}>
-                {description}
-            </p>
-
-            {/* Quick benefits */}
-            <ul className="space-y-2">
-                {benefits.slice(0, 3).map((benefit, i) => (
-                    <li key={i} className="flex items-center gap-2">
-                        <svg className={`w-5 h-5 flex-shrink-0 ${isActive ? 'text-lime-300' : 'text-lime-500'}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
-                        </svg>
-                        <span className={`text-sm font-medium ${isActive ? 'text-white/90' : 'text-gray-600'}`}>
-                            {benefit}
-                        </span>
-                    </li>
-                ))}
-            </ul>
-
-            {/* Selected indicator */}
-            {isActive && (
+            {isSelected && (
                 <motion.div
-                    initial={{ scale: 0 }}
-                    animate={{ scale: 1 }}
-                    className="absolute top-4 right-4 w-8 h-8 bg-lime-400 rounded-full flex items-center justify-center"
+                    initial={{ scale: 0, rotate: -180 }}
+                    animate={{ scale: 1, rotate: 0 }}
+                    className="absolute top-3 right-3 w-8 h-8 bg-gradient-to-br from-lime-400 to-lime-500 rounded-lg flex items-center justify-center shadow-lg"
                 >
                     <svg className="w-5 h-5 text-gray-900" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
@@ -92,58 +101,89 @@ function RoleCard({ icon, title, description, benefits, isActive, onClick, color
     );
 }
 
-// Deep dive benefit section
-function BenefitSection({ icon, title, description, details, animation, color, reverse = false }) {
-    const colorClasses = {
-        blue: { bg: 'bg-blue-50', iconBg: 'bg-blue-100', iconText: 'text-blue-600', accent: 'text-blue-600', border: 'border-blue-100' },
-        purple: { bg: 'bg-purple-50', iconBg: 'bg-purple-100', iconText: 'text-purple-600', accent: 'text-purple-600', border: 'border-purple-100' },
-        lime: { bg: 'bg-lime-50', iconBg: 'bg-lime-100', iconText: 'text-lime-600', accent: 'text-lime-600', border: 'border-lime-100' },
-        orange: { bg: 'bg-orange-50', iconBg: 'bg-orange-100', iconText: 'text-orange-600', accent: 'text-orange-600', border: 'border-orange-100' },
-    };
-    const c = colorClasses[color] || colorClasses.blue;
+// Feature showcase with personal touch
+function FeatureShowcase({ features }) {
+    return (
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {features.map((feature, i) => (
+                <motion.div
+                    key={i}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.4, delay: i * 0.08 }}
+                    whileHover={{ y: -5 }}
+                    className="relative group"
+                >
+                    <div className="absolute inset-0 bg-gradient-to-br from-blue-100/80 to-indigo-100/80 rounded-2xl transform rotate-1 group-hover:rotate-2 transition-transform" />
+                    <div className={`relative bg-white/90 backdrop-blur-sm rounded-2xl p-6 border border-white/50`}>
+                        <div className={`w-12 h-12 rounded-xl ${feature.iconBg} flex items-center justify-center mb-4 shadow-lg group-hover:scale-110 transition-transform`}>
+                            <span className="text-2xl">{feature.emoji}</span>
+                        </div>
+                        <h3 className="text-lg font-black text-gray-900 mb-2">{feature.title}</h3>
+                        <p className="text-gray-600 text-sm leading-relaxed mb-3">{feature.description}</p>
+                        {feature.details && (
+                            <ul className="space-y-1.5 mb-3">
+                                {feature.details.map((detail, j) => (
+                                    <li key={j} className="flex items-start gap-2 text-xs text-gray-700">
+                                        <svg className="w-3.5 h-3.5 text-lime-500 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
+                                        </svg>
+                                        <span>{detail}</span>
+                                    </li>
+                                ))}
+                            </ul>
+                        )}
+                        {feature.quote && (
+                            <div className={`text-xs italic ${feature.quoteColor} border-l-2 ${feature.quoteBorder} pl-2 py-1.5 bg-white/50 rounded-r`}>
+                                "{feature.quote}"
+                            </div>
+                        )}
+                    </div>
+                </motion.div>
+            ))}
+        </div>
+    );
+}
 
+// Unique feature highlight with icon
+function UniqueFeatureCard({ feature, index }) {
     return (
         <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.6 }}
-            className={`flex flex-col ${reverse ? 'lg:flex-row-reverse' : 'lg:flex-row'} items-center gap-12 lg:gap-20`}
+            initial={{ opacity: 0, x: index % 2 === 0 ? -30 : 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: index * 0.1 }}
+            className={`flex flex-col md:flex-row gap-6 items-center ${
+                index % 2 === 0 ? '' : 'md:flex-row-reverse'
+            }`}
         >
-            {/* Content */}
-            <div className="flex-1">
-                <div className={`w-14 h-14 rounded-2xl ${c.iconBg} ${c.iconText} flex items-center justify-center mb-6`}>
-                    {icon}
+            <div className={`flex-1 ${index % 2 === 0 ? 'md:text-right' : 'md:text-left'}`}>
+                <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-500 to-indigo-600 mb-4 shadow-lg">
+                    <span className="text-3xl">{feature.emoji}</span>
                 </div>
-                <h3 className="text-3xl lg:text-4xl font-black text-gray-900 tracking-tight mb-4">
-                    {title}
-                </h3>
-                <p className="text-lg text-gray-500 leading-relaxed mb-8">
-                    {description}
-                </p>
-
-                {/* Detail points */}
-                <div className="space-y-4">
-                    {details.map((detail, i) => (
-                        <div key={i} className={`flex gap-4 p-4 rounded-2xl ${c.bg} ${c.border} border`}>
-                            <div className={`w-8 h-8 rounded-lg ${c.iconBg} flex items-center justify-center flex-shrink-0`}>
-                                <span className={`text-sm font-bold ${c.accent}`}>{i + 1}</span>
-                            </div>
-                            <div>
-                                <h4 className="font-bold text-gray-900 mb-1">{detail.title}</h4>
-                                <p className="text-sm text-gray-500">{detail.description}</p>
+                <h3 className="text-2xl font-black text-gray-900 mb-3">{feature.title}</h3>
+                <p className="text-gray-600 leading-relaxed mb-4">{feature.description}</p>
+                <ul className="space-y-2">
+                    {feature.highlights.map((highlight, i) => (
+                        <li key={i} className="flex items-center gap-2 text-sm text-gray-700">
+                            <svg className="w-4 h-4 text-lime-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
+                            </svg>
+                            {highlight}
+                        </li>
+                    ))}
+                </ul>
+            </div>
+            <div className="flex-1">
+                <div className="relative">
+                    <div className="absolute inset-0 bg-gradient-to-br from-blue-400/20 to-purple-400/20 rounded-2xl blur-xl" />
+                    <div className="relative bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl p-2 shadow-2xl">
+                        <div className="bg-gray-800 rounded-xl p-2">
+                            <div className="bg-gray-700 rounded-lg flex items-center justify-center h-48">
+                                <span className="text-6xl">{feature.emoji}</span>
                             </div>
                         </div>
-                    ))}
-                </div>
-            </div>
-
-            {/* Animation/Visual */}
-            <div className="flex-1 w-full max-w-md lg:max-w-none">
-                <div className="relative">
-                    <div className={`absolute inset-0 ${c.bg} rounded-3xl blur-3xl opacity-50`} />
-                    <div className="relative">
-                        {animation}
                     </div>
                 </div>
             </div>
@@ -151,596 +191,698 @@ function BenefitSection({ icon, title, description, details, animation, color, r
     );
 }
 
-// Blog card
-function BlogCard({ post }) {
-    const colorClasses = {
-        blue: 'bg-blue-100 text-blue-700',
-        purple: 'bg-purple-100 text-purple-700',
-        green: 'bg-green-100 text-green-700',
-        orange: 'bg-orange-100 text-orange-700',
-        indigo: 'bg-indigo-100 text-indigo-700',
-    };
-
-    return (
-        <Link href={`/blogs/${post.slug}`} className="group block no-underline">
-            <div className="h-full p-6 rounded-2xl border border-gray-100 bg-white hover:border-blue-200 hover:shadow-xl transition-all duration-300">
-                <div className="flex items-center gap-3 mb-4">
-                    <span className={`px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider ${colorClasses[post.color] || colorClasses.blue}`}>
-                        {post.category}
-                    </span>
-                    <span className="text-xs text-gray-400 font-medium">{post.readTime || '5 min'}</span>
-                </div>
-                <h3 className="font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors leading-tight text-lg">
-                    {post.title}
-                </h3>
-                <p className="text-sm text-gray-500 leading-relaxed mb-4 line-clamp-2">
-                    {post.excerpt}
-                </p>
-                <div className="flex items-center text-blue-600 text-sm font-bold">
-                    Lees meer
-                    <svg className="ml-1.5 w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                    </svg>
-                </div>
-            </div>
-        </Link>
-    );
-}
-
 export default function Page() {
     const [selectedRole, setSelectedRole] = useState('trainer');
-    const recentPosts = getRecentPosts(3);
 
-    // Trainer benefits data
-    const trainerBenefits = [
-        {
-            icon: <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" /></svg>,
-            title: "Jouw complete trainingsbibliotheek",
-            description: "Stop met zoeken in schriften en notities. Al je trainingen staan overzichtelijk op één plek, altijd toegankelijk op je telefoon of laptop.",
-            color: "blue",
-            animation: <LibraryAnimation />,
-            details: [
-                { title: "Onbeperkt trainingen opslaan", description: "Organiseer per categorie, leeftijdsgroep of seizoen." },
-                { title: "Direct toegankelijk op de baan", description: "Open je training via je telefoon. Geen gedoe meer." },
-                { title: "Kopieer en pas aan", description: "Hergebruik trainingen als basis voor nieuwe schema's." },
+    const handleRoleSelect = (role) => {
+        setSelectedRole(role);
+        setTimeout(() => {
+            document.getElementById('features-section')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 100);
+    };
+
+    const roles = {
+        trainer: {
+            id: 'trainer',
+            emoji: '🏃',
+            title: 'Ik ben Trainer',
+            description: 'Ik geef trainingen en wil snel goede trainingen maken met minder voorbereidingstijd.',
+            benefits: [
+                'Trainingsbibliotheek op je telefoon',
+                'Sla trainingen op en hergebruik ze',
+                'Honderden spellen & spelvormen'
             ]
         },
-        {
-            icon: <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>,
-            title: "Honderden oefeningen en spellen",
-            description: "Toegang tot honderden atletiek oefeningen en spellen, gefilterd op leeftijd en onderdeel. Van warming-up spelletjes tot geavanceerde spelvormen.",
-            color: "lime",
-            animation: <BlocksAnimation />,
-            details: [
-                { title: "Uitgebreide bibliotheek", description: "Honderden bewezen oefeningen voor warming-up, techniek en kracht." },
-                { title: "Filter op leeftijd & niveau", description: "Vind direct geschikte oefeningen voor jouw groep." },
-                { title: "Eigen spellen toevoegen", description: "Bouw je eigen verzameling op met wat werkt." },
+        bestuurslid: {
+            id: 'bestuurslid',
+            emoji: '🏛️',
+            title: 'Ik ben Bestuurslid',
+            description: 'Ik beheer de club en wil administratie automatiseren zodat we ons op de sport kunnen richten.',
+            benefits: [
+                'Ledenbeheer in één overzicht',
+                'Automatische diploma\'s & records',
+                'Resultaten importeren'
             ]
+        }
+    };
+
+    const trainerFeatures = [
+        {
+            emoji: '⚡',
+            title: 'Trainingen in Seconden',
+            description: 'Type wat je wilt trainen en krijg direct een complete training. Klaar voor gebruik.',
+            details: [
+                'Type "sprinttraining voor pupillen" → complete training',
+                'Automatische warming-up en cooling-down',
+                'Pas intensiteit en duur aan naar jouw groep',
+                'Bewaar favoriete trainingen voor hergebruik'
+            ],
+            quote: 'Ik bespaar elke week 2 uur voorbereiding!',
+            quoteColor: 'text-blue-600',
+            quoteBorder: 'border-blue-300',
+            iconBg: 'bg-gradient-to-br from-blue-500 to-indigo-600'
         },
         {
-            icon: <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" /></svg>,
-            title: "AI maakt trainingen voor je",
-            description: "Beschrijf wat je wilt trainen en laat onze AI een complete training samenstellen. Van warming-up tot cooling-down in seconden.",
-            color: "purple",
-            animation: <AIAssistantAnimation />,
+            emoji: '📚',
+            title: '1000+ Oefeningen',
+            description: 'Toegang tot een enorme bibliotheek met atletiek oefeningen en spellen.',
             details: [
-                { title: "Trainingen in seconden", description: "Vraag: 'Sprinttraining voor pupillen' en krijg direct een complete training." },
-                { title: "Slimme suggesties", description: "De AI leert van jouw voorkeuren en stelt steeds betere trainingen voor." },
-                { title: "Volledig aanpasbaar", description: "Gebruik de AI-training als startpunt en pas aan naar wens." },
-            ]
+                'Sprint, horden, sprong, werp en kracht',
+                'Filter op leeftijd: Kangoeroes t/m Cadetten',
+                'Video-instructies en uitleg',
+                'Voeg toe aan je eigen trainingen'
+            ],
+            quote: 'Eindelijk genoeg variatie!',
+            quoteColor: 'text-lime-600',
+            quoteBorder: 'border-lime-300',
+            iconBg: 'bg-gradient-to-br from-lime-500 to-emerald-600'
         },
+        {
+            emoji: '💡',
+            title: 'AI Training Assistent',
+            description: 'Krijg suggesties op basis van wat je eerder hebt gedaan. Het systeem leert jouw voorkeuren kennen.',
+            details: [
+                'Gebaseerd op jouw eerdere trainingen',
+                'Houdt rekening met jouw materiaal',
+                'Past zich aan jouw groep aan',
+                'Wordt slimmer naarmate je het gebruikt'
+            ],
+            quote: 'Voelt als een persoonlijke assistent.',
+            quoteColor: 'text-purple-600',
+            quoteBorder: 'border-purple-300',
+            iconBg: 'bg-gradient-to-br from-purple-500 to-pink-600'
+        },
+        {
+            emoji: '📊',
+            title: 'Aanwezigheid & Voortgang',
+            description: 'Registreer aanwezigheid en track de voortgang van al je atleten.',
+            details: [
+                'Snelle aanwezigheidsregistratie',
+                'Per training of activiteit',
+                'Automatische export naar PDF',
+                'Historiek per atleet'
+            ],
+            quote: 'Altijd inzicht in wie er geweest is.',
+            quoteColor: 'text-teal-600',
+            quoteBorder: 'border-teal-300',
+            iconBg: 'bg-gradient-to-br from-teal-500 to-cyan-600'
+        },
+        {
+            emoji: '🏆',
+            title: 'Club Records',
+            description: 'Automatische tracking van clubrecords met indoor/outdoor onderscheid.',
+            details: [
+                'Automatische record detectie',
+                'Indoor en Outdoor categorieën',
+                'Per leeftijdscategorie',
+                'Directe notificaties bij nieuwe records'
+            ],
+            quote: 'Records worden nooit meer vergeten.',
+            quoteColor: 'text-amber-600',
+            quoteBorder: 'border-amber-300',
+            iconBg: 'bg-gradient-to-br from-amber-500 to-orange-600'
+        },
+        {
+            emoji: '📅',
+            title: 'Training Kalender',
+            description: 'Plan en beheer al je trainingen in één overzichtelijke kalender.',
+            details: [
+                'Maand en week weergave',
+                'Kleurcodering per trainingstype',
+                'Direct trainingen toewijzen',
+                'Mobiel toegankelijk'
+            ],
+            quote: 'Al mijn trainingen op één plek.',
+            quoteColor: 'text-indigo-600',
+            quoteBorder: 'border-indigo-300',
+            iconBg: 'bg-gradient-to-br from-indigo-500 to-purple-600'
+        }
     ];
 
-    // Bestuurslid benefits data
-    const bestuurslidBenefits = [
+    const bestuurslidFeatures = [
         {
-            icon: <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" /></svg>,
-            title: "Ledenbeheer in één overzicht",
-            description: "Eén overzicht van al je leden met categorieën, contactgegevens en aanwezigheid. Geen Excel-chaos meer.",
-            color: "purple",
-            animation: <MemberManagementAnimation />,
+            emoji: '👥',
+            title: 'Ledenbeheer',
+            description: 'Alle leden, categorieën en aanwezigheid op één plek.',
             details: [
-                { title: "Automatische leeftijdscategorieën", description: "Leden worden automatisch ingedeeld op basis van geboortejaar." },
-                { title: "Aanwezigheid bij trainingen", description: "Coaches registreren aanwezigheid direct in de app." },
-                { title: "Communicatie centraal", description: "Stuur berichten naar specifieke groepen of de hele club." },
-            ]
+                'Automatische indeling in leeftijdscategorieën',
+                'Aanwezigheidsregistratie per training',
+                'QR-codes voor identificatie',
+                'Exporteer lijsten naar Excel'
+            ],
+            quote: 'Besparen 5 uur per week aan administratie.',
+            quoteColor: 'text-purple-600',
+            quoteBorder: 'border-purple-300',
+            iconBg: 'bg-gradient-to-br from-purple-500 to-indigo-600'
         },
         {
-            icon: <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" /></svg>,
-            title: "Automatische diploma's",
-            description: "Na elke clubwedstrijd automatisch prachtige diploma's voor alle deelnemers. Motiveer je atleten met erkenning.",
-            color: "orange",
-            animation: <DiplomaAnimation />,
+            emoji: '🎓',
+            title: 'Diploma Generator',
+            description: 'Genereer professionele diploma\'s voor alle deelnemers na elke wedstrijd.',
             details: [
-                { title: "Professionele templates", description: "Kies uit meerdere designs of upload je eigen clublogo." },
-                { title: "Bulk genereren", description: "Genereer met één klik diploma's voor alle deelnemers." },
-                { title: "Direct delen", description: "Download als PDF of stuur direct per email naar ouders." },
-            ]
+                'Automatische generatie na wedstrijdresultaat',
+                'Personaliseer met clublogo en kleuren',
+                'PDF export',
+                'Bewaar alle diploma\'s in het ledenprofiel'
+            ],
+            quote: 'Ouders en kinderen zijn er superblij mee.',
+            quoteColor: 'text-orange-600',
+            quoteBorder: 'border-orange-300',
+            iconBg: 'bg-gradient-to-br from-orange-500 to-amber-600'
         },
         {
-            icon: <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>,
-            title: "Clubrecords automatisch bijhouden",
-            description: "Alle prestaties worden automatisch vergeleken met clubrecords. Nieuwe records? Je weet het direct.",
-            color: "blue",
-            animation: <CompetitionsAnimation />,
+            emoji: '📊',
+            title: 'Resultaten Import',
+            description: 'Chrome-extensie importeert automatisch resultaten van Atletiek.nu.',
             details: [
-                { title: "Automatische vergelijking", description: "Bij elke ingevoerde prestatie wordt gekeken of het een nieuw record is." },
-                { title: "Overzicht per categorie", description: "Eén pagina met alle clubrecords voor alle leeftijden." },
-                { title: "Notificaties bij records", description: "Word automatisch op de hoogte gesteld van nieuwe records." },
-            ]
+                'One-click import van wedstrijdresultaten',
+                'Clubrecords worden direct bijgewerkt',
+                'Historiek van alle prestaties per lid',
+                'Geen handmatige invoer meer nodig'
+            ],
+            quote: 'Records zijn nu altijd up-to-date.',
+            quoteColor: 'text-blue-600',
+            quoteBorder: 'border-blue-300',
+            iconBg: 'bg-gradient-to-br from-blue-500 to-cyan-600'
         },
         {
-            icon: <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" /></svg>,
-            title: "Resultaten importeren met extensie",
-            description: "Onze Chrome-extensie haalt wedstrijdresultaten direct van atletiek.nu. Bespaar uren werk.",
-            color: "lime",
-            animation: <ExtensionAnimation />,
+            emoji: '📧',
+            title: 'Communicatie',
+            description: 'Stuur groepsmails naar leden, ouders en trainers.',
             details: [
-                { title: "Atletiek.nu integratie", description: "Navigeer naar een wedstrijdpagina, klik op de extensie, klaar." },
-                { title: "Automatische koppeling", description: "Atleten worden automatisch gekoppeld aan je ledenbestand." },
-                { title: "Bespaar uren", description: "Wat voorheen uren kostte, doe je nu in minuten." },
-            ]
+                'Email sjablonen aanmaken',
+                'Segmenteer op groepen',
+                'Verzendgeschiedenis',
+                'Personaliseer berichten'
+            ],
+            quote: 'Communiceren was nog nooit zo makkelijk.',
+            quoteColor: 'text-pink-600',
+            quoteBorder: 'border-pink-300',
+            iconBg: 'bg-gradient-to-br from-pink-500 to-rose-600'
         },
+        {
+            emoji: '⛺',
+            title: 'Kamp & Activiteiten',
+            description: 'Organiseer zomerkampen, activiteiten en evenementen.',
+            details: [
+                'Online inschrijvingen',
+                'Deelnemersbeheer',
+                'Prijzen per categorie',
+                'Inschrijvingsperiodes'
+            ],
+            quote: 'Kamporganisatie is nu een fluitje van een cent.',
+            quoteColor: 'text-cyan-600',
+            quoteBorder: 'border-cyan-300',
+            iconBg: 'bg-gradient-to-br from-cyan-500 to-blue-600'
+        },
+        {
+            emoji: '🏆',
+            title: 'Club Records',
+            description: 'Automatische tracking van clubrecords met indoor/outdoor onderscheid.',
+            details: [
+                'Automatische record detectie',
+                'Indoor en Outdoor categorieën',
+                'Per leeftijdscategorie',
+                'Directe notificaties bij nieuwe records'
+            ],
+            quote: 'Records worden nooit meer vergeten.',
+            quoteColor: 'text-amber-600',
+            quoteBorder: 'border-amber-300',
+            iconBg: 'bg-gradient-to-br from-amber-500 to-orange-600'
+        }
     ];
 
-    const currentBenefits = selectedRole === 'trainer' ? trainerBenefits : bestuurslidBenefits;
+    const uniqueFeatures = [
+        {
+            emoji: '🤖',
+            title: 'AI Copilot',
+            description: 'Onze AI-gestuurde assistent helpt je bij elke stap. Van trainingen samenstellen tot advies - de AI leert van jouw voorkeuren.',
+            highlights: [
+                'Training suggesties op basis van jouw groep',
+                'Fotoherkenning van papieren schema\'s',
+                'Automatische verbetersuggesties',
+                '24/7 beschikbaar'
+            ]
+        },
+        {
+            emoji: '📱',
+            title: 'Mobile App',
+            description: 'Coach Portaal werkt als een native app op je telefoon. Gebruik het op het veld, in de sportzaal of onderweg.',
+            highlights: [
+                'Offline beschikbaarheid',
+                'Push notificaties',
+                'Swipe gestures',
+                'Haptic feedback'
+            ]
+        },
+        {
+            emoji: '🔗',
+            title: 'Atletiek.nu Integratie',
+            description: 'De unieke Chrome extensie importeert wedstrijdresultaten automatisch van Atletiek.nu. Terwijl jij naar de wedstrijdpagina kijkt, scant de extensie alle resultaten en importeert deze met één klik. Geen copy-paste, geen Excel sheets, geen handmatige invoerfouten. Alle atleten, hun prestaties, en categorieën worden direct verwerkt. Nieuwe clubrecords worden automatisch gedetecteerd en bijgewerkt. Plus: alle resultaten komen in een gedeelde database, zodat andere clubs ook profiteren van de ingevoerde data.',
+            highlights: [
+                'Installeer de Chrome extensie',
+                'Ga naar een wedstrijd op Atletiek.nu',
+                'Klik op "Importeer resultaten"',
+                'Alles wordt automatisch verwerkt'
+            ]
+        },
+        {
+            emoji: '🎨',
+            title: 'Visuele Training Editor',
+            description: 'Maak trainingen met een intuïtieve drag & drop editor. Organiseer blokken in warming-up, kern en cooling-down.',
+            highlights: [
+                'Drag & drop interface',
+                'Kleurcode per trainingstype',
+                'SOS Training Wizard',
+                'Sla op als template'
+            ]
+        },
+        {
+            emoji: '📅',
+            title: 'Training Kalender',
+            description: 'Plan en beheer al je trainingen in één overzichtelijke kalender met kleurcodering per type.',
+            highlights: [
+                'Maand en week weergave',
+                'Kleurcodering per discipline',
+                'Direct trainingen toewijzen',
+                'Mobiel toegankelijk'
+            ]
+        },
+        {
+            emoji: '📊',
+            title: 'Dashboard Stats',
+            description: 'Alle statistieken overzichtelijk op één plek: leden, trainingen, records en activiteiten.',
+            highlights: [
+                'Live statistieken',
+                'Recente records widget',
+                'Snelle acties',
+                'Overzicht op elk device'
+            ]
+        }
+    ];
+
+    const currentFeatures = selectedRole === 'trainer' ? trainerFeatures : bestuurslidFeatures;
 
     return (
-        <div className="flex flex-col">
-            {/* ============================================
-                SECTIE 1: HERO - Aandacht & Propositie
-                ============================================ */}
-            <section className="relative py-20 lg:py-28 overflow-hidden">
-                {/* Background */}
-                <div className="absolute inset-0 bg-gradient-to-br from-slate-50 via-blue-50/30 to-indigo-50/50" />
-                <div className="absolute top-20 left-10 w-72 h-72 bg-blue-400/10 rounded-full blur-3xl" />
-                <div className="absolute top-40 right-20 w-96 h-96 bg-indigo-400/10 rounded-full blur-3xl" />
+        <div className="min-h-screen">
+            {/* Continuous gradient background */}
+            <div className="fixed inset-0 bg-gradient-to-br from-slate-50 via-blue-50/40 to-indigo-50/60 -z-10" />
+            <div className="fixed top-0 left-0 w-full h-full overflow-hidden -z-10 pointer-events-none">
+                <div className="absolute top-20 left-10 w-96 h-96 bg-gradient-to-br from-blue-400/15 to-blue-600/15 rounded-full blur-3xl animate-pulse" />
+                <div className="absolute top-40 right-20 w-96 h-96 bg-gradient-to-br from-indigo-400/15 to-purple-600/15 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
+                <div className="absolute bottom-20 left-1/3 w-96 h-96 bg-gradient-to-br from-teal-400/10 to-cyan-400/10 rounded-full blur-3xl" />
+                <div className="absolute top-1/2 right-1/4 w-96 h-96 bg-gradient-to-br from-lime-400/10 to-emerald-400/10 rounded-full blur-3xl" />
+            </div>
 
-                <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6">
-                    <div className="text-center max-w-4xl mx-auto mb-16">
+            {/* Hero Section */}
+            <section className="relative py-12 lg:py-16">
+                <FloatingBackground />
+
+                <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6">
+                    <div className="text-center">
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.6 }}
                         >
-                            {/* Badge */}
-                            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 backdrop-blur-sm border border-gray-200 shadow-sm mb-8">
-                                <span className="relative flex h-2 w-2">
-                                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-lime-400 opacity-75"></span>
-                                    <span className="relative inline-flex rounded-full h-2 w-2 bg-lime-500"></span>
+                            {/* Personal greeting badge */}
+                            <motion.div
+                                initial={{ scale: 0.9, opacity: 0 }}
+                                animate={{ scale: 1, opacity: 1 }}
+                                transition={{ delay: 0.15 }}
+                                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 backdrop-blur-md border border-gray-200/50 shadow-lg mb-8"
+                            >
+                                <span className="relative flex h-2.5 w-2.5">
+                                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-lime-400 opacity-75" />
+                                    <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-gradient-to-r from-lime-400 to-lime-500 shadow-sm" />
                                 </span>
-                                <span className="text-xs font-bold text-gray-600">
-                                    Het #1 Coach Portaal voor atletiek
+                                <span className="text-xs font-bold text-gray-700 tracking-wide">
+                                    Het #1 Coach Portaal — gemaakt door trainers, voor trainers
                                 </span>
-                            </div>
+                            </motion.div>
 
-                            {/* H1 Headline */}
-                            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-gray-900 leading-[1.1] mb-6">
-                                Dé trainingsschema maker voor{' '}
-                                <span className="text-gradient">atletiek trainingen & spellen</span>
-                            </h1>
+                            {/* Main headline */}
+                            <motion.h1
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: 0.2 }}
+                                className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-gray-900 leading-[1.15] mb-6"
+                            >
+                                Minder papierwerk,{" "}
+                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600">
+                                    meer atletiek
+                                </span>
+                            </motion.h1>
 
-                            {/* Subheadline */}
-                            <p className="text-lg sm:text-xl text-gray-500 leading-relaxed mb-10 max-w-3xl mx-auto font-medium">
-                                Bespaar uren per week op administratie en focus op wat écht telt: inspirerende trainingen geven. Het complete platform voor jouw atletiekvereniging.
-                            </p>
+                            {/* Personal subheadline */}
+                            <motion.p
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                transition={{ delay: 0.35 }}
+                                className="text-base sm:text-lg text-gray-600 leading-relaxed mb-8 max-w-2xl mx-auto"
+                            >
+                                We weten hoe het voelt — uren trainingen voorbereiden, administratie bijhouden.
+                                <br />
+                                <span className="text-blue-600 font-semibold">Coach Portaal verandert dat.</span>
+                            </motion.p>
 
-                            {/* Primary CTA */}
-                            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
+                            {/* CTA Buttons */}
+                            <motion.div
+                                initial={{ opacity: 0, y: 15 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: 0.45 }}
+                                className="flex flex-col sm:flex-row gap-4 justify-center mb-6"
+                            >
                                 <Link
-                                    href="https://dashboard.coachportaal.be/sign-up"
-                                    className="group inline-flex items-center justify-center rounded-xl px-8 py-4 text-lg font-bold text-white bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5 no-underline"
+                                    href="https://dashboard.coachportaal.be"
+                                    className="group inline-flex items-center justify-center rounded-xl px-8 py-3.5 text-base font-bold text-white bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 transition-all shadow-xl shadow-blue-600/30 hover:shadow-blue-600/50 hover:-translate-y-1 no-underline"
                                 >
-                                    Start direct gratis
-                                    <svg className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    Probeer het gratis
+                                    <svg className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                                     </svg>
                                 </Link>
                                 <Link
                                     href="/bibliotheek"
-                                    className="inline-flex items-center justify-center rounded-xl px-8 py-4 text-lg font-bold text-gray-700 bg-white border-2 border-gray-200 hover:border-gray-300 hover:bg-gray-50 transition-all no-underline"
+                                    className="inline-flex items-center justify-center rounded-xl px-8 py-3.5 text-base font-bold text-gray-700 bg-white/80 backdrop-blur-sm border-2 border-gray-200/50 hover:border-blue-300 hover:bg-blue-50 transition-all shadow-lg hover:shadow-xl hover:-translate-y-1 no-underline"
                                 >
-                                    Bekijk gratis trainingen
+                                    Bekijk trainingen
                                 </Link>
-                            </div>
+                            </motion.div>
+
+                            {/* Trust indicators */}
+                            <motion.div
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                transition={{ delay: 0.6 }}
+                                className="flex flex-wrap items-center justify-center gap-6 text-xs text-gray-500"
+                            >
+                                <span className="flex items-center gap-1.5">
+                                    <svg className="w-4 h-4 text-lime-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                                    </svg>
+                                    Geen creditcard nodig
+                                </span>
+                                <span className="flex items-center gap-1.5">
+                                    <svg className="w-4 h-4 text-lime-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                                    </svg>
+                                    Direct toegang
+                                </span>
+                                <span className="flex items-center gap-1.5">
+                                    <svg className="w-4 h-4 text-lime-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                                    </svg>
+                                    50+ verenigingen
+                                </span>
+                            </motion.div>
                         </motion.div>
                     </div>
-
-                    {/* Role Selector */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 40 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6, delay: 0.2 }}
-                    >
-                        <div className="text-center mb-10">
-                            <h2 className="text-2xl sm:text-3xl font-black text-gray-900 mb-3">
-                                Wat is jouw rol?
-                            </h2>
-                            <p className="text-gray-500 font-medium">
-                                Selecteer je rol om te zien hoe Coach Portaal jou kan helpen
-                            </p>
-                        </div>
-
-                        <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-                            <RoleCard
-                                icon={<svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>}
-                                title="Ik ben Trainer"
-                                description="Ik geef trainingen en zoek naar oefeningen en spellen om slimmere trainingen te maken."
-                                benefits={[
-                                    "Trainingsbibliotheek op je telefoon",
-                                    "AI oefeningen suggesties",
-                                    "Honderden spellen & spelvormen"
-                                ]}
-                                isActive={selectedRole === 'trainer'}
-                                onClick={() => setSelectedRole('trainer')}
-                                color="blue"
-                            />
-                            <RoleCard
-                                icon={<svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>}
-                                title="Ik ben Bestuurslid"
-                                description="Ik beheer de club en zoek naar een platform om administratie te vereenvoudigen."
-                                benefits={[
-                                    "Ledenbeheer in één overzicht",
-                                    "Automatische diploma's & records",
-                                    "Resultaten importeren"
-                                ]}
-                                isActive={selectedRole === 'bestuurslid'}
-                                onClick={() => setSelectedRole('bestuurslid')}
-                                color="purple"
-                            />
-                        </div>
-                    </motion.div>
                 </div>
             </section>
 
-            {/* ============================================
-                SECTIE 2: FEATURES - Wat doet het product?
-                ============================================ */}
-            <section className="py-24 bg-white">
-                <div className="max-w-6xl mx-auto px-4 sm:px-6">
+            {/* Role Selector */}
+            <section className="relative py-12">
+                <div className="max-w-5xl mx-auto px-4 sm:px-6">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="text-center mb-20"
+                        className="text-center mb-8"
                     >
-                        <span className={`text-xs font-bold uppercase tracking-widest mb-4 block ${selectedRole === 'trainer' ? 'text-blue-600' : 'text-purple-600'}`}>
-                            {selectedRole === 'trainer' ? 'Voor Trainers' : 'Voor Bestuursleden'}
-                        </span>
-                        <h2 className="text-4xl sm:text-5xl font-black text-gray-900 tracking-tight mb-4">
-                            {selectedRole === 'trainer'
-                                ? 'Focus op trainen, wij doen de rest'
-                                : 'Minder administratie, meer atletiek'
-                            }
+                        <h2 className="text-3xl sm:text-4xl font-black text-gray-900 tracking-tight mb-3">
+                            Wat is jouw rol?
                         </h2>
-                        <p className="text-lg text-gray-500 max-w-2xl mx-auto">
-                            {selectedRole === 'trainer'
-                                ? 'Ontdek hoe Coach Portaal je helpt om betere trainingen te geven met honderden oefeningen en spellen, klaar voor gebruik.'
-                                : 'Ontdek hoe Coach Portaal je helpt om je club professioneler en efficiënter te beheren.'
-                            }
+                        <p className="text-base text-gray-600 max-w-xl mx-auto">
+                            Coach Portaal ondersteunt zowel trainers als bestuursleden.
                         </p>
                     </motion.div>
 
-                    <AnimatePresence mode="wait">
+                    <div className="grid md:grid-cols-2 gap-6">
+                        <RoleSelectorCard role={roles.trainer} selectedRole={selectedRole} onSelect={handleRoleSelect} />
+                        <RoleSelectorCard role={roles.bestuurslid} selectedRole={selectedRole} onSelect={handleRoleSelect} />
+                    </div>
+                </div>
+            </section>
+
+            {/* Feature Showcase */}
+            <section id="features-section" className="relative py-12">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6">
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        className="text-center mb-8"
+                    >
                         <motion.div
-                            key={selectedRole}
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            exit={{ opacity: 0, y: -20 }}
-                            transition={{ duration: 0.3 }}
-                            className="space-y-32"
+                            initial={{ scale: 0.9, opacity: 0 }}
+                            whileInView={{ scale: 1, opacity: 1 }}
+                            viewport={{ once: true }}
+                            className={`inline-block px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest mb-4 ${
+                                selectedRole === 'trainer' ? 'bg-blue-100 text-blue-700' : 'bg-purple-100 text-purple-700'
+                            }`}
                         >
-                            {currentBenefits.map((benefit, i) => (
-                                <BenefitSection
-                                    key={i}
-                                    icon={benefit.icon}
-                                    title={benefit.title}
-                                    description={benefit.description}
-                                    details={benefit.details}
-                                    animation={benefit.animation}
-                                    color={benefit.color}
-                                    reverse={i % 2 === 1}
-                                />
-                            ))}
+                            {selectedRole === 'trainer' ? 'Voor Trainers' : 'Voor Bestuursleden'}
                         </motion.div>
-                    </AnimatePresence>
+                        <h2 className="text-3xl sm:text-4xl font-black text-gray-900 tracking-tight mb-3">
+                            {selectedRole === 'trainer' ? 'Focus op trainen, wij doen de rest' : 'Minder administratie, meer atletiek'}
+                        </h2>
+                        <p className="text-base text-gray-600 max-w-xl mx-auto">
+                            {selectedRole === 'trainer'
+                                ? 'Ontdek hoe Coach Portaal je helpt om betere trainingen te geven met minder voorbereidingstijd.'
+                                : 'Ontdek hoe Coach Portaal je helpt om je club efficiënter te beheren.'}
+                        </p>
+                    </motion.div>
+
+                    <FeatureShowcase features={currentFeatures} />
                 </div>
             </section>
 
-            {/* ============================================
-                SECTIE 3: GRATIS BIBLIOTHEEK - Direct waarde
-                ============================================ */}
-            <section className="py-20 bg-gradient-to-br from-emerald-50 via-teal-50 to-cyan-50">
+            {/* Unique Features Section - NEW */}
+            <section className="relative py-16">
                 <div className="max-w-6xl mx-auto px-4 sm:px-6">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="text-center mb-12"
+                        className="text-center mb-16"
                     >
-                        <span className="text-xs font-bold text-teal-600 uppercase tracking-widest mb-4 block">
-                            Gratis Toegang
-                        </span>
-                        <h2 className="text-4xl sm:text-5xl font-black text-gray-900 tracking-tight mb-6">
-                            Publieke Trainingsbibliotheek
-                        </h2>
-                        <p className="text-lg text-gray-500 max-w-3xl mx-auto leading-relaxed">
-                            Ontdek onze gratis bibliotheek met professionele trainingen. Perfect voor inspiratie en direct te gebruiken op de baan.
-                        </p>
-                    </motion.div>
-
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: 0.1 }}
-                        className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-teal-600 via-emerald-600 to-cyan-600 p-8 sm:p-12 text-white shadow-2xl shadow-teal-500/25"
-                    >
-                        {/* Background decorations */}
-                        <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl" />
-                        <div className="absolute bottom-0 left-0 w-64 h-64 bg-teal-300/20 rounded-full blur-3xl" />
-
-                        <div className="relative z-10 flex flex-col lg:flex-row items-center gap-8">
-                            <div className="flex-1 text-center lg:text-left">
-                                <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full mb-6">
-                                    <span className="relative flex h-2 w-2">
-                                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-lime-300 opacity-75"></span>
-                                        <span className="relative inline-flex rounded-full h-2 w-2 bg-lime-400"></span>
-                                    </span>
-                                    <span className="text-sm font-bold">100% Gratis</span>
-                                </div>
-                                <h3 className="text-3xl sm:text-4xl font-black mb-4">
-                                    Direct toegang tot trainingen
-                                </h3>
-                                <p className="text-lg text-white/80 mb-8">
-                                    Blader door professionele trainingsschema's voor alle leeftijdsgroepen. Van warming-up spelletjes tot complete wedstrijdvoorbereiding.
-                                </p>
-                                <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
-                                    <Link
-                                        href="/bibliotheek"
-                                        className="group inline-flex items-center justify-center rounded-xl px-8 py-4 text-lg font-bold text-teal-700 bg-white hover:bg-gray-100 transition-all shadow-lg hover:-translate-y-0.5 no-underline"
-                                    >
-                                        <svg className="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                                        </svg>
-                                        Bekijk Bibliotheek
-                                        <svg className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                                        </svg>
-                                    </Link>
-                                </div>
-                            </div>
-                            <div className="flex-shrink-0 hidden lg:block">
-                                <div className="grid grid-cols-2 gap-4">
-                                    {['Sprint', 'Techniek', 'Kracht', 'Spel'].map((cat, i) => (
-                                        <div key={i} className="bg-white/15 backdrop-blur-sm rounded-2xl p-4 text-center border border-white/20">
-                                            <div className="text-3xl mb-2">{['🏃', '🎯', '💪', '🎮'][i]}</div>
-                                            <div className="text-sm font-bold">{cat}</div>
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
+                        <div className="inline-block px-3 py-1 rounded-full text-xs font-bold text-purple-700 uppercase tracking-widest mb-4 bg-purple-100">
+                            Wat ons uniek maakt
                         </div>
-                    </motion.div>
-                </div>
-            </section>
-
-            {/* ============================================
-                SECTIE 4: LEEFTIJDSGROEPEN - Voor wie?
-                ============================================ */}
-            <section className="py-20 bg-gradient-to-r from-blue-600 to-indigo-600">
-                <div className="max-w-6xl mx-auto px-4 sm:px-6">
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="text-center mb-12"
-                    >
-                        <h2 className="text-3xl sm:text-4xl font-black text-white mb-4">
-                            Trainingen voor elke leeftijdsgroep
+                        <h2 className="text-3xl sm:text-4xl font-black text-gray-900 tracking-tight mb-3">
+                            Features die je nergens anders vindt
                         </h2>
-                        <p className="text-lg text-white/80 max-w-2xl mx-auto">
-                            Van de allerkleinsten tot cadetten - vind de perfecte oefeningen en spellen.
+                        <p className="text-base text-gray-600 max-w-xl mx-auto">
+                            Coach Portaal is gebouwd met moderne technologieën en unieke integraties.
                         </p>
                     </motion.div>
 
-                    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 text-center text-white">
-                        {[
-                            { name: 'Kangoeroes', age: '6-7 jaar', desc: 'Fantasierijke spelletjes en basisbewegingen' },
-                            { name: 'Benjamins', age: '~8 jaar', desc: 'Plezier en veelzijdigheid' },
-                            { name: 'Pupillen', age: '9-11 jaar', desc: 'Loopsnelheid, springkracht, werptechniek' },
-                            { name: 'Miniemen', age: '12-13 jaar', desc: 'Techniekverfijning' },
-                            { name: 'Cadetten', age: '14-15 jaar', desc: 'Prestatieverbetering' },
-                        ].map((group, i) => (
-                            <motion.div
-                                key={i}
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: i * 0.1 }}
-                                className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20"
-                            >
-                                <div className="text-xl font-black mb-1">{group.name}</div>
-                                <div className="text-lime-300 text-sm font-bold mb-2">{group.age}</div>
-                                <p className="text-white/70 text-xs">{group.desc}</p>
-                            </motion.div>
+                    <div className="space-y-16">
+                        {uniqueFeatures.map((feature, i) => (
+                            <UniqueFeatureCard key={i} feature={feature} index={i} />
                         ))}
                     </div>
                 </div>
             </section>
 
-            {/* ============================================
-                SECTIE 5: TRAININGSTYPES - Wat kun je doen?
-                ============================================ */}
-            <section className="py-20 bg-white">
-                <div className="max-w-6xl mx-auto px-4 sm:px-6">
+            {/* Training Types - Wide Section */}
+            <section className="relative py-12">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="text-center mb-12"
+                        className="text-center mb-8"
                     >
-                        <span className="text-xs font-bold text-blue-600 uppercase tracking-widest mb-4 block">
+                        <div className="inline-block px-3 py-1 rounded-full text-xs font-bold text-blue-700 uppercase tracking-widest mb-4 bg-blue-100">
                             Trainingstypes
-                        </span>
-                        <h2 className="text-3xl sm:text-4xl font-black text-gray-900 tracking-tight mb-4">
+                        </div>
+                        <h2 className="text-3xl sm:text-4xl font-black text-gray-900 tracking-tight mb-3">
                             Trainingen voor elk onderdeel
                         </h2>
-                        <p className="text-lg text-gray-500 max-w-2xl mx-auto">
-                            Van sprint tot werpen - vind de juiste oefeningen voor jouw trainingsdoel.
+                        <p className="text-base text-gray-600 max-w-xl mx-auto">
+                            Van sprint tot werpen - vind de juiste oefeningen.
                         </p>
                     </motion.div>
 
-                    <div className="grid md:grid-cols-3 gap-6">
+                    <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
                         {[
                             {
                                 title: 'Sprinttrainingen',
-                                icon: '🏃',
-                                color: 'from-blue-50 to-indigo-50 border-blue-100',
-                                items: ['Starttechniek', 'Versnellingsdrills', 'Maximale snelheid']
+                                emoji: '🏃',
+                                items: ['Starttechniek', 'Versnellingsdrills', 'Maximale snelheid'],
+                                gradient: 'from-blue-500 to-indigo-600'
                             },
                             {
                                 title: 'Techniektrainingen',
-                                icon: '🎯',
-                                color: 'from-lime-50 to-green-50 border-lime-100',
-                                items: ['Hordentechniek', 'Verspringen', 'Werptechniek']
+                                emoji: '🎯',
+                                items: ['Hordentechniek', 'Verspringen', 'Werptechniek'],
+                                gradient: 'from-lime-500 to-emerald-600'
                             },
                             {
                                 title: 'Kracht & Conditie',
-                                icon: '💪',
-                                color: 'from-purple-50 to-indigo-50 border-purple-100',
-                                items: ['Core stability', 'Plyometrie', 'Uithoudingsvermogen']
-                            }
+                                emoji: '💪',
+                                items: ['Core stability', 'Plyometrie', 'Uithoudingsvermogen'],
+                                gradient: 'from-purple-500 to-pink-600'
+                            },
+                            {
+                                title: 'Warming-up',
+                                emoji: '🔥',
+                                items: ['Spelvormen', 'Mobiliteit', 'Activatieoefeningen'],
+                                gradient: 'from-orange-500 to-amber-600'
+                            },
+                            {
+                                title: 'Spelvormen',
+                                emoji: '🎮',
+                                items: ['Tag spellen', 'Estafettes', 'Team challenges'],
+                                gradient: 'from-teal-500 to-cyan-600'
+                            },
+                            {
+                                title: 'Cooling-down',
+                                emoji: '🧘',
+                                items: ['Rekken', 'Ontspanning', 'Recovery tips'],
+                                gradient: 'from-indigo-500 to-purple-600'
+                            },
                         ].map((type, i) => (
                             <motion.div
                                 key={i}
                                 initial={{ opacity: 0, y: 20 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
-                                transition={{ delay: i * 0.1 }}
-                                className={`bg-gradient-to-br ${type.color} rounded-2xl p-8 border`}
+                                transition={{ delay: i * 0.06 }}
+                                whileHover={{ y: -5 }}
+                                className="relative group"
                             >
-                                <div className="text-4xl mb-4">{type.icon}</div>
-                                <h3 className="text-xl font-black text-gray-900 mb-4">{type.title}</h3>
-                                <ul className="space-y-2">
-                                    {type.items.map((item, j) => (
-                                        <li key={j} className="flex items-center gap-2 text-gray-600">
-                                            <svg className="w-4 h-4 text-lime-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                                            </svg>
-                                            {item}
-                                        </li>
-                                    ))}
-                                </ul>
+                                <div className="absolute inset-0 bg-gradient-to-br from-blue-100/70 to-indigo-100/70 rounded-2xl transform rotate-1 group-hover:rotate-2 transition-transform" />
+                                <div className="relative bg-white/90 backdrop-blur-sm rounded-2xl p-5 border border-white/50">
+                                    <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${type.gradient} flex items-center justify-center mb-3 shadow-lg group-hover:scale-110 transition-transform`}>
+                                        <span className="text-2xl">{type.emoji}</span>
+                                    </div>
+                                    <h3 className="text-lg font-black text-gray-900 mb-2">{type.title}</h3>
+                                    <ul className="space-y-1.5">
+                                        {type.items.map((item, j) => (
+                                            <li key={j} className="flex items-center gap-2 text-xs text-gray-700">
+                                                <svg className="w-3 h-3 text-lime-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
+                                                </svg>
+                                                <span>{item}</span>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
                             </motion.div>
                         ))}
                     </div>
                 </div>
             </section>
 
-            {/* ============================================
-                SECTIE 6: BLOG - Expertise & Content
-                ============================================ */}
-            <section className="py-24 bg-gray-50">
-                <div className="max-w-6xl mx-auto px-4 sm:px-6">
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-12"
-                    >
-                        <div>
-                            <span className="text-xs font-bold text-blue-600 uppercase tracking-widest mb-2 block">
-                                Blog
-                            </span>
-                            <h2 className="text-3xl sm:text-4xl font-black text-gray-900 tracking-tight">
-                                Tips voor trainers
-                            </h2>
-                        </div>
-                        <Link
-                            href="/blogs"
-                            className="inline-flex items-center gap-2 text-blue-600 font-bold hover:text-blue-700 transition-colors no-underline"
-                        >
-                            Bekijk alle artikelen
-                            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                            </svg>
-                        </Link>
-                    </motion.div>
-
-                    <div className="grid md:grid-cols-3 gap-6">
-                        {recentPosts.map((post, i) => (
-                            <motion.div
-                                key={post.slug}
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: i * 0.1 }}
-                            >
-                                <BlogCard post={post} />
-                            </motion.div>
-                        ))}
-                    </div>
-                </div>
-            </section>
-
-            {/* ============================================
-                SECTIE 7: FINALE CTA - Conversie
-                ============================================ */}
-            <section className="py-24">
-                <div className="max-w-6xl mx-auto px-4 sm:px-6">
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 p-12 sm:p-20"
-                    >
+            {/* Free Library CTA */}
+            <section className="relative py-12">
+                <div className="relative max-w-5xl mx-auto px-4 sm:px-6 text-center">
+                    <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-teal-500/90 to-emerald-600/90 backdrop-blur-sm p-8 sm:p-10 shadow-2xl shadow-teal-500/30">
                         {/* Background decorations */}
-                        <div className="absolute top-0 right-0 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl" />
-                        <div className="absolute bottom-0 left-0 w-96 h-96 bg-indigo-500/20 rounded-full blur-3xl" />
+                        <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl" />
+                        <div className="absolute bottom-0 left-0 w-64 h-64 bg-teal-300/20 rounded-full blur-3xl" />
 
-                        <div className="relative z-10 text-center max-w-3xl mx-auto">
-                            <h2 className="text-4xl sm:text-5xl font-black text-white tracking-tight mb-6 leading-tight">
-                                Klaar om te starten?
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            className="relative z-10"
+                        >
+                            <motion.div
+                                initial={{ scale: 0.9, opacity: 0 }}
+                                whileInView={{ scale: 1, opacity: 1 }}
+                                viewport={{ once: true }}
+                                className="inline-block px-4 py-1.5 rounded-full text-xs font-bold text-teal-100 uppercase tracking-widest mb-5 bg-white/20 backdrop-blur-sm"
+                            >
+                                Gratis toegang voor iedereen
+                            </motion.div>
+                            <h2 className="text-3xl sm:text-4xl font-black text-white tracking-tight mb-4">
+                                Publieke Trainingsbibliotheek
                             </h2>
-                            <p className="text-xl text-gray-400 mb-10 font-medium">
-                                Start vandaag nog gratis en ontdek hoe Coach Portaal jouw trainingen transformeert.
+                            <p className="text-base text-white/90 mb-6 max-w-xl mx-auto leading-relaxed">
+                                Je hoeft geen account te hebben om onze trainingsbibliotheek te bekijken. Duik in honderden trainingen en vind inspiratie.
                             </p>
-                            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                                <Link
-                                    href="https://dashboard.coachportaal.be/sign-up"
-                                    className="group inline-flex items-center justify-center rounded-xl px-10 py-5 text-lg font-bold text-gray-900 bg-white hover:bg-gray-100 transition-all shadow-2xl hover:shadow-white/20 hover:-translate-y-0.5 no-underline"
-                                >
-                                    Start direct gratis
-                                    <svg className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                                    </svg>
-                                </Link>
-                                <Link
-                                    href="/bibliotheek"
-                                    className="inline-flex items-center justify-center rounded-xl px-10 py-5 text-lg font-bold text-white border border-white/20 hover:bg-white/10 transition-all no-underline"
-                                >
-                                    Bekijk bibliotheek
-                                </Link>
-                            </div>
-                            <p className="text-sm text-gray-500 mt-6">
-                                Geen creditcard nodig. Direct toegang tot alle functies.
-                            </p>
+
+                            <Link
+                                href="/bibliotheek"
+                                className="inline-flex items-center justify-center rounded-xl px-8 py-3.5 text-base font-bold text-teal-800 bg-white hover:bg-gray-100 transition-all shadow-xl hover:shadow-2xl hover:-translate-y-1 no-underline"
+                            >
+                                <svg className="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                                </svg>
+                                Bekijk de bibliotheek
+                                <svg className="ml-2 w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                                </svg>
+                            </Link>
+                        </motion.div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Final CTA */}
+            <section className="relative py-16">
+                <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                    >
+                        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 tracking-tight mb-4 leading-tight">
+                            Klaar om te starten?
+                        </h2>
+                        <p className="text-base text-gray-600 mb-6 max-w-xl mx-auto leading-relaxed">
+                            Sluit je aan bij 50+ atletiekverenigingen. Geen creditcard nodig, direct toegang.
+                        </p>
+
+                        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                            <Link
+                                href="https://dashboard.coachportaal.be"
+                                className="group inline-flex items-center justify-center rounded-xl px-10 py-4 text-base font-bold text-white bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 transition-all shadow-xl shadow-blue-600/30 hover:shadow-blue-600/50 hover:-translate-y-1 no-underline"
+                            >
+                                Start vandaag nog gratis
+                                <svg className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                                </svg>
+                            </Link>
                         </div>
+
+                        <p className="mt-5 text-xs text-gray-500 flex items-center justify-center gap-5">
+                            <span className="flex items-center gap-1.5">
+                                <svg className="w-3.5 h-3.5 text-lime-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                                </svg>
+                                Gratis proefperiode
+                            </span>
+                            <span className="flex items-center gap-1.5">
+                                <svg className="w-3.5 h-3.5 text-lime-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                                </svg>
+                                Geen verplichtingen
+                            </span>
+                        </p>
                     </motion.div>
                 </div>
             </section>
 
-            {/* ============================================
-                SECTIE 8: SEO FOOTER TEXT
-                ============================================ */}
-            <section className="py-12 bg-white border-t border-gray-100">
-                <div className="max-w-4xl mx-auto px-4 sm:px-6">
-                    <div className="prose prose-sm max-w-none text-gray-500">
-                        <p>
-                            <strong className="text-gray-700">Coach Portaal</strong> is het complete platform voor atletiekverenigingen. Met onze trainingsschema maker heb je toegang tot honderden oefeningen en spellen voor elke leeftijdsgroep. Van jeugdatletiek tot senioren - ons platform biedt de tools die je nodig hebt om professionele trainingen te geven en je club efficiënt te beheren.
+            {/* Personal footer note */}
+            <section className="relative py-10 border-t border-gray-200/50">
+                <div className="max-w-2xl mx-auto px-4 sm:px-6 text-center">
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        viewport={{ once: true }}
+                    >
+                        <p className="text-sm text-gray-600 leading-relaxed">
+                            <strong className="text-gray-900">Coach Portaal</strong> is ontstaan uit passie voor atletiek. We zijn elke dag bezig om het platform te verbeteren. Heb je vragen?{" "}
+                            <a href="mailto:support@coachportaal.be" className="text-blue-600 font-semibold hover:text-blue-700 underline">
+                                Stuur ons een berichtje
+                            </a>
                         </p>
-                    </div>
+                    </motion.div>
                 </div>
             </section>
         </div>
